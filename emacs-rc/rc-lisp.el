@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-14:49 Июль 19 2008]
-;; Modified: [20.46:05 Ноябрь 12 2008]
+;; Modified: [18.51:07 Январь 17 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -49,9 +49,6 @@
 	     (linum-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)))
-
-(show-paren-mode 1)
-(setq show-paren-style 'parenthesis)
 
 ;; Slime for Lisp
 

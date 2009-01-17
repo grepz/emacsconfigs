@@ -131,10 +131,11 @@
 (require 'bbdb-wl)
 (bbdb-wl-setup)
 ;; enable pop-ups
-(setq bbdb-use-pop-up t)
+;;(setq bbdb-use-pop-up t)
 (setq signature-use-bbdb t)
 ;; shows the name of bbdb in the summary :-)
 (setq wl-summary-from-function 'bbdb-wl-from-func)
+
 ;; automatically add mailing list fields
 ;(add-hook 'bbdb-notice-hook 'bbdb-auto-notes-hook)
 ;(setq bbdb-auto-notes-alist '(("X-ML-Name" (".*$" ML 0))))
