@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [05.58:41 Декабрь 13 2008]
+;; Modified: [04.46:48 Январь 21 2009]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -47,23 +47,33 @@
 
 (defun set-my-faces ()
   (custom-set-faces
-   '(font-lock-function-name-face ((t (:foreground "MediumSlateBlue" :bold t :underline t))))
+   '(font-lock-function-name-face ((t (:foreground "MediumSlateBlue"
+				       :bold t
+				       :underline t))))
    '(font-lock-comment-face ((t (:foreground "#777777" :bold nil :italic t))))
    '(flyspell-incorrect ((t (:underline t :weight normal))))
    '(jabber-roster-user-away ((t (:foreground "green"))))
-   '(tabbar-default ((t (:inherit variable-pitch :background "gray82" :foreground "gray50" :height 0.8))))
-   '(tabbar-selected ((t (:inherit tabbar-default :background "white" :foreground "blue" :box (:line-width 1 :color "black")))))
+   '(tabbar-default ((t (:inherit variable-pitch :background "gray82"
+			 :foreground "gray50" :height 0.8))))
+   '(tabbar-selected ((t (:inherit tabbar-default :background "white"
+			 :foreground "blue"
+			 :box (:line-width 1 :color "black")))))
    '(tabbar-separator ((t (:inherit tabbar-default :height 0.2))))
    '(tabbar-highlight ((t ())))
    '(tabbar-button-highlight ((t (:inherit tabbar-button))))
-   '(tabbar-unselected ((t (:inherit tabbar-default :background "gray72" :foreground "black" :box (:line-width 1 :color "black")))))
+   '(tabbar-unselected ((t (:inherit tabbar-default
+			    :background "gray72"
+			    :foreground "black"
+			    :box (:line-width 1 :color "black")))))
    '(buffer-menu-star-buffer ((t (:background "black" :foreground "yellow"))))
    '(buffer-menu-buffer-name ((t (:foreground "green")))))
   (set-face-foreground 'modeline "Black" nil)
   (set-face-foreground 'default "NavajoWhite1" nil))
 
 ;;   '(stripes-face ((t (:background "#445588"))))))
-;;   '(mode-line ((t (:foreground color1 :background color2 :box (:line-width -1 :style released-button)))))
+;;   '(mode-line ((t (:foreground color1
+;;                    :background color2
+;;                    :box (:line-width -1 :style released-button)))))
 ;;   '(region ((t (:background "gold"))))
 
 (require 'color-theme)
@@ -84,8 +94,9 @@
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22) (>= +emacs-build-version+ 60))
 	  (progn
-	    (set-default-font "Consolas-13")
-	    (set-fontset-font "fontset-default" 'cyrillic '("Consolas" . "ISO10646-1")))
+	    (set-default-font "Consolas-12")
+	    (set-fontset-font "fontset-default"
+			      'cyrillic '("Consolas" . "ISO10646-1")))
 ;;	    (set-default-font "Inconsolata-14")
 ;;	    (set-fontset-font "fontset-default" 'cyrillic '("Inconsolata" . "ISO10646-1")))
 ;;	    (set-default-font "Bitstream Vera Sans Mono-11")
