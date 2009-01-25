@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [19.33:26 Сентябрь 17 2008]
+;; Modified: [14.36:23 Январь 21 2009]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -85,3 +85,15 @@
 ;; Command-line menu
 (require 'lacarte)
 (global-set-key [f10]   'lacarte-execute-menu-command)
+
+
+;; Mailcrypt
+
+(add-to-list 'load-path "~/elisp/mailcrypt")
+(require 'mailcrypt)
+(mc-setversion "gpg")
+(setq mc-gpg-user-id "Stanislav M. Ivankin")
+(autoload 'mc-install-write-mode "mailcrypt" nil t)
+(autoload 'mc-install-read-mode "mailcrypt" nil t)
+(add-hook 'mail-mode-hook 'mc-install-write-mode)
+
