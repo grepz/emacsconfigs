@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [12-37:32 Июль 20 2008]
+;; Modified: [04.38:25 Январь 26 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -47,3 +47,10 @@
 	  (interactive "DSave to: ")
 	  (cd dir)
 	  (start-process "curl" "*curl*" "curl.exe" "-O" "-s" (w3m-anchor)))))
+
+(setq w3m-coding-system 'utf-8
+      w3m-file-coding-system 'utf-8
+      w3m-file-name-coding-system 'utf-8
+      w3m-input-coding-system 'utf-8
+      w3m-output-coding-system 'utf-8
+      w3m-terminal-coding-system 'utf-8)
