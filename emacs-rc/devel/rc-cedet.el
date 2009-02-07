@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [04.25:11 Январь 21 2009]
+;; Modified: [04.21:03 Февраль 04 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -52,7 +52,7 @@
   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
   (local-set-key "\C-c=" 'semantic-decoration-include-visit)
   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
-  )
+  (local-set-key "\C-ch" 'eassist-switch-h-cpp))
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
 
 (setq-default semanticdb-default-save-directory

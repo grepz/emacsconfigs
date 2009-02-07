@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [04.46:48 Январь 21 2009]
+;; Modified: [00.32:37 Февраль 08 2009]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -22,28 +22,6 @@
 	(top-toolbar-shadow-color . "#fffffbeeffff")
 	(viper-saved-cursor-color-in-replace-mode . "Red3")
 	(tool-bar-lines . 0)))
-;;	(font . "Bitstream Vera Sans Mono-11")))
-
-
-;; (defun color-theme-example ()
-;;   "Example theme. Carbon copy of color-theme-gnome contributed by Jonadab."
-;;   (interactive)
-;;   (color-theme-install
-;;    '(color-theme-example
-;;      ((foreground-color . "wheat")
-;;       (background-color . "darkslategrey")
-;;       (background-mode . dark))
-;;      (default ((t (nil))))
-;;      (region ((t (:foreground "cyan" :background "dark cyan"))))
-;;      (underline ((t (:foreground "yellow" :underline t))))
-;;      (modeline ((t (:foreground "dark cyan" :background "wheat"))))
-;;      (modeline-buffer-id ((t (:foreground "dark cyan" :background "wheat"))))
-;;      (modeline-mousable ((t (:foreground "dark cyan" :background "wheat"))))
-;;      (modeline-mousable-minor-mode ((t (:foreground "dark cyan" :background "wheat"))))
-;;      (italic ((t (:foreground "dark red" :italic t))))
-;;      (bold-italic ((t (:foreground "dark red" :bold t :italic t))))
-;;      (font-lock-comment-face ((t (:foreground "Firebrick"))))
-;;      (bold ((t (:bold)))))))
 
 (defun set-my-faces ()
   (custom-set-faces
@@ -70,19 +48,10 @@
   (set-face-foreground 'modeline "Black" nil)
   (set-face-foreground 'default "NavajoWhite1" nil))
 
-;;   '(stripes-face ((t (:background "#445588"))))))
-;;   '(mode-line ((t (:foreground color1
-;;                    :background color2
-;;                    :box (:line-width -1 :style released-button)))))
-;;   '(region ((t (:background "gold"))))
-
 (require 'color-theme)
 (color-theme-initialize)
 (if (eq window-system 'x)
     (progn
-;;;;      (color-theme-deep-blue)
-;;;;      (color-theme-xemacs)
-;;      (color-theme-comidia)
       (color-theme-charcoal-black)
       (set-my-faces)
       (require 'tabbar)
@@ -97,19 +66,6 @@
 	    (set-default-font "Consolas-12")
 	    (set-fontset-font "fontset-default"
 			      'cyrillic '("Consolas" . "ISO10646-1")))
-;;	    (set-default-font "Inconsolata-14")
-;;	    (set-fontset-font "fontset-default" 'cyrillic '("Inconsolata" . "ISO10646-1")))
-;;	    (set-default-font "Bitstream Vera Sans Mono-11")
-;;	    (set-default-font "Dejavu Sans Mono-11")
-;;	    (set-default-font "Monospace-11")
-;;	    (set-fontset-font "fontset-default"
-	    ;;			      'cyrillic '("Bitstream Vera Sans Mono-11" . "unicode-bmp")))
-;;	    (set-fontset-font "fontset-default"
-;;			      'cyrillic '("Monospace-11" . "unicode-bmp")))
-;;			      'cyrillic '("Dejavu Sans Mono-11" . "unicode-bmp")))	    
 	(set-default-font "9x15")))
   (progn
     (message "Terminal decorations")))
-;;    (color-theme-tty-dark)))
-
-;;;;

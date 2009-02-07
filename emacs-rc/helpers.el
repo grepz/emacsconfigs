@@ -1,11 +1,17 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [01-27:32 Май 11 2008]
-;; Modified: [05.40:22 Декабрь 19 2008]
+;; Modified: [00.51:26 Февраль 08 2009]
 ;; Description:
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: elisp, emacs
 ;; License: 
+
+(defun filter (func lst) 
+  (cond ((null lst)  '())
+	((funcall func (car lst)) 
+	 (cons (car lst) (filter func (cdr lst))))
+	(t (filter func (cdr lst)))))
 
 (defun change-execution-bit(&optional unmake)
   "If file is writable, exists and not executable already,
@@ -114,3 +120,16 @@ u  - underline"
 		   (unless (string-match filter (concat dir elem))
 		     (funcall action (concat dir elem)))
 		 (funcall action (concat dir elem))))))))
+
+;; Function contributed by someone from emacswiki.org, thanks :)
+(defun add-subdirs-to-load-path (dir)
+  "Recursive add directories to `load-path'."
+  (let ((default-directory (file-name-as-directory dir)))
+    (add-to-list 'load-path dir)
+    (normal-top-level-add-subdirs-to-load-path)))
+
+(defun load-custom-rc-files (rc-dir &optional rc-filter)
+  (dolist (file (filter #'(lambda (x)
+			    (unless (member x rc-filter) x))
+			(directory-files rc-dir t "^rc-[^/]+?\.el$")))
+    (safe-load file)))

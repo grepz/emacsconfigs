@@ -1,6 +1,7 @@
 ;; -*- Mode:Emacs-Lisp; coding: utf-8-emacs; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (autoload 'elmo-split "elmo-split" "Split messages on the folder." t)
 (setq elmo-split-folder "%inbox")
 
@@ -39,7 +40,7 @@
 (setq elmo-imap4-use-cache t)
 (setq elmo-imap4-default-server "localhost"
       elmo-imap4-default-user "esgal"
-      elmo-imap4-default-authenticate-type 'clear)
+       elmo-imap4-default-authenticate-type 'clear)
 
 ;; NNTP
 (setq wl-nntp-posting-server nil)
@@ -133,13 +134,17 @@
 			     ("From" ("@moikrug.ru" . "%inbox/Moikrug"))
 			     ("List-ID" ("<spbhug.googlegroups.com>" .
 					 "%inbox/SpbHUG"))
-			     ("From" ("listserv@ugu.com" . "%inbox/UnixTips")))
+			     ("From" ("listserv@ugu.com" . "%inbox/UnixTips"))
+			     ("From" ("no_reply@hh.ru" . "%inbox/HeadHunter"))
+			     ("From" ("nosyava@mail.ru" . "%inbox/Family"))
+			     ("From" ("mick@concat.info" . "%inbox/Family"))
+			     ("From" ("meteo@angara.net" . "%inbox/angara")))
       wl-summary-auto-refile-skip-marks nil)
 
 ;; Articles expiring
 (setq wl-expire-alist
       '(("^\\+trash$" (date 14) remove)
-	("%inbox/\\(libssh\\|weblocks\\|xcb\\|EmacsBugs\\)"
+	("%inbox/\\(libssh\\|weblocks\\|xcb\\|EmacsBugs\\|GetAFreelancer\\|HeadHunter\\)"
 	 (date 7) remove)))
 
 ;; BBDB
