@@ -16,6 +16,7 @@
 ;; Must be first to load
 (load "~/emacs/emacs-rc/helpers")
 (add-subdirs-to-load-path "~/elisp")
+(add-subdirs-to-load-path "~/emacs/emacs-rc/extensions")
 
 (load-custom-rc-files "~/emacs/emacs-rc/system")
 (load-custom-rc-files "~/emacs/emacs-rc/looknfeel")
