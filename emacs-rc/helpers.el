@@ -1,11 +1,14 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [01-27:32 Май 11 2008]
-;; Modified: [00.51:26 Февраль 08 2009]
+;; Modified: [01.57:10 Февраль 09 2009]
 ;; Description:
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: elisp, emacs
 ;; License: 
+
+(eval-when-compile
+  (require 'cl))
 
 (defun filter (func lst) 
   (cond ((null lst)  '())

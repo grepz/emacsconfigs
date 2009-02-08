@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22-55:36 Май 19 2008]
-;; Modified: [01.08:25 Сентябрь 19 2008]
+;; Modified: [23.08:19 Февраль 08 2009]
 ;; Description:
 ;;  The idea of using muse as a site backend and some code was taken from Alex Ott
 ;; Author: Stanislav M. Ivankin
@@ -18,7 +18,7 @@
 
 (defvar concat.info-muse-menu '(("index.html" . "Главная")
 				("emacs/" . "Дот файлы emacs и прочее")
-				("about/" . "Резюме")
+				("about/" . "CV")
 				("about/more-about.html" . "Немного за жисть")
 				("literature/" . "Литература"))
   "Site main menu")
@@ -92,3 +92,5 @@ if files has some private data, clean it first by hand"
 							 "~/Projects/concat.info/muse/"
 							 "concat-info-muse-html"))))
 
+
+(require 'thumb-page)

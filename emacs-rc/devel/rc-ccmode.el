@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [19.00:23 Декабрь 27 2008]
+;; Modified: [01.56:50 Февраль 09 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -15,19 +15,21 @@
 (require 'cc-mode)
 
 ;; (c-add-style "teststyle"
-;; 	     '("stroustrup"
-;; 	       (indent-tabs-mode . nil)
-;; 	       (c-basic-offset . 4)
-;; 	       (c-offsets-alist . ((inline-open . 0)  ; custom indentation rules
-;; 				   (brace-list-open . 0)
-;; 				   (statement-case-open . +)))))
-;; defun my-c++-mode-hook ()
+;;  	     '("stroustrup"
+;;  	       (indent-tabs-mode . nil)
+;;  	       (c-basic-offset . 4)
+;;  	       (c-offsets-alist . ((inline-open . 0)  ; custom indentation rules
+;;  				   (brace-list-open . 0)
+;;  				   (statement-case-open . +)))))
+
+;; (defun my-c++-mode-hook ()
 ;;   (c-set-style "teststyle")        ; use my-style defined above
 ;;   (auto-fill-mode)         
 ;;   (c-toggle-auto-hungry-state 1))
-;;
 ;; (define-key c++-mode-map "\C-ct" 'some-function-i-want-to-call)
 
+
+;; ede-customize-project ede-customize-target
 
 (defun my-c-mode-common-hook ()
        (c-set-offset 'member-init-intro '++)
@@ -36,7 +38,7 @@
        (linum-mode 1)
        (setq tab-width 4)
        (setq indent-tabs-mode t)
-       (setq c-default-style "k&r")
+       (setq c-default-style "gnu")
        (c-set-offset 'substatement-open 0)
        (setq c-basic-offset 4)
        (c-toggle-auto-hungry-state 1)
@@ -57,16 +59,8 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
-(defun fp-c-mode-routine ()
-  (local-set-key "\M-q" 'rebox-comment))
-
-(add-hook 'c-mode-hook 'fp-c-mode-routine)
-(autoload 'rebox-comment "rebox" nil t)
-(autoload 'rebox-region "rebox" nil t)
-
 (setq user-mail-address "stas@concat.info")
 (setq user-full-name "Stanislav M. Ivankin")
-(setq tab-width 4)
 ;;; Always end a file with a newline
 (setq require-final-newline t)
 

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [04.21:03 Февраль 04 2009]
+;; Modified: [01.23:54 Февраль 09 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -73,3 +73,13 @@
 
 (global-semantic-folding-mode 1)
 (global-semantic-tag-folding-mode 1)
+
+
+;;;;;
+
+(ede-cpp-root-project "JariOS_servers"
+                      :name "Jari OS Core servers"
+                      :file "/home/esgal/Projects/jarios/core_servers/Makefile"
+                      :include-path '("/include")
+                      :system-include-path
+		      '("~/Projects/jarios/syslibs/general/include"))
