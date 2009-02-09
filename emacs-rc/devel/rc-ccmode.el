@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [05.40:45 Февраль 09 2009]
+;; Modified: [06.09:45 Февраль 10 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -24,7 +24,7 @@
 
 ;; (defun my-c++-mode-hook ()
 ;;   (c-set-style "teststyle")        ; use my-style defined above
-;;   (auto-fill-mode)         
+;;   (auto-fill-mode)
 ;;   (c-toggle-auto-hungry-state 1))
 ;; (define-key c++-mode-map "\C-ct" 'some-function-i-want-to-call)
 
@@ -34,14 +34,15 @@
 
 (defun my-c-mode-common-hook ()
        (c-set-offset 'member-init-intro '++)
-       (setq show-trailing-whitespace t)
 ;;       (add-to-list 'font-lock-defaults (list my-c-keywords . font-lock-builtin-face))
-       (linum-mode 1)
 ;;       (setq tab-width 4)
 ;;       (setq indent-tabs-mode t)
 ;;       (c-set-offset 'substatement-open 0)
 ;;       (setq c-basic-offset 4)
-;;       (c-toggle-auto-hungry-state 1)
+       ;; Lets see all ugliness
+       (setq show-trailing-whitespace t)
+       (linum-mode 1)
+       (c-toggle-auto-hungry-state 1)
        (abbrev-mode 1)
        (auto-fill-mode 1)
        (cwarn-mode 1)
