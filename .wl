@@ -138,7 +138,10 @@
 			     ("From" ("no_reply@hh.ru" . "%inbox/HeadHunter"))
 			     ("From" ("nosyava@mail.ru" . "%inbox/Family"))
 			     ("From" ("mick@concat.info" . "%inbox/Family"))
-			     ("From" ("meteo@angara.net" . "%inbox/angara")))
+			     ("From" ("meteo@angara.net" . "%inbox/angara"))
+			     ("List-ID" ("lists.debian.org" . "%inbox/Debian"))
+			     ("List-ID" ("linux-c-programming.vger.kernel.org" .
+					 "%inbox/linux-c-programming")))
       wl-summary-auto-refile-skip-marks nil)
 
 ;; Articles expiring

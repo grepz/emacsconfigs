@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [06.09:45 Февраль 10 2009]
+;; Modified: [04.06:55 Февраль 11 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -28,7 +28,7 @@
 ;;   (c-toggle-auto-hungry-state 1))
 ;; (define-key c++-mode-map "\C-ct" 'some-function-i-want-to-call)
 
-(setq c-default-style "k&r")
+(setq c-default-style "gnu")
 
 ;; ede-customize-project ede-customize-target
 

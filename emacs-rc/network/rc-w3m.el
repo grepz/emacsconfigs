@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [02.44:01 Февраль 06 2009]
+;; Modified: [16.40:43 Февраль 13 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -28,7 +28,7 @@
 
 (setq w3m-home-page "about:blank")
 
- (defun w3m-download-with-wget (loc)
+(defun w3m-download-with-wget (loc)
   (interactive "DSave to: ")
   (let ((url (or (w3m-anchor) (w3m-image))))
     (if url
@@ -44,7 +44,7 @@
  (defun w3m-download-with-curl (loc)
   (define-key w3m-mode-map "c"
 	(lambda (dir)
-	  (interactive "DSave to: ")
+	  (interactive "Save to: ")
 	  (cd dir)
 	  (start-process "curl" "*curl*" "curl.exe" "-O" "-s" (w3m-anchor)))))
 

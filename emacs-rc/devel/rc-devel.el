@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [06.32:35 Февраль 10 2009]
+;; Modified: [01.16:23 Февраль 16 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -63,7 +63,7 @@
 \t(G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_$1))")
 
 (yas/define 'cc-mode "GTK_IS_CLASS"
-	    "#define GTK_IS_${1:CLASS}_CLASS(klass)\t\\						\
+	    "#define GTK_IS_${1:CLASS}_CLASS(klass)\t\\	  \
 \t(G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_$1))")
 
 (yas/define 'cc-mode "GTK_GET_CLASS"
@@ -117,7 +117,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Revision control systems ;;
 
-(add-to-list 'load-path "~/elisp/darcsum")
 (require 'darcsum)
 
 (add-to-list 'load-path "/usr/share/doc/git-core/contrib/emacs/")
@@ -126,8 +125,8 @@
   (add-to-list 'vc-handled-backends 'git))
 
 (require 'git)
- (autoload 'git-blame-mode "git-blame"
-           "Minor mode for incremental blame for Git." t)
+(autoload 'git-blame-mode "git-blame"
+  "Minor mode for incremental blame for Git." t)
 
 (require 'gitsum)
 
@@ -140,8 +139,8 @@
 ;; Make special keywords colorfull, just like in vim.
 ;; TODO: Create more usable interface
 
-(defvar warn-keywords '("FIXME" "WARN" "ERR" "BUG"))
-(defvar notice-keywords '("TODO" "XXX"))
+(defvar warn-keywords   '("FIXME" "WARN" "ERR" "BUG"))
+(defvar notice-keywords '("TODO" "XXX" "NOTE"))
 
 (make-my-face 'my-warn-face "red" "white" t)
 (make-my-face 'my-notice-face "yellow" "black" t)
@@ -216,7 +215,6 @@
 
 (require 'cmake-mode)
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt$" . cmake-mode))
-
 
 ;;(autoload 'todoo "todoo" "TODO Mode" t)
 ;;(add-to-list 'auto-mode-alist '("TODO$" . todoo-mode))
