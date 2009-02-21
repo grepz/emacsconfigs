@@ -32,7 +32,7 @@
 
 ;;(load "~/elisp/pylint")
 
-(pymacs-load "ropemacs" "rope-")
+;;(pymacs-load "ropemacs" "rope-")
 
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (setq interpreter-mode-alist (cons '("python" . python-mode)

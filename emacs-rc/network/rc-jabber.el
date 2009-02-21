@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [16.39:08 Февраль 13 2009]
+;; Modified: [03.07:14 Февраль 19 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -28,9 +28,9 @@
   (jabber-xosd-display-message "New message."))
 
 ;;(require 'autosmiley)
-(add-hook 'jabber-chat-mode-hook #'(lambda ()
-				     (setq fill-column 72)
-				     (turn-on-auto-fill)))
+;;(add-hook 'jabber-chat-mode-hook #'(lambda ()
+;;				     (setq fill-column 72)
+;;				     (turn-on-auto-fill)))
 ;;				     (autosmiley-mode)
 
 
