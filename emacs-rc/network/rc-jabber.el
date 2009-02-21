@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [03.07:14 Февраль 19 2009]
+;; Modified: [20.56:05 Февраль 21 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -45,12 +45,14 @@
       jabber-history-dir        "~/emacs/tmp/.emacs-jabber"
       jabber-backlog-days       60
       jabber-backlog-number     200)
+
 (jabber-mode-line-mode)
+
 (setq jabber-history-enable-rotation t
       jabber-history-size-limit   2048)
 (setq jabber-xosd-display-time 5)
 
-(setq jabber-vcard-avatars-retrieve nil)
+(setq jabber-vcard-avatars-retrieve t)
 
 (setq jabber-connection-ssl-program 'gnutls
       starttls-extra-arguments '("--insecure"))
@@ -62,13 +64,9 @@
 
 (global-set-key (kbd "s-j") 'jabber-connect-all)
 
-;;(defun stumpwm-notifier (from buffer text propsed-alert)
-;;  (notifications-add (concat "jabber:  " from)))
+(defun stumpwm-notify (from buffer text prop-alert)
+  (start-process "stumpwm-notify"
+		 nil "stumpish" "echo" (concat "[jabber] " buffer)))
 
-;;(defun notifications-add (str)
-;;  (interactive "sNotification: ")
-;;  (start-process "notifications-add" nil
-;;                 "stumpish" "notifications-add" str))
-
-;;(add-to-list 'jabber-alert-message-hooks
-;;	     'stumpwm-notifier)
+(add-to-list 'jabber-alert-message-hooks
+	     'stumpwm-notify)
