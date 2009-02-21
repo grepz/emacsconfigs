@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [20.56:05 Февраль 21 2009]
+;; Modified: [22.16:54 Февраль 21 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -52,7 +52,7 @@
       jabber-history-size-limit   2048)
 (setq jabber-xosd-display-time 5)
 
-(setq jabber-vcard-avatars-retrieve t)
+(setq jabber-vcard-avatars-retrieve nil)
 
 (setq jabber-connection-ssl-program 'gnutls
       starttls-extra-arguments '("--insecure"))
@@ -66,7 +66,7 @@
 
 (defun stumpwm-notify (from buffer text prop-alert)
   (start-process "stumpwm-notify"
-		 nil "stumpish" "echo" (concat "[jabber] " buffer)))
+		 nil "stumpish" "echo" (concat "[jabber] " from)))
 
 (add-to-list 'jabber-alert-message-hooks
 	     'stumpwm-notify)
