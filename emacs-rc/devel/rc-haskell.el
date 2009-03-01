@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-14:14 Июль 19 2008]
-;; Modified: [16-14:15 Июль 19 2008]
+;; Modified: [18.02:50 Февраль 22 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -24,6 +24,7 @@
   "Major mode for editing literate Haskell scripts." t)
 
 (setq haskell-program-name "ghci -i")
+(setq haskell-font-lock-symbols t)
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-font-lock)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)

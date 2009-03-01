@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [01.16:23 Февраль 16 2009]
+;; Modified: [23.26:06 Февраль 22 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -20,6 +20,7 @@
       (when (looking-at "^#!")
 	(change-execution-bit)))))
 
+(setq-default fill-column 78)
 
 ;; Timeclock thingy
 ;;(require 'timeclock)

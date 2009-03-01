@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [06.43:45 Февраль 09 2009]
+;; Modified: [14.39:52 Март 01 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -74,6 +74,23 @@
 
 (require 'ede-ext)
 
+
+(defun ede-get-local-var (fname var)
+  (let* ((current-dir (file-name-directory fname))
+         (prj (ede-current-project current-dir)))
+    (when prj
+      (let* ((ov (oref prj local-variables))
+            (lst (assoc var ov)))
+        (when lst
+          (cdr lst))))))
+
+(defun ede-compile ()
+  (interactive)
+  (save-some-buffers t)
+  (compile (or (ede-get-local-var
+                (buffer-file-name (current-buffer)) 'compile-command)
+               compile-command)))
+
 (when (boundp ede-cpp-root-project-ext)
   (defun ede-style-hook ()
     (let* ((dir (file-name-directory
@@ -91,4 +108,6 @@
    :include-path '("/include")
    :coding-style "gnu"
    :system-include-path
-   '("~/Projects/jarios/syslibs/general/include")))
+   '("~/Projects/jarios/syslibs/general/include")
+    :local-variables
+    '((compile-command . "cd ~/Projects/jarios/core_servers; make -j2"))))
