@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created:  [02-09:15 Февраль 21 2008]
-;; Modified: [10.38:12 Сентябрь 12 2008]
+;; Modified: [13.09:53 Март 15 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -81,7 +81,7 @@
 		  "[Tramp]"
 		  (gethash (intern host) host-hash))))))
 
-(global-set-key [(s x) (s r)] 'my-tramp-connect-to-server)
+(global-set-key [((s r)] 'my-tramp-connect-to-server)
 
 (my-add-host-to-tramp "192.168.1.2" :user "esgal" :port "8022")
 (my-add-host-to-tramp "concat.info" :user "root" :port "8022")

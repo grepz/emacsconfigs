@@ -1,6 +1,6 @@
-;; Elisp source code header -*- coding: utf-8 -*-
+xrxf;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [23.26:06 Февраль 22 2009]
+;; Modified: [12.27:23 Март 15 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -8,7 +8,7 @@
 
 ;; compilation window shall scroll down
 (setq compilation-scroll-output 1
-      compilation-window-height 10)
+      compilation-window-height 20)
 
 ;; Set execution bits to script files, idea was taken on emacswiki.org
 (add-hook

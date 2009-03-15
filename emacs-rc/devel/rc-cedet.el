@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [14.39:52 Март 01 2009]
+;; Modified: [12.13:46 Март 02 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -74,7 +74,7 @@
 
 (require 'ede-ext)
 
-
+;; Thanks to Alex Ott for ede-compile idea
 (defun ede-get-local-var (fname var)
   (let* ((current-dir (file-name-directory fname))
          (prj (ede-current-project current-dir)))
@@ -90,6 +90,16 @@
   (compile (or (ede-get-local-var
                 (buffer-file-name (current-buffer)) 'compile-command)
                compile-command)))
+
+(defun ede-clean ()
+  (interactive)
+  (let ((clean-cmd (ede-get-local-var
+		    (buffer-file-name (current-buffer)) 'clean-command)))
+    (when clean-cmd
+      (compile clean-cmd))))
+
+(global-set-key (kbd "C-x m") 'ede-compile)
+(global-set-key (kbd "C-x n") 'ede-clean)
 
 (when (boundp ede-cpp-root-project-ext)
   (defun ede-style-hook ()
@@ -110,4 +120,6 @@
    :system-include-path
    '("~/Projects/jarios/syslibs/general/include")
     :local-variables
-    '((compile-command . "cd ~/Projects/jarios/core_servers; make -j2"))))
+    '((compile-command . "cd ~/Projects/jarios/core_servers; sudo make -j2 install; sudo sync")
+      (clean-command . "cd ~/Projects/jarios/core_servers; make clean")
+      (kvm-image "~/Projects/jarios/boot.img"))))
