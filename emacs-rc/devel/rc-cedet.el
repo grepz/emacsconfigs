@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [01.09:07 Март 20 2009]
+;; Modified: [01.23:09 Март 20 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -74,6 +74,8 @@
 
 (require 'ede-ext)
 
+(defvar ede-default-kvm-buffer "*KVM buffer*")
+
 ;; Thanks to Alex Ott for ede-compile idea
 (defun ede-get-local-var (fname var)
   (let* ((current-dir (file-name-directory fname))
@@ -97,11 +99,6 @@
 		    (buffer-file-name (current-buffer)) 'clean-command)))
     (when clean-cmd
       (compile clean-cmd))))
-
-(global-set-key (kbd "C-x m") 'ede-compile)
-(global-set-key (kbd "C-x n") 'ede-clean)
-
-(defvar ede-default-kvm-buffer "*KVM buffer*")
 
 (defun* ede-kvm-run (&optional image kvm-buffer)
   (interactive)
@@ -127,9 +124,11 @@
 	 (proj (ede-current-project dir)))
     (when (and proj (ede-cpp-root-project-ext-p proj))
       (c-set-style (ede-project-coding-style proj) nil))))
-  
-(add-hook 'c-mode-common-hook 'ede-style-hook)
-  
+
+
+(defvar jarios-kvm-image  "/home/esgal/Projects/jarios/boot.img")
+(defvar jarios-kvm-buffer "*JariOS KVM buffer*")
+
 (ede-cpp-root-project-ext
  "JariOSservers"
  :name "Jari OS Core servers"
@@ -139,7 +138,25 @@
  :system-include-path
  '("~/Projects/jarios/syslibs/general/include")
  :local-variables
- '((compile-command . "cd ~/Projects/jarios/core_servers; sudo make -j2 install")
-   (clean-command . "cd ~/Projects/jarios/core_servers; make clean")
-   (kvm-image . "/home/esgal/Projects/jarios/boot.img")
-   (kvm-buffer . "*JariOS KVM buffer*")))
+ '((compile-command . "cd /home/esgal/Projects/jarios/core_servers; sudo make -j2 install")
+   (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
+   (kvm-image . jarios-kvm-image)
+   (kvm-buffer . jarios-kvm-buffer)))
+
+(ede-cpp-root-project-ext
+ "JariOSsyslibs"
+ :name "Jari OS syslibs"
+ :file "~/Projects/jarios/syslibs/README"
+ :include-path '("/general/include")
+ :coding-style "gnu"
+ :system-include-path
+ '("/usr/include")
+ :local-variables
+ '((compile-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make -j2 install")
+   (clean-command . "cd /home/esgal/Projects/jarios/syslibs; make clean")
+   (kvm-image . jarios-kvm-image)
+   (kvm-buffer . jarios-kvm-buffer)))
+
+(add-hook 'c-mode-common-hook 'ede-style-hook)
+(global-set-key (kbd "C-x m") 'ede-compile)
+(global-set-key (kbd "C-x n") 'ede-clean)
