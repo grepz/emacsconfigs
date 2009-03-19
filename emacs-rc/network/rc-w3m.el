@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [16.40:43 Февраль 13 2009]
+;; Modified: [12.37:50 Март 16 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
+
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m/")
 
 (require 'w3m-load)
 (require 'w3m)

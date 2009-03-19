@@ -1,4 +1,4 @@
-xrxf;; Elisp source code header -*- coding: utf-8 -*-
+;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
 ;; Modified: [12.27:23 Март 15 2009]
 ;; Description: Development routines

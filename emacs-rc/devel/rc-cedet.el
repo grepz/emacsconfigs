@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [12.13:46 Март 02 2009]
+;; Modified: [01.09:07 Март 20 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -89,7 +89,7 @@
   (save-some-buffers t)
   (compile (or (ede-get-local-var
                 (buffer-file-name (current-buffer)) 'compile-command)
-               compile-command)))
+               compile-command) t))
 
 (defun ede-clean ()
   (interactive)
@@ -101,25 +101,45 @@
 (global-set-key (kbd "C-x m") 'ede-compile)
 (global-set-key (kbd "C-x n") 'ede-clean)
 
-(when (boundp ede-cpp-root-project-ext)
-  (defun ede-style-hook ()
-    (let* ((dir (file-name-directory
-		 (buffer-file-name (current-buffer))))
-	   (proj (ede-current-project dir)))
-      (when (and proj (ede-cpp-root-project-ext-p proj))
-	(c-set-style (ede-project-coding-style proj) nil))))
+(defvar ede-default-kvm-buffer "*KVM buffer*")
+
+(defun* ede-kvm-run (&optional image kvm-buffer)
+  (interactive)
+  (let* ((fname (buffer-file-name (current-buffer)))
+	 (buffer (unless kvm-buffer
+		   (or (ede-get-local-var fname 'kvm-buffer)
+		       ede-default-kvm-buffer)))
+	 (img (or image (ede-get-local-var fname 'kvm-image))))
+    (when (or (null buffer) (null img))
+      (message "Some parameters wasn't set correctly (%s:%s)" buffer img)
+      (return-from ede-kvm-run 1))
+    (message "Starting KVM on buffer %s with image %s" buffer img)
+    (start-process "ede-kvm" buffer "kvm"
+		   "-smp" "2"
+		   "-serial" "/dev/stdout" img)
+    (switch-to-buffer buffer)))
+
+(global-set-key (kbd "s-c k") 'ede-kvm-run)
+
+(defun ede-style-hook ()
+  (let* ((dir (file-name-directory
+	       (buffer-file-name (current-buffer))))
+	 (proj (ede-current-project dir)))
+    (when (and proj (ede-cpp-root-project-ext-p proj))
+      (c-set-style (ede-project-coding-style proj) nil))))
   
-  (add-hook 'c-mode-common-hook 'ede-style-hook)
+(add-hook 'c-mode-common-hook 'ede-style-hook)
   
-  (ede-cpp-root-project-ext
-   "JariOSservers"
-   :name "Jari OS Core servers"
-   :file "~/Projects/jarios/core_servers/Makefile"
-   :include-path '("/include")
-   :coding-style "gnu"
-   :system-include-path
-   '("~/Projects/jarios/syslibs/general/include")
-    :local-variables
-    '((compile-command . "cd ~/Projects/jarios/core_servers; sudo make -j2 install; sudo sync")
-      (clean-command . "cd ~/Projects/jarios/core_servers; make clean")
-      (kvm-image "~/Projects/jarios/boot.img"))))
+(ede-cpp-root-project-ext
+ "JariOSservers"
+ :name "Jari OS Core servers"
+ :file "~/Projects/jarios/core_servers/Makefile"
+ :include-path '("/include")
+ :coding-style "gnu"
+ :system-include-path
+ '("~/Projects/jarios/syslibs/general/include")
+ :local-variables
+ '((compile-command . "cd ~/Projects/jarios/core_servers; sudo make -j2 install")
+   (clean-command . "cd ~/Projects/jarios/core_servers; make clean")
+   (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (kvm-buffer . "*JariOS KVM buffer*")))
