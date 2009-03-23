@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [01.23:09 Март 20 2009]
+;; Modified: [19.31:20 Март 22 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -116,18 +116,12 @@
 		   "-serial" "/dev/stdout" img)
     (switch-to-buffer buffer)))
 
-(global-set-key (kbd "s-c k") 'ede-kvm-run)
-
 (defun ede-style-hook ()
   (let* ((dir (file-name-directory
 	       (buffer-file-name (current-buffer))))
 	 (proj (ede-current-project dir)))
     (when (and proj (ede-cpp-root-project-ext-p proj))
       (c-set-style (ede-project-coding-style proj) nil))))
-
-
-(defvar jarios-kvm-image  "/home/esgal/Projects/jarios/boot.img")
-(defvar jarios-kvm-buffer "*JariOS KVM buffer*")
 
 (ede-cpp-root-project-ext
  "JariOSservers"
@@ -138,10 +132,10 @@
  :system-include-path
  '("~/Projects/jarios/syslibs/general/include")
  :local-variables
- '((compile-command . "cd /home/esgal/Projects/jarios/core_servers; sudo make -j2 install")
+ '((compile-command . "cd /home/esgal/Projects/jarios/core_servers; sudo make -j2 install; sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
-   (kvm-image . jarios-kvm-image)
-   (kvm-buffer . jarios-kvm-buffer)))
+   (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (kvm-buffer . "*JariOS KVM buffer*")))
 
 (ede-cpp-root-project-ext
  "JariOSsyslibs"
@@ -152,11 +146,12 @@
  :system-include-path
  '("/usr/include")
  :local-variables
- '((compile-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make -j2 install")
+ '((compile-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make -j2 install; sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/syslibs; make clean")
-   (kvm-image . jarios-kvm-image)
-   (kvm-buffer . jarios-kvm-buffer)))
+   (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (kvm-buffer . "*JariOS KVM buffer*")))
 
 (add-hook 'c-mode-common-hook 'ede-style-hook)
 (global-set-key (kbd "C-x m") 'ede-compile)
 (global-set-key (kbd "C-x n") 'ede-clean)
+(global-set-key (kbd "C-c k") 'ede-kvm-run)
