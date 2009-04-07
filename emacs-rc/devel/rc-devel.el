@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [12.27:23 Март 15 2009]
+;; Modified: [17.39:33 Апрель 06 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -236,8 +236,9 @@
 ;; 80 characters long
 (require 'highlight-80+)
 
-(dolist (hook '(python-mode-hook emacs-lisp-mode-hook
-c-mode-common-hook 
+(dolist (hook '(python-mode-hook
+		emacs-lisp-mode-hook
+		c-mode-common-hook 
 	        tuareg-mode-hook))
   (add-hook hook 'highlight-80+-mode))
 

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [12.37:50 Март 16 2009]
+;; Modified: [10.35:52 Апрель 07 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -12,6 +12,8 @@
 (require 'w3m-load)
 (require 'w3m)
 (require 'w3m-ccl)
+;; Make mail clients happy with fucking html mail
+(require 'mime-w3m)
 
 (defun w3m-new-tab ()
   (interactive)

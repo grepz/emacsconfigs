@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [19.31:20 Март 22 2009]
+;; Modified: [10.41:18 Апрель 07 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -132,7 +132,8 @@
  :system-include-path
  '("~/Projects/jarios/syslibs/general/include")
  :local-variables
- '((compile-command . "cd /home/esgal/Projects/jarios/core_servers; sudo make -j2 install; sudo sync")
+ '((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
+ sudo make -j2 install && sudo make install_image && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
@@ -146,8 +147,23 @@
  :system-include-path
  '("/usr/include")
  :local-variables
- '((compile-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make -j2 install; sudo sync")
+ '((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
+ sudo make -j2 install && sudo make install_image && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/syslibs; make clean")
+   (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (kvm-buffer . "*JariOS KVM buffer*")))
+
+(ede-cpp-root-project-ext
+ "JariOSkernel"
+ :name "Jari OS kernel"
+ :file "~/Projects/jarios/muistring/Makefile"
+ :include-path '("/include/")
+ :coding-style "gnu"
+ :system-include-path nil
+ :local-variables
+ '((compile-command . "cd /home/esgal/Projects/jarios/muistring && \
+make -j2 vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
+   (clean-command . "cd /home/esgal/Projects/jarios/muistring && make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
 
