@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [10.41:18 Апрель 07 2009]
+;; Modified: [14.06:29 Апрель 07 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -147,9 +147,25 @@
  :system-include-path
  '("/usr/include")
  :local-variables
- '((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
- sudo make -j2 install && sudo make install_image && sudo sync")
-   (clean-command . "cd /home/esgal/Projects/jarios/syslibs; make clean")
+ '((compile-command . "cd /home/esgal/Projects/jarios/syslibs && \
+ sudo make -j2 && sudo make install && sudo sync")
+   (clean-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make clean")
+   (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (kvm-buffer . "*JariOS KVM buffer*")))
+
+(ede-cpp-root-project-ext
+ "JariOSapplication"
+ :name "Jari OS applications"
+ :file "/home/esgal/Projects/jarios/jarios_applications/Sconfig"
+ :include-path '("/include/")
+ :coding-style "gnu"
+ :system-include-path '("/usr/local/jos/include/")
+ :local-variables
+ '((compile-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
+                       sudo make -j2 install && sudo make install_image && \
+                       sudo sync")
+   (clean-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
+                     make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
 

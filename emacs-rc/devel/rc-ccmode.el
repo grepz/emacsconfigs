@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [23.21:06 Февраль 22 2009]
+;; Modified: [13.27:34 Апрель 07 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -41,6 +41,7 @@
 ;;       (setq c-basic-offset 4)
        ;; Lets see all ugliness
        (setq show-trailing-whitespace t)
+       (setq indent-tabs-mode t)
        (linum-mode 1)
        (c-toggle-auto-hungry-state 1)
        (abbrev-mode 1)
@@ -56,7 +57,7 @@
        (local-set-key (kbd "C-c <left>")  'hs-hide-block)
        (local-set-key (kbd "C-c <up>")    'hs-hide-all)
        (local-set-key (kbd "C-c <down>")  'hs-show-all)
-       (hs-minor-mode t))
+       (hs-minor-mode 1))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 

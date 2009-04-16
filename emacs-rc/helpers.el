@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [01-27:32 Май 11 2008]
-;; Modified: [01.22:28 Февраль 16 2009]
+;; Modified: [15.16:35 Апрель 09 2009]
 ;; Description:
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info

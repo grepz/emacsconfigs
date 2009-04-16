@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [15.17:52 Март 31 2009]
+;; Modified: [20.08:30 Апрель 16 2009]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -48,10 +48,10 @@
   (set-face-foreground 'modeline "Black" nil)
   (set-face-foreground 'default "NavajoWhite1" nil))
 
-(require 'color-theme)
-(color-theme-initialize)
 (if (eq window-system 'x)
     (progn
+      (require 'color-theme)
+      (color-theme-initialize)
       (color-theme-charcoal-black)
       (set-my-faces)
 ;;      (require 'tabbar)
@@ -63,7 +63,7 @@
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22) (>= +emacs-build-version+ 60))
 	  (progn
-	    (set-default-font "Consolas-10")
+	    (set-default-font "Consolas-9")
 	    (set-fontset-font "fontset-default"
 			      'cyrillic '("Consolas" . "ISO10646-1")))
 	(set-default-font "9x15")))
