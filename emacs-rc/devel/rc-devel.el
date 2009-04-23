@@ -118,6 +118,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Revision control systems ;;
 
+(require 'vc)
+(require 'vc-git)
+
 (require 'darcsum)
 
 (add-to-list 'load-path "/usr/share/doc/git-core/contrib/emacs/")
