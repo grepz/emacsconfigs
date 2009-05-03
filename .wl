@@ -9,9 +9,9 @@
 (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
 (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
 
-(setq wl-from "Stanislav M. Ivankin <stas@5070.info>")
+(setq wl-from "Stanislav M. Ivankin <grepz@jarios.org>")
 
-(setq wl-fcc "%inbox/sent")
+(setq wl-fcc "+sent")
 
 (setq wl-icon-directory "~/emacs/etc/wanderlust/icons"
       wl-temporary-file-directory "~/emacs/tmp/wl/tmp"
@@ -38,20 +38,20 @@
 
 ;; IMAP
 (setq elmo-imap4-use-cache t)
-(setq elmo-imap4-default-server "localhost"
-      elmo-imap4-default-user "esgal"
-       elmo-imap4-default-authenticate-type 'clear)
+(setq elmo-imap4-default-server "server"
+      elmo-imap4-default-user   "user"
+      elmo-imap4-default-authenticate-type 'clear)
 
 ;; NNTP
 (setq wl-nntp-posting-server nil)
 
 ;; SMTP
 (setq wl-smtp-connection-type nil)
-(setq wl-smtp-posting-port 587)
+(setq wl-smtp-posting-port 25)
 (setq wl-smtp-authenticate-type "plain"
-      wl-smtp-posting-user "stas@5070.info"
-      wl-smtp-posting-server "smtp.5070.info"
-      wl-local-domain "5070.info")
+      wl-smtp-posting-user      "user"
+      wl-smtp-posting-server    "server"
+      wl-local-domain           "jarios.org")
 
 (setq elmo-enable-disconnected-operation t)
 
@@ -70,10 +70,13 @@
 
 ;; Fancy look
 (setq wl-thread-have-younger-brother-str "├─"
-      wl-thread-youngest-child-str        "╰─"
+      wl-thread-youngest-child-str        "└─"
       wl-thread-vertical-str              "│"
       wl-thread-horizontal-str            "─"
-      wl-thread-space-str                 " "
+      wl-thread-horizontal-str-internal     "+"
+      wl-thread-vertical-str-internal       "="
+      wl-thread-youngest-child-str-internal "-"
+      wl-thread-space-str                   " "
       wl-thread-indent-level 4
       wl-thread-insert-opened t
       wl-summary-divide-thread-when-subject-changed t)
@@ -136,12 +139,9 @@
 					 "%inbox/SpbHUG"))
 			     ("From" ("listserv@ugu.com" . "%inbox/UnixTips"))
 			     ("From" ("no_reply@hh.ru" . "%inbox/HeadHunter"))
-			     ("From" ("nosyava@mail.ru" . "%inbox/Family"))
-			     ("From" ("mick@concat.info" . "%inbox/Family"))
-			     ("From" ("meteo@angara.net" . "%inbox/angara"))
-			     ("List-ID" ("lists.debian.org" . "%inbox/Debian"))
-			     ("List-ID" ("linux-c-programming.vger.kernel.org" .
-					 "%inbox/linux-c-programming")))
+			     ("From" ("address" . "%inbox/Family"))
+			     ("From" ("address" . "%inbox/Family"))
+			     ("From" ("meteo@angara.net" . "%inbox/angara")))
       wl-summary-auto-refile-skip-marks nil)
 
 ;; Articles expiring
@@ -197,6 +197,7 @@
 
 (add-hook 'wl-summary-mode-hook 'mc-install-read-mode)
 (add-hook 'wl-mail-setup-hook 'mc-install-write-mode)
+
 (defun mc-wl-verify-signature ()
   (interactive)
   (save-window-excursion

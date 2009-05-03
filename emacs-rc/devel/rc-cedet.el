@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [14.06:29 Апрель 07 2009]
+;; Modified: [13.38:29 Апрель 28 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -113,6 +113,7 @@
     (message "Starting KVM on buffer %s with image %s" buffer img)
     (start-process "ede-kvm" buffer "kvm"
 		   "-smp" "2"
+		   "-hdb" (ede-get-local-var fname 'ext2-image)
 		   "-serial" "/dev/stdout" img)
     (switch-to-buffer buffer)))
 
@@ -133,9 +134,10 @@
  '("~/Projects/jarios/syslibs/general/include")
  :local-variables
  '((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
- sudo make -j2 install && sudo make install_image && sudo sync")
+ sudo make install && sudo make install_image && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (ext2-image . "/home/esgal/Projects/jarios/ext2.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
 
 (ede-cpp-root-project-ext
@@ -148,9 +150,10 @@
  '("/usr/include")
  :local-variables
  '((compile-command . "cd /home/esgal/Projects/jarios/syslibs && \
- sudo make -j2 && sudo make install && sudo sync")
+ sudo make && sudo make install && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (ext2-image . "/home/esgal/Projects/jarios/ext2.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
 
 (ede-cpp-root-project-ext
@@ -162,11 +165,12 @@
  :system-include-path '("/usr/local/jos/include/")
  :local-variables
  '((compile-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
-                       sudo make -j2 install && sudo make install_image && \
+                       sudo make install && sudo make install_image && \
                        sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
                      make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (ext2-image . "/home/esgal/Projects/jarios/ext2.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
 
 (ede-cpp-root-project-ext
@@ -178,9 +182,10 @@
  :system-include-path nil
  :local-variables
  '((compile-command . "cd /home/esgal/Projects/jarios/muistring && \
-make -j2 vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
+make vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/muistring && make clean")
    (kvm-image . "/home/esgal/Projects/jarios/boot.img")
+   (ext2-image . "/home/esgal/Projects/jarios/ext2.img")
    (kvm-buffer . "*JariOS KVM buffer*")))
 
 (add-hook 'c-mode-common-hook 'ede-style-hook)
