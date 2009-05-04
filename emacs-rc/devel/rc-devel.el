@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [17.39:33 Апрель 06 2009]
+;; Modified: [14.38:32 Май 04 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -99,6 +99,8 @@
 ;; cscope
 (require 'xcscope)
 ;;(require 'xcscope+)
+
+(setq cscope-do-not-update-database t)
 
 (define-key global-map [(control f3)]  'cscope-set-initial-directory)
 (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
