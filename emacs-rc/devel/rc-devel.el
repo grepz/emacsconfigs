@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [14.38:32 Май 04 2009]
+;; Modified: [13.49:40 Май 10 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -116,6 +116,11 @@
 (define-key global-map [(meta f9)]  'cscope-display-buffer)
 (define-key global-map [(meta f10)] 'cscope-display-buffer-toggle)
 
+;; GNU Global related
+
+;;(autoload 'gtags-mode "gtags" "" t)
+
+;;(require 'xgtags)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Revision control systems ;;
@@ -225,7 +230,10 @@
 ;;(autoload 'todoo "todoo" "TODO Mode" t)
 ;;(add-to-list 'auto-mode-alist '("TODO$" . todoo-mode))
 
+
+;;;;;;;;;;;;;;;;;
 ;; GDB
+
 (setq gdb-many-windows t)
 ;; starts with two windows: one displaying the GUD buffer,
 ;; and the other showing the source for the
@@ -235,9 +243,11 @@
 
 ;; Restore windows - `gdb-restore-windows'
 
+;;;;;;;;;;;;;;;;;;
 ;; Hideshow
 (require 'hideshow)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 80 characters long
 (require 'highlight-80+)
 
@@ -247,6 +257,7 @@
 	        tuareg-mode-hook))
   (add-hook hook 'highlight-80+-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;
 ;; Paren
 
 (show-paren-mode 1)

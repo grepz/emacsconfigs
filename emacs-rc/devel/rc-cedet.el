@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [00.37:57 Май 04 2009]
+;; Modified: [13.49:58 Май 10 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -191,6 +191,13 @@ make vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
    (kvm-buffer . "*JariOS KVM buffer*")))
 
 (add-hook 'c-mode-common-hook 'ede-style-hook)
+
 (global-set-key (kbd "C-x m") 'ede-compile)
 (global-set-key (kbd "C-x n") 'ede-clean)
 (global-set-key (kbd "C-c k") 'ede-kvm-run)
+
+;;(require 'semanticdb-global)
+;;(semanticdb-enable-gnu-global-databases 'c-mode)
+;;(semanticdb-enable-gnu-global-databases 'c++-mode)
+;;(semantic-load-enable-primary-exuberent-ctags-support)
+

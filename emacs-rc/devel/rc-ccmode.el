@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [19.01:42 Апрель 17 2009]
+;; Modified: [13.49:32 Май 10 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -47,6 +47,7 @@
        (abbrev-mode 1)
        (auto-fill-mode 1)
        (cwarn-mode 1)
+;;       (gtags-mode 1)
        (local-set-key [delete] 'delete-char)
        (local-set-key [return] 'newline-and-indent)
        (local-set-key (kbd "s-g") 'gdb-restore-windows)
