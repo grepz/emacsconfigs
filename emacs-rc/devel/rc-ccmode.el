@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [13.49:32 Май 10 2009]
+;; Modified: [01.18:04 Май 17 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -13,6 +13,8 @@
 (defconst use-backup-dir t)
 
 (require 'cc-mode)
+
+(require 'whitespace)
 
 ;; (c-add-style "teststyle"
 ;;  	     '("stroustrup"
@@ -40,8 +42,13 @@
 ;;       (c-set-offset 'substatement-open 0)
 ;;       (setq c-basic-offset 4)
        ;; Lets see all ugliness
+;;       (let ((whitespace-style
+;;	      '(trailing lines-tail space-before-tab space-before-tab::tab newline
+;;			 indentation empty space-after-tab space-after-tab::tab)))
+;;	 (whitespace-mode 0)
+;;	 (whitespace-mode 1))
        (setq show-trailing-whitespace t)
-       (setq indent-tabs-mode t)
+       (setq indent-tabs-mode nil)
        (linum-mode 1)
        (c-toggle-auto-hungry-state 1)
        (abbrev-mode 1)

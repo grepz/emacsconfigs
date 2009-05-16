@@ -4,4 +4,4 @@ all:
 	@$(EMACS) -batch -l compile-all.el
 
 clean:
-	rm -rf *.elc
+	find . -name *.elc -exec rm -f '{}' \;
