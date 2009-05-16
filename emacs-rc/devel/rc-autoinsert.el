@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22.57:45 Сентябрь 01 2008]
-;; Modified: [05.49:30 Декабрь 19 2008]
+;; Modified: [01.20:22 Май 17 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -43,13 +43,13 @@
 		    (get-perl-modules (concat dir elem))))
 		 (t (append lst (perlify-path (concat dir elem)))))))
 
-(defun get-perl-modules (dir &optional recursive)
-  (let (lst)
-    (loop for x in +perl-inc-dirs+ do
-	  (files-listing-action x #'(lambda (x)
-				      (when (perlify-path x)
-					(push (perlify-path x) lst))) t nil))
-    lst))
+;; (defun get-perl-modules (dir &optional recursive)
+;;   (let (lst)
+;;     (loop for x in +perl-inc-dirs+ do
+;; 	  (files-listing-action x #'(lambda (x)
+;; 				      (when (perlify-path x)
+;; 					(push (perlify-path x) lst))) t nil))
+;;     lst))
 
 ;;  perl -MFile::Find=find -MFile::Spec::Functions -Tlwe 'find { wanted => sub { print canonpath $_ if /\.pm\z/ }, no_chdir => 1 }, @INC'
 

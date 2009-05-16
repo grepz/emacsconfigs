@@ -4,3 +4,4 @@
 /share/
 /emacsconfigs/
 /tmp/
+*.elc

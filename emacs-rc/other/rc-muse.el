@@ -1,12 +1,14 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22-55:36 Май 19 2008]
-;; Modified: [23.08:19 Февраль 08 2009]
+;; Modified: [01.34:54 Май 17 2009]
 ;; Description:
 ;;  The idea of using muse as a site backend and some code was taken from Alex Ott
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: muse, emacs, elisp
-;; License: 
+;; License:
+
+(eval-when-compile (require 'cl))
 
 (require 'muse)
 (require 'muse-mode)

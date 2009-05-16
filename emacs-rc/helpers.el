@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [01-27:32 Май 11 2008]
-;; Modified: [15.16:35 Апрель 09 2009]
+;; Modified: [02.07:52 Май 17 2009]
 ;; Description:
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -135,4 +135,4 @@ u  - underline"
   (dolist (file (filter #'(lambda (x)
 			    (unless (member x rc-filter) x))
 			(directory-files rc-dir t "^rc-[^/]+?\.el$")))
-    (safe-load file)))
+    (safe-load (subseq file 0 (position ?. file :from-end)))))

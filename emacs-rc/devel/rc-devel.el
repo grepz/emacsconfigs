@@ -1,10 +1,12 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [13.49:40 Май 10 2009]
+;; Modified: [01.36:49 Май 17 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: elisp, emacs, devel
+
+(eval-when-compile (require 'cl))
 
 ;; compilation window shall scroll down
 (setq compilation-scroll-output 1
@@ -130,7 +132,6 @@
 
 (require 'darcsum)
 
-(add-to-list 'load-path "/usr/share/doc/git-core/contrib/emacs/")
 (require 'vc-git)
 (when (featurep 'vc-git)
   (add-to-list 'vc-handled-backends 'git))
@@ -150,8 +151,9 @@
 ;; Make special keywords colorfull, just like in vim.
 ;; TODO: Create more usable interface
 
-(defvar warn-keywords   '("FIXME" "WARN" "ERR" "BUG"))
-(defvar notice-keywords '("TODO" "XXX" "NOTE"))
+(eval-and-compile
+  (defvar warn-keywords   '("FIXME" "WARN" "ERR" "BUG"))
+  (defvar notice-keywords '("TODO" "XXX" "NOTE")))
 
 (make-my-face 'my-warn-face "red" "white" t)
 (make-my-face 'my-notice-face "yellow" "black" t)
