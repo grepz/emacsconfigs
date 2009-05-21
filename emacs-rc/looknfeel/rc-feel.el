@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [19.55:46 Сентябрь 04 2008]
+;; Modified: [19.15:43 Май 20 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -67,3 +67,7 @@
 (global-set-key (kbd "s-s") 'sr-speedbar-toggle)
 
 (global-set-key (kbd "s-c o") 'other-frame)
+
+;;(when (eq window-system 'x)
+;;  (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F15'")
+;;  (global-set-key [F13] 'toggle-input-method))
