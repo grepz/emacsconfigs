@@ -20,4 +20,5 @@
 	      (compile-rc-files ".")))
 
 (dolist (file compile-list)
-  (byte-compile-file file))
+  (unless (byte-compile-file file)
+    (error "Can't compile file '%s'" file)))
