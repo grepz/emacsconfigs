@@ -1,39 +1,26 @@
-;;; rc-newsticker.el --- newsticker configuration
+;; Elisp source code header -*- coding: utf-8 -*-
+;; Created: [10.21:39 Май 22 2009]
+;; Modified: [01.05:28 Май 23 2009]
+;; Description: 
+;; Author: Stanislav M. Ivankin
+;; Email: stas@concat.info
+;; Tags: 
+;; License: 
 
-;; Copyright (C) 2009  Stanislav M. Ivankin
 
-;; Author: Stanislav M. Ivankin <stas@concat.info>
-;; Keywords: news, mail
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-;;; Commentary:
-
-;; 
-
-;;; Code:
+;;(load-file "/usr/share/emacs/23.0.92/lisp/gnus/mailcap.el.gz")
 
 (autoload 'newsticker-start "newsticker" "Emacs Newsticker" t)
 (autoload 'newsticker-show-news "newsticker" "Emacs Newsticker" t)
 
-(setq newsticker-url-list
-      '(("EmacsWiki Recently Change"
-         "http://www.emacswiki.org/emacs/index.rss" nil nil nil)
-        ("Planet Emacsen"
-	 "http://emacs.defun.ru/atom.xml" nil nil nil)
-	("Kernel Trap"
-	 "http://kerneltrap.org/node/feed" nil nil nil)))
+(custom-set-variables
+ '(newsticker-url-list
+   '(("EmacsWiki Recently Change"
+      "http://www.emacswiki.org/emacs/index.rss" nil nil nil)
+     ("Planet Emacsen"
+      "http://emacs.defun.ru/atom.xml" nil nil nil)
+     ("Kernel Trap"
+      "http://kerneltrap.org/node/feed" nil nil nil))))
 
 (provide 'rc-newsticker)
 ;;; rc-newsticker.el ends here

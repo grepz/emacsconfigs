@@ -11,7 +11,7 @@
   (let ((categories 
 	 (filter #'(lambda (x)
 		     (file-directory-p x)) 
-		 (directory-files "/home/esgal/emacs/emacs-rc/" t "^[^.]"))))
+		 (directory-files "/home/esgal/emacs/emacs-rc/" t "^[^#.]"))))
     (loop for category in categories 
 	  collect (directory-files category t "^rc-[^/]+?\.el$"))))
 

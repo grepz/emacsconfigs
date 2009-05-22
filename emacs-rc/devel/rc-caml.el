@@ -1,11 +1,16 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-13:05 Июль 19 2008]
-;; Modified: [16-13:06 Июль 19 2008]
+;; Modified: [01.46:59 Май 23 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
+
+(setq auto-mode-alist 
+      (append '(("\\.ml[ily]?$" . tuareg-mode)
+               ("\\.topml$" . tuareg-mode))
+             auto-mode-alist))
 
 ;; Tuareg mode
 (add-to-list 'load-path "~/elisp/tuareg-mode")
@@ -30,8 +35,3 @@
 	     (setq tuareg-in-indent 0) ; no indentation after `in' keywords
              (setq tuareg-font-lock-governing '("brown" "cyan" nil t t t))))
 			       
-
-(setq auto-mode-alist 
-      (append '(("\\.ml[ily]?$" . tuareg-mode)
-		("\\.topml$" . tuareg-mode))
-	      auto-mode-alist))

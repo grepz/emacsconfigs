@@ -50,9 +50,9 @@
 	   (let ((start (+ (point)
 			   (+ (length (cadr (my-define-file-type)))
 			      (length "Modified: ["))))
-		 (lpos (line-at-pos)))
+		 (lpos (line-number-at-pos)))
 	     (if (and (search-forward "]")
-		      (= lpos (line-at-pos)))
+		      (= lpos (line-number-at-pos)))
 		 (progn
 		   (delete-region start (- (point) 1))
 		   (goto-char start)

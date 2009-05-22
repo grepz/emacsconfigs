@@ -8,20 +8,21 @@
 ;; License: 
 
 ;; Customization for frames
-(setq default-frame-alist
-      '((vertical-scroll-bars)
-	(menu-bar-lines . 1)
-	(background-color . "white")
-	(background-mode . light)
-	(background-toolbar-color . "#cf3ccf3ccf3c")
-	(border-color . "#000000000000")
-	(bottom-toolbar-shadow-color . "#79e77df779e7")
-	(cursor-color . "Red3")
-	(foreground-color . "black")
-	(mouse-color . "black")
-	(top-toolbar-shadow-color . "#fffffbeeffff")
-	(viper-saved-cursor-color-in-replace-mode . "Red3")
-	(tool-bar-lines . 0)))
+(custom-set-variables 
+ '(default-frame-alist
+    '((vertical-scroll-bars)
+      (menu-bar-lines . 1)
+      (background-color . "white")
+      (background-mode . light)
+      (background-toolbar-color . "#cf3ccf3ccf3c")
+      (border-color . "#000000000000")
+      (bottom-toolbar-shadow-color . "#79e77df779e7")
+      (cursor-color . "Red3")
+      (foreground-color . "black")
+      (mouse-color . "black")
+      (top-toolbar-shadow-color . "#fffffbeeffff")
+      (viper-saved-cursor-color-in-replace-mode . "Red3")
+      (tool-bar-lines . 0))))
 
 (defun set-my-faces ()
   (custom-set-faces
@@ -63,6 +64,6 @@
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22) (>= +emacs-build-version+ 60))
 	  (set-frame-font "Consolas-10")
-	(set-default-font "9x15")))
+	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")))

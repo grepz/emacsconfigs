@@ -12,6 +12,38 @@
 (require 'jabber)
 (require 'jabber-autoaway)
 
+;;(require 'autosmiley)
+;;(add-hook 'jabber-chat-mode-hook #'(lambda ()
+;;				     (setq fill-column 72)
+;;				     (turn-on-auto-fill)))
+;;				     (autosmiley-mode)
+
+
+
+(add-hook 'jabber-post-connect-hook 'jabber-autoaway-start)
+;;(setq jabber-nickname "stas"
+;;      jabber-server "concat.info"
+;;      jabber-resource "notebook")
+
+(custom-set-variables
+   '(jabber-history-enabled t)
+   '(jabber-use-global-history nil)
+   '(jabber-history-dir "~/emacs/tmp/.emacs-jabber")
+   '(jabber-backlog-days 60)
+   '(jabber-backlog-number 200)
+   '(jabber-history-enable-rotation t)
+   '(jabber-history-size-limit 2048)
+   '(jabber-xosd-display-time 5)
+   '(jabber-vcard-avatars-retrieve t)
+   '(jabber-connection-ssl-program 'gnutls)
+   '(starttls-extra-arguments '("--insecure"))
+   '(jabber-lost-connection-hook 'my-connect-jabber))
+ 
+(jabber-mode-line-mode)
+
+;;(add-to-list 'jabber-alert-message-hooks
+;;	     'jabber-message-xosd)
+
 (defun jabber-xosd-display-message (message)
   "Displays MESSAGE through the xosd"
   (let ((process-connection-type nil))
@@ -26,41 +58,6 @@
 
 (defun jabber-message-xosd (from buffer text propsed-alert)
   (jabber-xosd-display-message "New message."))
-
-;;(require 'autosmiley)
-;;(add-hook 'jabber-chat-mode-hook #'(lambda ()
-;;				     (setq fill-column 72)
-;;				     (turn-on-auto-fill)))
-;;				     (autosmiley-mode)
-
-
-
-(add-hook 'jabber-post-connect-hook 'jabber-autoaway-start)
-;;(setq jabber-nickname "stas"
-;;      jabber-server "concat.info"
-;;      jabber-resource "notebook")
-
-(setq jabber-history-enabled    t
-      jabber-use-global-history nil
-      jabber-history-dir        "~/emacs/tmp/.emacs-jabber"
-      jabber-backlog-days       60
-      jabber-backlog-number     200)
-
-(jabber-mode-line-mode)
-
-(setq jabber-history-enable-rotation t
-      jabber-history-size-limit   2048)
-(setq jabber-xosd-display-time 5)
-
-(setq jabber-vcard-avatars-retrieve nil)
-
-(setq jabber-connection-ssl-program 'gnutls
-      starttls-extra-arguments '("--insecure"))
-
-(setq jabber-lost-connection-hook 'my-connect-jabber)
-
-;;(add-to-list 'jabber-alert-message-hooks
-;;	     'jabber-message-xosd)
 
 (global-set-key (kbd "s-j") 'jabber-connect-all)
 

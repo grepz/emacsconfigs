@@ -8,13 +8,21 @@
 ;; License: 
 
 (fset 'perl-mode 'cperl-mode)
-(setq cperl-tab-always-indent t
-      cperl-indent-level 4
-      cperl-close-paren-offset -4
-      cperl-continued-statement-offset 4
-      cperl-invalid-face nil
-      cperl-auto-newline t
-      cperl-indent-parens-as-block t)
+
+(custom-set-variables
+ '(cperl-tab-always-indent t)
+ '(cperl-indent-level 4)
+ '(cperl-close-paren-offset -4)
+ '(cperl-continued-statement-offset 4)
+ '(cperl-invalid-face nil)
+ '(cperl-auto-newline t)
+ '(cperl-indent-parens-as-block t))
+
+(custom-set-faces
+ '(cperl-array-face ((((class color) (background light))
+		      (:background "lightgrey" :foreground "Blue" :weight bold))))
+ '(cperl-hash-face ((((class color) (background light))
+		     (:background "lightgrey" :foreground "Red" :slant italic :weight bold)))))
 
 (add-hook 'cperl-mode-hook
 	  (lambda ()
@@ -22,9 +30,3 @@
 	    (local-set-key [return] 'newline-and-indent)
 	    (linum-mode 1)
 	    (flymake-mode 1)))
-
-(custom-set-faces
- '(cperl-array-face ((((class color) (background light))
-		      (:background "lightgrey" :foreground "Blue" :weight bold))))
- '(cperl-hash-face ((((class color) (background light))
-		     (:background "lightgrey" :foreground "Red" :slant italic :weight bold)))))

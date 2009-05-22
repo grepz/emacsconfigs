@@ -24,9 +24,6 @@
 (defvar backup-dir "~/emacs/tmp/backup/")
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
-;; Info
-(setq Info-fontify "t")
-
 (global-set-key [f9] 'term)
 ;;(custom-set-variables
 ;; '(term-default-fg-color "white")
@@ -41,14 +38,6 @@
 ;; ispell
 (require 'ispell)
 (require 'flyspell)
-
-(setq ispell-program-name "aspell"
-      ispell-extra-args '("--sug-mode=ultra")
-      ispell-enable-tex-parser t)
-
-(setq flyspell-default-dictionary "english"
-      flyspell-delay '1
-      flyspell-issue-message-flag nil)
 
 ;; Restructured text, an easy to use and handfull util for editing simple text
 (require 'rst)
@@ -92,8 +81,17 @@
 (add-to-list 'load-path "~/elisp/mailcrypt")
 (require 'mailcrypt)
 (mc-setversion "gpg")
-(setq mc-gpg-user-id "Stanislav M. Ivankin")
 (autoload 'mc-install-write-mode "mailcrypt" nil t)
 (autoload 'mc-install-read-mode "mailcrypt" nil t)
 (add-hook 'mail-mode-hook 'mc-install-write-mode)
 
+(custom-set-variables
+ '(mc-gpg-user-id "Stanislav M. Ivankin")
+ '(Info-fontify "t")
+ '(ispell-program-name "aspell")
+ '(ispell-extra-args '("--sug-mode=ultra"))
+ '(ispell-enable-tex-parser t)
+ '(flyspell-default-dictionary "english")
+ '(flyspell-delay '1)
+ '(flyspell-issue-message-flag nil))
+ 

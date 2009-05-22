@@ -8,9 +8,21 @@
 
 (eval-when-compile (require 'cl))
 
-;; compilation window shall scroll down
-(setq compilation-scroll-output 1
-      compilation-window-height 20)
+(custom-set-variables 
+ '(compilation-scroll-output 1)
+ '(compilation-window-height 20)
+ '(fill-column 78)
+ '(cscope-do-not-update-database t)
+ '(flymake-no-changes-timeout 3)
+ '(flymake-start-syntax-check-on-newline nil)
+ '(flymake-start-syntax-check-on-find-file nil)
+ '(gdb-many-windows t)
+ ;; starts with two windows: one displaying the GUD buffer,
+ ;; and the other showing the source for the
+ ;; `main'
+ ;;(setq gdb-show-main t)
+ '(gdb-use-separate-io-buffer nil)
+ '(show-paren-style 'parenthesis))
 
 ;; Set execution bits to script files, idea was taken on emacswiki.org
 (add-hook
@@ -21,8 +33,6 @@
       (goto-char (point-min))
       (when (looking-at "^#!")
 	(change-execution-bit)))))
-
-(setq-default fill-column 78)
 
 ;; Timeclock thingy
 ;;(require 'timeclock)
@@ -101,8 +111,6 @@
 ;; cscope
 (require 'xcscope)
 ;;(require 'xcscope+)
-
-(setq cscope-do-not-update-database t)
 
 (define-key global-map [(control f3)]  'cscope-set-initial-directory)
 (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
@@ -205,10 +213,6 @@
 
 (require 'flymake)
 
-(setq flymake-no-changes-timeout 3
-      flymake-start-syntax-check-on-newline nil
-      flymake-start-syntax-check-on-find-file nil)
-
 (global-set-key (kbd "C-c <f3>") 'flymake-display-err-menu-for-current-line)
 (global-set-key (kbd "C-c <f4>") 'flymake-goto-next-error)
 
@@ -232,19 +236,6 @@
 ;;(autoload 'todoo "todoo" "TODO Mode" t)
 ;;(add-to-list 'auto-mode-alist '("TODO$" . todoo-mode))
 
-
-;;;;;;;;;;;;;;;;;
-;; GDB
-
-(setq gdb-many-windows t)
-;; starts with two windows: one displaying the GUD buffer,
-;; and the other showing the source for the
-;; `main'
-;;(setq gdb-show-main t)
-(setq gdb-use-separate-io-buffer nil)
-
-;; Restore windows - `gdb-restore-windows'
-
 ;;;;;;;;;;;;;;;;;;
 ;; Hideshow
 (require 'hideshow)
@@ -263,7 +254,6 @@
 ;; Paren
 
 (show-paren-mode 1)
-(setq show-paren-style 'parenthesis)
 
 (set-face-background 'show-paren-match-face "#BBBBBB")
 (set-face-attribute 'show-paren-match-face nil 
