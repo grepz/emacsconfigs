@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [10.21:39 Май 22 2009]
-;; Modified: [16.32:39 Май 23 2009]
+;; Modified: [20.55:13 Май 23 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -9,17 +9,25 @@
 
 (load-file "/usr/share/emacs/23.0.93/lisp/gnus/mailcap.el.gz")
 
-(custom-set-variables
- '(newsticker-retrieval-interval -1))
- 
+(autoload 'w3m-region "w3m"
+  "Render region in current buffer and replace with result." t)
 
 (autoload 'newsticker-start "newsticker" "Emacs Newsticker" t)
 (autoload 'newsticker-show-news "newsticker" "Emacs Newsticker" t)
 
 (custom-set-variables
+ '(newsticker-retrieval-interval -1)
+ '(newsticker-html-renderer 'w3m-region)
+ '(newsticker-frontend 'newsticker-treeview)
+ '(newsticker-keep-obsolete-items t)
+ '(newsticker-cache-filename "~/emacs/tmp/newsticker/newsticker.cache")
+ '(newsticker-dir "~/emacs/tmp/newsticker/")
+ ;; Feeds as they are
  '(newsticker-url-list
-   '(("Planet Emacsen"
+   '(("Russian Planet Emacs"
       "http://emacs.defun.ru/atom.xml" nil nil nil)
+     ("Plane Emacs"
+      "http://planet.emacsen.org/atom.xml" nil nil nil)
      ("Kernel Trap"
       "http://kerneltrap.org/node/feed" nil nil nil)
      ("Reddit - Technology"

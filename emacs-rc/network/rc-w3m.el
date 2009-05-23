@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [10.35:52 Апрель 07 2009]
+;; Modified: [21.07:05 Май 23 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -8,6 +8,15 @@
 ;; License: 
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m/")
+
+(custom-set-variables
+ '(w3m-coding-system           'utf-8)
+ '(w3m-file-coding-system      'utf-8)
+ '(w3m-file-name-coding-system 'utf-8)
+ '(w3m-input-coding-system     'utf-8)
+ '(w3m-output-coding-system    'utf-8)
+ '(w3m-terminal-coding-system  'utf-8)
+ '(mime-w3m-display-inline-images t))
 
 (require 'w3m-load)
 (require 'w3m)
@@ -51,10 +60,3 @@
 	  (interactive "Save to: ")
 	  (cd dir)
 	  (start-process "curl" "*curl*" "curl.exe" "-O" "-s" (w3m-anchor)))))
-
-(setq w3m-coding-system           'utf-8
-      w3m-file-coding-system      'utf-8
-      w3m-file-name-coding-system 'utf-8
-      w3m-input-coding-system     'utf-8
-      w3m-output-coding-system    'utf-8
-      w3m-terminal-coding-system  'utf-8)
