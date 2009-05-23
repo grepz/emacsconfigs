@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [22.16:54 Февраль 21 2009]
+;; Modified: [15.27:54 Май 23 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -34,7 +34,7 @@
    '(jabber-history-enable-rotation t)
    '(jabber-history-size-limit 2048)
    '(jabber-xosd-display-time 5)
-   '(jabber-vcard-avatars-retrieve t)
+   '(jabber-vcard-avatars-retrieve nil)
    '(jabber-connection-ssl-program 'gnutls)
    '(starttls-extra-arguments '("--insecure"))
    '(jabber-lost-connection-hook 'my-connect-jabber))

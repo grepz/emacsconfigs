@@ -6,8 +6,11 @@ ECHO   = echo
 Q      ?= @
 
 all:
-	$(Q)$(ECHO) "[BLD] Compiling rc files"
+	$(Q)$(ECHO) "[BLD] Compiling rc files..."
 	$(CC) $(CFLAGS)
+	$(Q)$(ECHO) "[BLD] Done."
 
 clean:
-	find . -name *.elc -exec rm -f '{}' \;
+	$(Q)$(ECHO) "[CLEAN] Removing elc files..."
+	$(Q)find . -name *.elc -exec rm -f '{}' \;
+	$(Q)$(ECHO) "[CLEAN] Done."

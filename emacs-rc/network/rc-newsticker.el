@@ -1,14 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [10.21:39 Май 22 2009]
-;; Modified: [14.46:52 Май 23 2009]
+;; Modified: [16.32:39 Май 23 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
 
-
-;;(load-file "/usr/share/emacs/23.0.93/lisp/gnus/mailcap.el.gz")
+(load-file "/usr/share/emacs/23.0.93/lisp/gnus/mailcap.el.gz")
 
 (custom-set-variables
  '(newsticker-retrieval-interval -1))
