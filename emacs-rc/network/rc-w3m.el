@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [21.07:05 Май 23 2009]
+;; Modified: [11.26:01 Май 29 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -16,7 +16,9 @@
  '(w3m-input-coding-system     'utf-8)
  '(w3m-output-coding-system    'utf-8)
  '(w3m-terminal-coding-system  'utf-8)
- '(mime-w3m-display-inline-images t))
+ '(mime-w3m-display-inline-images t)
+ '(w3m-default-display-inline-images t)
+ '(w3m-toggle-inline-images-permanently t))
 
 (require 'w3m-load)
 (require 'w3m)
