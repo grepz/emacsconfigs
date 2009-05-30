@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:22 Июль 19 2008]
-;; Modified: [01.09:21 Сентябрь 19 2008]
+;; Modified: [00.24:24 Май 31 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -10,7 +10,7 @@
 ;;;;;;;;;;;;;;;;;;;
 ;; Music playing ;;
 
-(global-set-key (kbd "s-m") 'emms)
+;;(global-set-key (kbd "s-m") 'emms)
 (autoload 'emms "emms-setup" t)
 
 (eval-after-load "emms-setup"
@@ -43,3 +43,8 @@
 	   emms-stream-default-action "play")
 ;;	   emms-source-file-default-directory "/var/lib/mpd/music/")
      (emms-lastfm-enable)))
+
+;; MPD client
+
+(global-set-key (kbd "s-m") 'mpc)
+(autoload 'mpc "~/elisp/mpc/mpc-autoloads")
