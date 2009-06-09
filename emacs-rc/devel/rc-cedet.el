@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [16.58:33 Май 23 2009]
+;; Modified: [01.24:48 Июнь 04 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -140,7 +140,7 @@
  '("~/Projects/jarios/syslibs/general/include")
  :local-variables
  `((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
- sudo make install && sudo make install_image && sudo sync")
+ sudo make && sudo make install && sudo make install_image && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
    (kvm-image  . ,jarios-kvm-image)
    (ext2-image . ,jarios-hdd-image)

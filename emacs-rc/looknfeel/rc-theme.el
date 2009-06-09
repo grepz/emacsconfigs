@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [01.38:36 Май 17 2009]
+;; Modified: [01.33:54 Июнь 07 2009]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -13,12 +13,12 @@
     '((vertical-scroll-bars)
       (menu-bar-lines . 1)
       (background-color . "white")
+      (foreground-color . "black")
       (background-mode . light)
       (background-toolbar-color . "#cf3ccf3ccf3c")
       (border-color . "#000000000000")
       (bottom-toolbar-shadow-color . "#79e77df779e7")
       (cursor-color . "Red3")
-      (foreground-color . "black")
       (mouse-color . "black")
       (top-toolbar-shadow-color . "#fffffbeeffff")
       (viper-saved-cursor-color-in-replace-mode . "Red3")
