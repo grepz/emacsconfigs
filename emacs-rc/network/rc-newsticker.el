@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [10.21:39 Май 22 2009]
-;; Modified: [20.55:13 Май 23 2009]
+;; Modified: [16.44:14 Июнь 17 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -40,6 +40,8 @@
       "http://www.reddit.com/r/math/.rss" nil nil nil)
      ("Reddit - Programming"
       "http://www.reddit.com/r/programming/.rss" nil nil nil)
+     ("OSNews"
+      "http://www.osnews.com/files/recent.xml" nil nil nil)
      ("Linux.org.ru"
       "http://www.linux.org.ru/section-rss.jsp?section=1" nil nil nil))))
 

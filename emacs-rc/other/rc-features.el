@@ -1,10 +1,21 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [14.36:23 Январь 21 2009]
+;; Modified: [23.04:18 Июнь 18 2009]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
+
+(custom-set-variables
+ '(mc-gpg-user-id "Stanislav M. Ivankin")
+ '(Info-fontify "t")
+ '(ispell-program-name "aspell")
+ '(ispell-extra-args '("--sug-mode=ultra"))
+ '(ispell-enable-tex-parser t)
+ '(flyspell-default-dictionary "english")
+ '(flyspell-delay '1)
+ '(flyspell-issue-message-flag nil)
+ '(undo-limit 500000))
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Storing tmpfiles ;;
@@ -84,14 +95,3 @@
 (autoload 'mc-install-write-mode "mailcrypt" nil t)
 (autoload 'mc-install-read-mode "mailcrypt" nil t)
 (add-hook 'mail-mode-hook 'mc-install-write-mode)
-
-(custom-set-variables
- '(mc-gpg-user-id "Stanislav M. Ivankin")
- '(Info-fontify "t")
- '(ispell-program-name "aspell")
- '(ispell-extra-args '("--sug-mode=ultra"))
- '(ispell-enable-tex-parser t)
- '(flyspell-default-dictionary "english")
- '(flyspell-delay '1)
- '(flyspell-issue-message-flag nil))
- 
