@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [11.26:01 Май 29 2009]
+;; Modified: [09.55:43 Июль 03 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -16,15 +16,23 @@
  '(w3m-input-coding-system     'utf-8)
  '(w3m-output-coding-system    'utf-8)
  '(w3m-terminal-coding-system  'utf-8)
+ '(w3m-key-binding 'info)
  '(mime-w3m-display-inline-images t)
  '(w3m-default-display-inline-images t)
- '(w3m-toggle-inline-images-permanently t))
+ '(w3m-toggle-inline-images-permanently t)
+ '(w3m-use-cookies t)
+ '(browse-url-browser-function 'w3m-browse-url-new-tab)
+ '(w3m-home-page "about:blank")
+ '(w3m-cookie-accept-bad-cookies t)
+ '(browse-url-browser-function 'w3m-browse-url))
 
 (require 'w3m-load)
 (require 'w3m)
 (require 'w3m-ccl)
 ;; Make mail clients happy with fucking html mail
 (require 'mime-w3m)
+
+(autoload 'w3m-antenna "w3m-antenna" "Report changes of web sites." t)
 
 (defun w3m-new-tab ()
   (interactive)
@@ -36,12 +44,6 @@
   (interactive)
   (w3m-new-tab)
   (w3m-browse-url url))
-
-(setq browse-url-browser-function 'w3m-browse-url-new-tab)
-
-(setq w3m-use-cookies t)
-
-(setq w3m-home-page "about:blank")
 
 (defun w3m-download-with-wget (loc)
   (interactive "DSave to: ")

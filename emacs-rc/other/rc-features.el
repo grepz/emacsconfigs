@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [23.04:18 Июнь 18 2009]
+;; Modified: [23.12:26 Июнь 18 2009]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -90,7 +90,9 @@
 ;; Mailcrypt
 
 (add-to-list 'load-path "~/elisp/mailcrypt")
+
 (require 'mailcrypt)
+
 (mc-setversion "gpg")
 (autoload 'mc-install-write-mode "mailcrypt" nil t)
 (autoload 'mc-install-read-mode "mailcrypt" nil t)
