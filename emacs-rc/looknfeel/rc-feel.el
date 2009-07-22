@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [19.15:43 Май 20 2009]
+;; Modified: [14.00:06 Июль 22 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -71,3 +71,8 @@
 ;;(when (eq window-system 'x)
 ;;  (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F15'")
 ;;  (global-set-key [F13] 'toggle-input-method))
+
+(when (> emacs-major-version 22)
+  (global-set-key (kbd "<C-right>") 'forward-symbol)
+  (global-set-key (kbd "<C-left>") '(lambda () (interactive)
+				      (forward-symbol -1))))
