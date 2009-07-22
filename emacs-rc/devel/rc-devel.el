@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [18-51:53 Февраль 25 2008]
-;; Modified: [16.41:16 Май 27 2009]
+;; Modified: [14.18:01 Июль 22 2009]
 ;; Description: Development routines
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -263,3 +263,8 @@
 (set-face-attribute 'show-paren-mismatch-face nil 
                     :weight 'bold :underline nil :overline nil
 		    :slant 'normal)
+
+(require 'pretty-lambdada)
+(pretty-lambda-for-modes)
+(pretty-lambda 'emacs-lisp-mode)
+(pretty-lambda 'tuareg-mode)
