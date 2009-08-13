@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [01.24:48 Июнь 04 2009]
+;; Modified: [12.26:27 Август 12 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -78,8 +78,7 @@
 
 (defvar ede-default-kvm-buffer "*KVM buffer*")
 
-(defvar jarios-kvm-image "/home/esgal/Projects/jarios/boot.img")
-(defvar jarios-hdd-image "/home/esgal/Projects/jarios/ext2.img")
+(defvar jarios-kvm-image "/home/esgal/Projects/jarios/ext2.img")
 (defvar jarios-buffer    "*JariOS KVM buffer*")
 
 ;; Thanks to Alex Ott for ede-compile idea
@@ -119,7 +118,6 @@
     (message "Starting KVM on buffer %s with image %s" buffer img)
     (start-process "ede-kvm" buffer "kvm"
 		   "-smp" "2"
-		   "-hdb" (ede-get-local-var fname 'ext2-image)
 		   "-serial" "/dev/stdout" img)
     (switch-to-buffer buffer)))
 
@@ -143,7 +141,6 @@
  sudo make && sudo make install && sudo make install_image && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
    (kvm-image  . ,jarios-kvm-image)
-   (ext2-image . ,jarios-hdd-image)
    (kvm-buffer . ,jarios-buffer)))
 
 (ede-cpp-root-project-ext
@@ -159,7 +156,6 @@
  sudo make && sudo make install && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make clean")
    (kvm-image  . ,jarios-kvm-image)
-   (ext2-image . ,jarios-hdd-image)
    (kvm-buffer . ,jarios-buffer)))
 
 (ede-cpp-root-project-ext
@@ -176,7 +172,6 @@
    (clean-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
                      make clean")
    (kvm-image  . ,jarios-kvm-image)
-   (ext2-image . ,jarios-hdd-image)
    (kvm-buffer . ,jarios-buffer)))
 
 (ede-cpp-root-project-ext
@@ -191,7 +186,6 @@
 make vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
    (clean-command . "cd /home/esgal/Projects/jarios/muistring && make clean")
    (kvm-image  . ,jarios-kvm-image)
-   (ext2-image . ,jarios-hdd-image)
    (kvm-buffer . ,jarios-buffer)))
 
 (add-hook 'c-mode-common-hook 'ede-style-hook)
