@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [23.12:26 Июнь 18 2009]
+;; Modified: [12.29:10 September 12 2009]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -61,17 +61,17 @@
 (autoload 'wajig "wajig"
   "Create a *wajig* buffer." t)
 
-(load-library "~/elisp/apt/apt-mode")
+;;(load-library "~/elisp/apt/apt-mode")
 
 ;; Top mode
 ;;(require 'top-mode)
-(load-library "~/elisp/top-mode")
+;;(load-library "~/elisp/top-mode")
 
 ;; crontab
-(load-library "~/elisp/crontab-mode")
+;;(load-library "~/elisp/crontab-mode")
 ;;(require 'crontab-mode)
-(add-to-list 'auto-mode-alist '("\\.cron\\(tab\\)?\\'" . crontab-mode))
-(add-to-list 'auto-mode-alist '("cron\\(tab\\)?\\."    . crontab-mode))
+;;(add-to-list 'auto-mode-alist '("\\.cron\\(tab\\)?\\'" . crontab-mode))
+;;(add-to-list 'auto-mode-alist '("cron\\(tab\\)?\\."    . crontab-mode))
 
 ;; Spook with your mail
 (require 'spook)

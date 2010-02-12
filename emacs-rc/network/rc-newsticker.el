@@ -1,13 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [10.21:39 Май 22 2009]
-;; Modified: [16.44:14 Июнь 17 2009]
+;; Modified: [12.30:07 September 12 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
 
-(load-file "/usr/share/emacs/23.0.93/lisp/gnus/mailcap.el.gz")
+(load-file "/usr/share/emacs/23.1.50/lisp/gnus/mailcap.el.gz")
 
 (autoload 'w3m-region "w3m"
   "Render region in current buffer and replace with result." t)

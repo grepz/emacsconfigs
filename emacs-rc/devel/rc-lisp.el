@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-14:49 Июль 19 2008]
-;; Modified: [18.51:07 Январь 17 2009]
+;; Modified: [23.06:39 Февраль 12 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -11,6 +11,11 @@
 
 ;;(add-hook 'slime-lisp-mode-hook 'vnest-mode)
 ;;(add-hook 'lisp-mode-hook 'vnest-mode)
+
+;; Since i use slime 95% time i run emacs and i am frequently connecting
+;; to already run lisp process, switch to regular require
+;;(global-set-key [f12] 'slime)
+(require 'slime)
 
 (require 'cldoc)
 (require 'paredit)
@@ -54,8 +59,6 @@
 
 (add-to-list 'load-path "~/elisp/slime")
 (add-to-list 'load-path "~/hacking/lisp/slime/")
-
-(global-set-key [f12] 'slime)
 
 (autoload 'slime "slime" t)
 

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [14.00:06 Июль 22 2009]
+;; Modified: [22.04:25 Октябрь 31 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -76,3 +76,28 @@
   (global-set-key (kbd "<C-right>") 'forward-symbol)
   (global-set-key (kbd "<C-left>") '(lambda () (interactive)
 				      (forward-symbol -1))))
+
+(defun th-display-buffer (buffer force-other-window)
+  "If BUFFER is visible, select it.
+
+If it's not visible and there's only one window, split the
+current window and select BUFFER in the new window. If the
+current window (before the split) is more than 165 columns wide,
+split horizontally, else split vertically.
+
+If the current buffer contains more than one window, select
+BUFFER in the least recently used window.
+
+This function returns the window which holds BUFFER.
+
+FORCE-OTHER-WINDOW is ignored."
+  (or (get-buffer-window buffer)
+      (if (one-window-p)
+          (let ((new-win (split-window-vertically)))
+            (set-window-buffer new-win buffer)
+            new-win)
+        (let ((new-win (get-lru-window)))
+          (set-window-buffer new-win buffer)
+          new-win))))
+
+(setq display-buffer-function 'th-display-buffer)

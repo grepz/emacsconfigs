@@ -9,7 +9,7 @@
 (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
 (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
 
-(setq wl-from "Stanislav M. Ivankin <grepz@jarios.org>")
+(setq wl-from "Stanislav M. Ivankin <stas@concat.info>")
 
 (setq wl-fcc "+sent")
 
@@ -51,7 +51,7 @@
 (setq wl-smtp-authenticate-type "plain"
       wl-smtp-posting-user      "user"
       wl-smtp-posting-server    "server"
-      wl-local-domain           "jarios.org")
+      wl-local-domain           "concat.info")
 
 (setq elmo-enable-disconnected-operation t)
 
@@ -91,10 +91,10 @@
       wl-message-truncate-lines t)
 
 ;; X-Face
-(when (and window-system
-	   (>= emacs-major-version 21))
-  (autoload 'x-face-decode-message-header "x-face-e21")
-  (setq wl-highlight-x-face-function 'x-face-decode-message-header))
+;; (when (and window-system
+;; 	   (>= emacs-major-version 21))
+;;   (autoload 'x-face-decode-message-header "x-face-e21")
+;;   (setq wl-highlight-x-face-function 'x-face-decode-message-header))
 
 ;; Splitting rules
 ;; (setq elmo-split-rule
@@ -180,8 +180,8 @@
 	    (when (string= "flowed"
 			   (cdr (assoc "format"
 				       (mime-content-type-parameters
-					(mime-entity-content-type entity)))))
-	      (fill-flowed))))
+					(mime-entity-content-type entity)))))	
+      (fill-flowed))))
 
 ;; Mail encryption
 (autoload 'wl-summary-decrypt-pgp-nonmime "wl-pgp-nonmime"

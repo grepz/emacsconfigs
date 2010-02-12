@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [12.26:27 Август 12 2009]
+;; Modified: [12.24:26 September 12 2009]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -9,9 +9,11 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/elisp/cedet")
-;;(setq semantic-load-turn-everything-on t)
-(load-file "~/elisp/cedet/common/cedet.el")
+;;(add-to-list 'load-path "~/elisp/cedet")
+;;;;(setq semantic-load-turn-everything-on t)
+;;(load-file "~/elisp/cedet/common/cedet.el")
+
+(require 'cedet)
 
 ;; (require 'bovine-grammar nil t)
 (when (require 'ede nil t)
@@ -128,71 +130,71 @@
     (when (and proj (ede-cpp-root-project-ext-p proj))
       (c-set-style (ede-project-coding-style proj) nil))))
 
-(ede-cpp-root-project-ext
- "JariOSservers"
- :name "Jari OS Core servers"
- :file "~/Projects/jarios/core_servers/Makefile"
- :include-path '("/include")
- :coding-style "gnu"
- :system-include-path
- '("~/Projects/jarios/syslibs/general/include")
- :local-variables
- `((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
- sudo make && sudo make install && sudo make install_image && sudo sync")
-   (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
-   (kvm-image  . ,jarios-kvm-image)
-   (kvm-buffer . ,jarios-buffer)))
+;; (ede-cpp-root-project-ext
+;;  "JariOSservers"
+;;  :name "Jari OS Core servers"
+;;  :file "~/Projects/jarios/core_servers/Makefile"
+;;  :include-path '("/include")
+;;  :coding-style "gnu"
+;;  :system-include-path
+;;  '("~/Projects/jarios/syslibs/general/include")
+;;  :local-variables
+;;  `((compile-command . "cd /home/esgal/Projects/jarios/core_servers && \
+;;  sudo make && sudo make install && sudo make install_image && sudo sync")
+;;    (clean-command . "cd /home/esgal/Projects/jarios/core_servers; make clean")
+;;    (kvm-image  . ,jarios-kvm-image)
+;;    (kvm-buffer . ,jarios-buffer)))
 
-(ede-cpp-root-project-ext
- "JariOSsyslibs"
- :name "Jari OS syslibs"
- :file "~/Projects/jarios/syslibs/README"
- :include-path '("/general/include")
- :coding-style "gnu"
- :system-include-path
- '("/usr/include")
- :local-variables
- `((compile-command . "cd /home/esgal/Projects/jarios/syslibs && \
- sudo make && sudo make install && sudo sync")
-   (clean-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make clean")
-   (kvm-image  . ,jarios-kvm-image)
-   (kvm-buffer . ,jarios-buffer)))
+;; (ede-cpp-root-project-ext
+;;  "JariOSsyslibs"
+;;  :name "Jari OS syslibs"
+;;  :file "~/Projects/jarios/syslibs/README"
+;;  :include-path '("/general/include")
+;;  :coding-style "gnu"
+;;  :system-include-path
+;;  '("/usr/include")
+;;  :local-variables
+;;  `((compile-command . "cd /home/esgal/Projects/jarios/syslibs && \
+;;  sudo make && sudo make install && sudo sync")
+;;    (clean-command . "cd /home/esgal/Projects/jarios/syslibs; sudo make clean")
+;;    (kvm-image  . ,jarios-kvm-image)
+;;    (kvm-buffer . ,jarios-buffer)))
 
-(ede-cpp-root-project-ext
- "JariOSapplication"
- :name "Jari OS applications"
- :file "/home/esgal/Projects/jarios/jarios_applications/Sconfig"
- :include-path '("/include/")
- :coding-style "gnu"
- :system-include-path '("/usr/local/jos/include/")
- :local-variables
- `((compile-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
-                       sudo make install && sudo make install_image && \
-                       sudo sync")
-   (clean-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
-                     make clean")
-   (kvm-image  . ,jarios-kvm-image)
-   (kvm-buffer . ,jarios-buffer)))
+;; (ede-cpp-root-project-ext
+;;  "JariOSapplication"
+;;  :name "Jari OS applications"
+;;  :file "/home/esgal/Projects/jarios/jarios_applications/Sconfig"
+;;  :include-path '("/include/")
+;;  :coding-style "gnu"
+;;  :system-include-path '("/usr/local/jos/include/")
+;;  :local-variables
+;;  `((compile-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
+;;                        sudo make install && sudo make install_image && \
+;;                        sudo sync")
+;;    (clean-command . "cd /home/esgal/Projects/jarios/jarios_applications && \
+;;                      make clean")
+;;    (kvm-image  . ,jarios-kvm-image)
+;;    (kvm-buffer . ,jarios-buffer)))
 
-(ede-cpp-root-project-ext
- "JariOSkernel"
- :name "Jari OS kernel"
- :file "~/Projects/jarios/muistring/Makefile"
- :include-path '("/include/")
- :coding-style "gnu"
- :system-include-path nil
- :local-variables
- `((compile-command . "cd /home/esgal/Projects/jarios/muistring && \
-make vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
-   (clean-command . "cd /home/esgal/Projects/jarios/muistring && make clean")
-   (kvm-image  . ,jarios-kvm-image)
-   (kvm-buffer . ,jarios-buffer)))
+;; (ede-cpp-root-project-ext
+;;  "JariOSkernel"
+;;  :name "Jari OS kernel"
+;;  :file "~/Projects/jarios/muistring/Makefile"
+;;  :include-path '("/include/")
+;;  :coding-style "gnu"
+;;  :system-include-path nil
+;;  :local-variables
+;;  `((compile-command . "cd /home/esgal/Projects/jarios/muistring && \
+;; make vmuielf && sudo cp ./vmuielf ../mnt/boot && sudo sync")
+;;    (clean-command . "cd /home/esgal/Projects/jarios/muistring && make clean")
+;;    (kvm-image  . ,jarios-kvm-image)
+;;    (kvm-buffer . ,jarios-buffer)))
 
-(add-hook 'c-mode-common-hook 'ede-style-hook)
+;; (add-hook 'c-mode-common-hook 'ede-style-hook)
 
-(global-set-key (kbd "C-x m") 'ede-compile)
-(global-set-key (kbd "C-x n") 'ede-clean)
-(global-set-key (kbd "C-c k") 'ede-kvm-run)
+;; (global-set-key (kbd "C-x m") 'ede-compile)
+;; (global-set-key (kbd "C-x n") 'ede-clean)
+;; (global-set-key (kbd "C-c k") 'ede-kvm-run)
 
 ;;(require 'semanticdb-global)
 ;;(semanticdb-enable-gnu-global-databases 'c-mode)

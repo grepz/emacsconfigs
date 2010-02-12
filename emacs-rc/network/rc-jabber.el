@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [15.27:54 Май 23 2009]
+;; Modified: [23.19:15 Январь 13 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -37,7 +37,9 @@
    '(jabber-vcard-avatars-retrieve nil)
    '(jabber-connection-ssl-program 'gnutls)
    '(starttls-extra-arguments '("--insecure"))
-   '(jabber-lost-connection-hook 'my-connect-jabber))
+   '(jabber-lost-connection-hook 'my-connect-jabber)
+   '(jabber-username "stas")
+   '(jabber-server "concat.info"))
  
 (jabber-mode-line-mode)
 
@@ -57,7 +59,7 @@
     (process-send-eof "jabber-xosd")))
 
 (defun jabber-message-xosd (from buffer text propsed-alert)
-  (jabber-xosd-display-message "New message."))
+  (jabber-xosd-display-message "[emacs-jabber] New message."))
 
 (global-set-key (kbd "s-j") 'jabber-connect-all)
 
@@ -66,4 +68,4 @@
 		 nil "stumpish" "echo" (concat "[jabber] " from)))
 
 (add-to-list 'jabber-alert-message-hooks
-	     'stumpwm-notify)
+	     'jabber-message-xosd)
