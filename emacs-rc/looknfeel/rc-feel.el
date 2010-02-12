@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [22.04:25 Октябрь 31 2009]
+;; Modified: [00.14:55 Февраль 13 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -77,27 +77,15 @@
   (global-set-key (kbd "<C-left>") '(lambda () (interactive)
 				      (forward-symbol -1))))
 
-(defun th-display-buffer (buffer force-other-window)
-  "If BUFFER is visible, select it.
+(defun display-buffer-fn (buf ow)
+  (or (get-buffer-window buf)
+      (let (new-win)
+	(if (one-window-p t)
+	    (if (window-splittable-p (get-buffer-window))
+		  (setq new-win (split-window-vertically))
+	      (setq new-win (split-window (get-largest-window))))
+	  (setq new-win (get-lru-window)))
+	(set-window-buffer new-win buf)
+	new-win)))
 
-If it's not visible and there's only one window, split the
-current window and select BUFFER in the new window. If the
-current window (before the split) is more than 165 columns wide,
-split horizontally, else split vertically.
-
-If the current buffer contains more than one window, select
-BUFFER in the least recently used window.
-
-This function returns the window which holds BUFFER.
-
-FORCE-OTHER-WINDOW is ignored."
-  (or (get-buffer-window buffer)
-      (if (one-window-p)
-          (let ((new-win (split-window-vertically)))
-            (set-window-buffer new-win buffer)
-            new-win)
-        (let ((new-win (get-lru-window)))
-          (set-window-buffer new-win buffer)
-          new-win))))
-
-(setq display-buffer-function 'th-display-buffer)
+(setq display-buffer-function 'display-buffer-fn)
