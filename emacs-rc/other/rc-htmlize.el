@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-36:43 Июль 20 2008]
-;; Modified: [03.09:45 Июнь 01 2009]
+;; Modified: [00.25:45 Февраль 13 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -8,7 +8,7 @@
 ;; License: 
 
 (global-set-key (kbd "s-b") 'htmlize-region)
-(autoload 'htmlize-buffer "htmlize")
+(autoload 'htmlize-region "htmlize")
 
 (eval-after-load "htmlize"
   '(progn
@@ -48,4 +48,4 @@
 </td></tr>
 </table>")))))
 
-;;(add-hook 'htmlize-after-hook 'my-reparse-htmlize-buffer)
+(add-hook 'htmlize-after-hook 'my-reparse-htmlize-buffer)

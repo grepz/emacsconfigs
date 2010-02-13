@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [00.14:55 Февраль 13 2010]
+;; Modified: [22.54:29 Февраль 13 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -77,15 +77,18 @@
   (global-set-key (kbd "<C-left>") '(lambda () (interactive)
 				      (forward-symbol -1))))
 
-(defun display-buffer-fn (buf ow)
-  (or (get-buffer-window buf)
-      (let (new-win)
-	(if (one-window-p t)
-	    (if (window-splittable-p (get-buffer-window))
-		  (setq new-win (split-window-vertically))
-	      (setq new-win (split-window (get-largest-window))))
-	  (setq new-win (get-lru-window)))
-	(set-window-buffer new-win buf)
-	new-win)))
+;; (defun display-buffer-fn (buf ow)
+;;   (or (get-buffer-window buf)
+;;       (let (new-win)
+;; 	(if (one-window-p t)
+;; 	    (if (window-splittable-p (get-buffer-window))
+;; 		  (setq new-win (split-window-vertically))
+;; 	      (setq new-win (split-window (get-largest-window))))
+;; 	  (setq new-win (get-lru-window)))
+;; 	(set-window-buffer new-win buf)
+;; 	new-win)))
 
-(setq display-buffer-function 'display-buffer-fn)
+;;(setq display-buffer-function 'display-buffer-fn)
+
+(setq split-width-threshold nil
+      split-window-preferred-function 'split-window-sensibly)
