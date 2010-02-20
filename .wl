@@ -49,8 +49,8 @@
 (setq wl-smtp-connection-type nil)
 (setq wl-smtp-posting-port 25)
 (setq wl-smtp-authenticate-type "plain"
-      wl-smtp-posting-user      "user"
-      wl-smtp-posting-server    "server"
+      wl-smtp-posting-user      "stas@concat.info"
+      wl-smtp-posting-server    "concat.info"
       wl-local-domain           "concat.info")
 
 (setq elmo-enable-disconnected-operation t)
@@ -132,8 +132,6 @@
 					 "%inbox/weblocks"))
 			     ("From" ("lj_notify@livejournal.com" .
 				      "%inbox/LiveJournal"))
-			     ("List-ID" ("xcb.lists.freedesktop.org" .
-					 "%inbox/xcb"))
 			     ("From" ("@moikrug.ru" . "%inbox/Moikrug"))
 			     ("List-ID" ("<spbhug.googlegroups.com>" .
 					 "%inbox/SpbHUG"))
@@ -176,12 +174,11 @@
 ;; Reading f=f
 (autoload 'fill-flowed "flow-fill")
 (add-hook 'mime-display-text/plain-hook
-	  (lambda ()
-	    (when (string= "flowed"
-			   (cdr (assoc "format"
-				       (mime-content-type-parameters
-					(mime-entity-content-type entity)))))	
-      (fill-flowed))))
+   (lambda () (when (string=
+		"flowed" (cdr (assoc "format"
+				     (mime-content-type-parameters
+				      (mime-entity-content-type entity)))))	
+	   (fill-flowed))))
 
 ;; Mail encryption
 (autoload 'wl-summary-decrypt-pgp-nonmime "wl-pgp-nonmime"

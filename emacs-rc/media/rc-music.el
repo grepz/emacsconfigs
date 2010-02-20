@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:22 Июль 19 2008]
-;; Modified: [00.24:24 Май 31 2009]
+;; Modified: [02.03:00 Февраль 19 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -48,3 +48,7 @@
 
 (global-set-key (kbd "s-m") 'mpc)
 (autoload 'mpc "~/elisp/mpc/mpc-autoloads")
+
+(eval-after-load "mpc-autoloads"
+  '(progn
+     (global-set-key (kbd "s-s") 'mpc-stop)))
