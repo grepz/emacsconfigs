@@ -1,20 +1,16 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-14:49 Июль 19 2008]
-;; Modified: [23.06:39 Февраль 12 2010]
+;; Modified: [02.05:39 Февраль 24 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
 
-;;(require 'vnesting)
-
-;;(add-hook 'slime-lisp-mode-hook 'vnest-mode)
-;;(add-hook 'lisp-mode-hook 'vnest-mode)
-
 ;; Since i use slime 95% time i run emacs and i am frequently connecting
-;; to already run lisp process, switch to regular require
+;; to already started lisp process, switch to regular require
 ;;(global-set-key [f12] 'slime)
+
 (require 'slime)
 
 (require 'cldoc)
@@ -26,19 +22,9 @@
   '(redshank-setup '(lisp-mode-hook
 		     slime-repl-mode-hook) t))
 
-;;(autoload 'redshank-mode "redshank"
-;;  "Minor mode for editing and refactoring (Common) Lisp code."
-;;  t)
-;;(autoload 'turn-on-redshank-mode "redshank"
-;;  "Turn on Redshank mode.  Please see function `redshank-mode'."
-;;  t)
-
 (add-to-list 'auto-insert-alist '(lisp-mode . redshank-in-package-skeleton))
 (add-to-list 'auto-insert-alist '(asdf-mode . redshank-asdf-defsystem-skeleton))
 (add-to-list 'auto-mode-alist '("\\.asdf?\\'" . asdf-mode))
-
-;;;;   (eval-after-load "redshank"
-;;;;     '(progn ...redefine keys, etc....))
 
 (add-hook 'lisp-mode-hook
 	  '(lambda ()
@@ -58,7 +44,6 @@
 ;; Slime for Lisp
 
 (add-to-list 'load-path "~/elisp/slime")
-(add-to-list 'load-path "~/hacking/lisp/slime/")
 
 (autoload 'slime "slime" t)
 
@@ -71,15 +56,14 @@
 	   slime-truncate-lines nil
 	   inferior-lisp-program "/usr/bin/sbcl"
 	   slime-kill-without-query-p t
-	   slime-lisp-implementations `((sbcl ("sbcl") :coding-system utf-8-unix)))
+	   slime-lisp-implementations
+	   `((sbcl ("sbcl") :coding-system utf-8-unix)))
      (slime-setup '(slime-fancy slime-asdf slime-tramp))
      (require 'slime-fuzzy)
      (slime-fuzzy-init)
      (slime-mode t)
-;;     (paredit-mode) ;ymmv: is great and gets in your way
      (global-set-key (kbd "C-c s") 'slime-indent-and-complete-symbol)))
 
-;; ymmv remove this if you want
 (autoload 'paredit-mode "paredit"
   "Minor mode for pseudo-structurally editing Lisp code."
   t)

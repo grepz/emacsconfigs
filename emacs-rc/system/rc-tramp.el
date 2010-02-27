@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created:  [02-09:15 Февраль 21 2008]
-;; Modified: [15.21:51 Апрель 09 2009]
+;; Modified: [12.49:06 Февраль 23 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -41,7 +41,7 @@
     ;; If called from a "root" file, we need to fix up the path.
     (when tramp
       (setq path buffer-file-name
-   	    dir (file-name-directory path)))
+o   	    dir (file-name-directory path)))
 
     (when (setq file (read-file-name "Find file (UID = 0): " dir path))
       (find-file (concat find-file-root-prefix file))
@@ -85,3 +85,9 @@
 
 (my-add-host-to-tramp "192.168.1.2" :user "esgal" :port "8022")
 (my-add-host-to-tramp "concat.info" :user "root" :port "8022")
+
+
+;;(add-to-list tramp-methods
+;;	     '("wget"
+;;	       (tramp-login-program "wget")
+;;	       (tramp-login-args (("%h")))

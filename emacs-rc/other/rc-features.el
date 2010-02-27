@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [12.29:10 September 12 2009]
+;; Modified: [20.21:40 Февраль 21 2010]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -21,6 +21,7 @@
 ;; Storing tmpfiles ;;
 
 (defvar tmp-autosave-dir "~/emacs/tmp/autosave/")
+(defvar backup-dir "~/emacs/tmp/backup/")
 
 (defun auto-save-file-name-p (filename)
   (string-match "^#.*#$" (file-name-nondirectory filename)))
@@ -32,7 +33,6 @@
 	    (expand-file-name
 	     (concat "#%" (buffer-name) "#")))))
 
-(defvar backup-dir "~/emacs/tmp/backup/")
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
 (global-set-key [f9] 'term)

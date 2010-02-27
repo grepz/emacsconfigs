@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [22.54:29 Февраль 13 2010]
+;; Modified: [21.28:34 Февраль 27 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -45,16 +45,42 @@
 ;; iswitchbuf
 (require 'iswitchb)
 (iswitchb-mode 1)
-(add-to-list 'iswitchb-buffer-ignore "*Messages*")
-(add-to-list 'iswitchb-buffer-ignore "*Backtrace")
-(add-to-list 'iswitchb-buffer-ignore "*Completions")
-(add-to-list 'iswitchb-buffer-ignore "*Possible Completions")
-(add-to-list 'iswitchb-buffer-ignore "*semantic")
-(add-to-list 'iswitchb-buffer-ignore "*compilation")
+
+(nconc (list "*compilation" "*semantic" "*Possible Completions" "*Completions"
+	     "*Backtrace" "*Messages*") iswitchb-buffer-ignore)
 
 ;; buff-menu+
 (require 'buff-menu+)
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
+
+;; IBuffer
+(require 'ibuffer)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(setq ibuffer-show-empty-filter-groups nil)
+
+(setq ibuffer-saved-filter-groups
+      '(("Custom"
+	 ("Dired" (mode . dired-mode))
+	 ("Perl" (mode . cperl-mode))
+	 ("Erc" (mode . erc-mode))
+	 ("Lisp" (or (mode . sbcl-mode)
+		     (mode . lisp-mode)))
+	 ("Help" (or (name . "\*Help\*")
+		     (mode . help-mode)
+		     (name . "\*Apropos\*")
+		     (name . "\*info\*")))
+	 ("w3m" (mode . w3m-mode))
+	 ("Additional" (or
+			(name . "^\\*scratch\\*$")
+			(name . "^\\*Messages\\*$")
+			(name . "^\\*compilation")
+			(name . "^\\*semantic"))))))
+
+(add-hook 'ibuffer-mode-hook
+	  (lambda ()
+	     (ibuffer-auto-mode 1)
+	     (ibuffer-switch-to-saved-filter-groups "Custom")))
 
 ;; Stripes are horizontal lines with different color
 (require 'stripes)
