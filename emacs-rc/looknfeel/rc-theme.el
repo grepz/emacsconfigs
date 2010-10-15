@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [17.16:54 Сентябрь 10 2010]
+;; Modified: [22.18:18 Октябрь 15 2010]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -98,7 +98,8 @@ fonts."
 
 (if (eq window-system 'x)
     (progn
-      (color-theme-charcoal-black)
+;;      (color-theme-charcoal-black)
+      (color-theme-dark-laptop)
 ;;      (color-theme-dark-laptop)
 ;;      (set-my-faces)
 ;;      (require 'tabbar)
