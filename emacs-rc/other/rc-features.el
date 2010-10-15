@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [20.21:40 Февраль 21 2010]
+;; Modified: [19.45:34 Май 16 2010]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -97,3 +97,8 @@
 (autoload 'mc-install-write-mode "mailcrypt" nil t)
 (autoload 'mc-install-read-mode "mailcrypt" nil t)
 (add-hook 'mail-mode-hook 'mc-install-write-mode)
+
+;; Somewhat more advanced fill paragraph mode for emacs
+
+(require 'filladapt)
+(setq-default filladapt-mode t)

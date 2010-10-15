@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [22.59:58 Февраль 13 2010]
+;; Modified: [17.16:54 Сентябрь 10 2010]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -23,6 +23,49 @@
       (top-toolbar-shadow-color . "#fffffbeeffff")
       (viper-saved-cursor-color-in-replace-mode . "Red3")
       (tool-bar-lines . 0))))
+
+(defun color-theme-my-gtk-ide ()
+  "Color theme by Gordon Messmer, created 2001-02-07.
+Inspired by a GTK IDE whose name I've forgotten.
+
+If you want to modify the font as well, you should customize variable
+`color-theme-legal-frame-parameters' to \"\\(color\\|mode\\|font\\|height\\|width\\)$\".
+The default setting will prevent color themes from installing specific
+fonts."
+  ;; The light editor style doesn't seem to look right with
+  ;; the same font that works in the dark editor style.
+  ;; Dark letters on light background just isn't as visible.
+  (interactive)
+  (color-theme-install
+   '(color-theme-gtk-ide
+     ((font . "-monotype-courier new-medium-r-normal-*-*-120-*-*-m-*-iso8859-15")
+      (width  . 95)
+      (height . 45)
+      (background-color . "white")
+      (foreground-color . "black")
+      (background-mode . light)
+      (mouse-color . "grey15")
+      (cursor-color . "grey15"))
+     (default ((t nil)))
+     (font-lock-comment-face ((t (:italic t :foreground "darkgrey"))))
+     (font-lock-string-face ((t (:foreground "#883322" :bold t))))
+     (font-lock-keyword-face ((t (:foreground "DarkBlue"))))
+     (font-lock-warning-face ((t (:bold t :foreground "VioletRed"))))
+     (font-lock-constant-face ((t (:foreground "OliveDrab"))))
+     (font-lock-type-face ((t (:foreground "SteelBlue4"))))
+     (font-lock-variable-name-face ((t (:foreground "Goldenrod"))))
+     (font-lock-function-name-face ((t (:foreground "SlateBlue"
+					:underline nil
+					:bold t
+					:italic t))))
+     (font-lock-builtin-face ((t (:foreground "ForestGreen"))))
+     (highline-face ((t (:background "grey95"))))
+     (show-paren-match-face ((t (:background "blue"))))
+     (region ((t (:background "grey80"))))
+     (highlight ((t (:background "LightSkyBlue"))))
+     (secondary-selection ((t (:background "grey55"))))
+     (widget-field-face ((t (:background "navy"))))
+     (widget-single-line-field-face ((t (:background "royalblue")))))) )
 
 (defun set-my-faces ()
   (custom-set-faces
@@ -49,10 +92,12 @@
   (set-face-foreground 'modeline "Black" nil)
   (set-face-foreground 'default "NavajoWhite1" nil))
 
+(require 'color-theme-subdued)
+(require 'color-theme)
+(color-theme-initialize)
+
 (if (eq window-system 'x)
     (progn
-      (require 'color-theme)
-      (color-theme-initialize)
       (color-theme-charcoal-black)
 ;;      (color-theme-dark-laptop)
 ;;      (set-my-faces)
@@ -64,7 +109,8 @@
       (global-set-key [(s right)] 'tabbar-forward)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas-10")
+	  (set-frame-font "consolas-12")
 	(set-frame-font "9x15")))
   (progn
-    (message "Terminal decorations")))
+    (message "Terminal decorations")
+    (color-theme-dark-laptop)))

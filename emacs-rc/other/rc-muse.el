@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22-55:36 Май 19 2008]
-;; Modified: [13.09:17 Февраль 16 2010]
+;; Modified: [17.11:32 Март 15 2010]
 ;; Description:
 ;;  The idea of using muse as a site backend and some code was taken from Alex Ott
 ;; Author: Stanislav M. Ivankin

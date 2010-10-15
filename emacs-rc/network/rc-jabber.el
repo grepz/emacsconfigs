@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [23.19:15 Январь 13 2010]
+;; Modified: [20.04:03 Октябрь 15 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -43,9 +43,6 @@
  
 (jabber-mode-line-mode)
 
-;;(add-to-list 'jabber-alert-message-hooks
-;;	     'jabber-message-xosd)
-
 (defun jabber-xosd-display-message (message)
   "Displays MESSAGE through the xosd"
   (let ((process-connection-type nil))
@@ -58,8 +55,8 @@
     (process-send-string "jabber-xosd" message)
     (process-send-eof "jabber-xosd")))
 
-(defun jabber-message-xosd (from buffer text propsed-alert)
-  (jabber-xosd-display-message "[emacs-jabber] New message."))
+;;(defun jabber-message-xosd (from buffer text propsed-alert)
+;;  (jabber-xosd-display-message "[emacs-jabber] New message."))
 
 (global-set-key (kbd "s-j") 'jabber-connect-all)
 
@@ -68,4 +65,9 @@
 		 nil "stumpish" "echo" (concat "[jabber] " from)))
 
 (add-to-list 'jabber-alert-message-hooks
-	     'jabber-message-xosd)
+	     'stumpwm-notify)
+
+(print jabber-alert-message-hooks)
+
+;;(add-to-list 'jabber-alert-message-hooks
+;;	     'jabber-message-xosd)

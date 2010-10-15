@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created:  [02-09:15 Февраль 21 2008]
-;; Modified: [12.49:06 Февраль 23 2010]
+;; Modified: [15.41:15 Август 12 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -16,7 +16,10 @@
       tramp-default-user "root"
       tramp-auto-save-directory "/home/esgal/emacs/tmp/tramp-autosave")
 
-(defvar find-file-root-prefix (if (featurep 'xemacs) "/[sudo/root@localhost]" "/sudo:root@localhost:" )
+(defvar find-file-root-prefix
+  (if (featurep 'xemacs)
+      "/[sudo/root@localhost]"
+    "/sudo:root@localhost:" )
   "*The filename prefix used to open a file with `find-file-root'.")
 
 (defvar find-file-root-history nil
@@ -41,7 +44,7 @@
     ;; If called from a "root" file, we need to fix up the path.
     (when tramp
       (setq path buffer-file-name
-o   	    dir (file-name-directory path)))
+   	    dir (file-name-directory path)))
 
     (when (setq file (read-file-name "Find file (UID = 0): " dir path))
       (find-file (concat find-file-root-prefix file))

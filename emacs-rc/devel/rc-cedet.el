@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [12.24:26 September 12 2009]
+;; Modified: [23.13:31 Июль 27 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -69,8 +69,8 @@
 
 (global-semantic-stickyfunc-mode -1)
 
-(global-semantic-folding-mode 1)
-(global-semantic-tag-folding-mode 1)
+;;(global-semantic-folding-mode 1)
+;;(global-semantic-tag-folding-mode 1)
 
 (setq semanticdb-cscope-program "/usr/bin/cscope-indexer")
 

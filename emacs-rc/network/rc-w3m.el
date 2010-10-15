@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [09.55:43 Июль 03 2009]
+;; Modified: [20.57:59 Октябрь 15 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -24,6 +24,7 @@
  '(browse-url-browser-function 'w3m-browse-url-new-tab)
  '(w3m-home-page "about:blank")
  '(w3m-cookie-accept-bad-cookies t)
+ '(w3m-cookie-accept-domains '("reddit.com" "livejournal.com"))
  '(browse-url-browser-function 'w3m-browse-url))
 
 (require 'w3m-load)
@@ -64,3 +65,7 @@
 	  (interactive "Save to: ")
 	  (cd dir)
 	  (start-process "curl" "*curl*" "curl.exe" "-O" "-s" (w3m-anchor)))))
+
+;; (defadvice url-cookie-host-can-set-p (before reddit-cookie-fix 'activate)
+;;     (and (string= (ad-get-arg 0) "www.reddit.com")
+;; 	 (string= (ad-get-arg 1) "reddit.com"))) 
