@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [21.28:34 Февраль 27 2010]
+;; Modified: [18.47:24 January 05 2011]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -71,6 +71,9 @@
 		     (name . "\*Apropos\*")
 		     (name . "\*info\*")))
 	 ("w3m" (mode . w3m-mode))
+	 ("c/cpp" (or (mode . c-mode)
+		      (name . "\\.\(c|cpp|cxx\)$")
+		      (name . "\\.(h|hpp)$")))
 	 ("Additional" (or
 			(name . "^\\*scratch\\*$")
 			(name . "^\\*Messages\\*$")

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:22 Июль 19 2008]
-;; Modified: [14.53:54 Февраль 23 2010]
+;; Modified: [21.15:18 Октябрь 17 2010]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -27,6 +27,7 @@
      (require 'emms-source-playlist)
      (require 'emms-streams)
      (require 'emms-info)
+     (require 'emms-lastfm)
 ;;     (add-to-list 'emms-player-list 'emms-player-mpd)
 ;;     (add-to-list 'emms-info-functions 'emms-info-mpd)
 ;;     (setq emms-player-mpd-server-name "localhost"
