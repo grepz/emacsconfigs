@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-07:35 Июль 19 2008]
-;; Modified: [01.18:04 Май 17 2009]
+;; Modified: [11.48:21 Май 18 2011]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -16,6 +16,11 @@
 
 (require 'whitespace)
 
+(c-add-style "k&r-2"
+	     '("k&r"
+	       (intent-tabs-mode . nil)
+	       (c-basic-offset . 4)))
+
 ;; (c-add-style "teststyle"
 ;;  	     '("stroustrup"
 ;;  	       (indent-tabs-mode . nil)
@@ -30,7 +35,7 @@
 ;;   (c-toggle-auto-hungry-state 1))
 ;; (define-key c++-mode-map "\C-ct" 'some-function-i-want-to-call)
 
-(setq c-default-style "gnu")
+(setq c-default-style "k&r-2")
 
 ;; ede-customize-project ede-customize-target
 

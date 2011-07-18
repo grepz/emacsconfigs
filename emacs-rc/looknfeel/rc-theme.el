@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:16 Июль 19 2008]
-;; Modified: [01.22:23 December 27 2010]
+;; Modified: [12.00:04 Июнь 09 2011]
 ;; Description: Color themes and look customization
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -110,7 +110,7 @@ fonts."
       (global-set-key [(s right)] 'tabbar-forward)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas-12")
+	  (set-frame-font "consolas 13")
 	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [10.21:39 Май 22 2009]
-;; Modified: [21.27:35 Октябрь 15 2010]
+;; Modified: [17.09:15 Апрель 24 2011]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -25,6 +25,8 @@
  '(newsticker-url-list
    '(("Plane Emacs"
       "http://planet.emacsen.org/atom.xml" nil nil nil)
+     ("EveNews24"
+      "http://feeds.feedburner.com/eveonlinenews24" nil nil nil)
      ("Kernel Trap"
       "http://kerneltrap.org/node/feed" nil nil nil)
      ("Reddit - Technology"

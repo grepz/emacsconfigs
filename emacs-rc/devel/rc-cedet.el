@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [23.13:31 Июль 27 2010]
+;; Modified: [11.54:15 Июнь 09 2011]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -31,7 +31,7 @@
 (semantic-load-enable-gaudy-code-helpers)
 
 ;; smart complitions
-(require 'semantic-ia)
+;;(require 'semantic-ia)
 
 (global-semanticdb-minor-mode 1)
 
@@ -40,7 +40,7 @@
 (setq-mode-local c++-mode semanticdb-find-default-throttle
                   '(project unloaded system recursive))
 
-(require 'eassist)
+;;(require 'eassist)
 
 ;; customisation of modes
 (defun my-cedet-hook ()

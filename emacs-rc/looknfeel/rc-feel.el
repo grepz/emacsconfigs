@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [18.47:24 January 05 2011]
+;; Modified: [11.57:48 Июль 18 2011]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -64,6 +64,8 @@
 	 ("Dired" (mode . dired-mode))
 	 ("Perl" (mode . cperl-mode))
 	 ("Erc" (mode . erc-mode))
+	 ("Elisp" (or (mode .emacs-lisp-mode)
+		      (name . "\\.el$")))
 	 ("Lisp" (or (mode . sbcl-mode)
 		     (mode . lisp-mode)))
 	 ("Help" (or (name . "\*Help\*")
@@ -72,13 +74,18 @@
 		     (name . "\*info\*")))
 	 ("w3m" (mode . w3m-mode))
 	 ("c/cpp" (or (mode . c-mode)
+		      (mode . c++-mode)
 		      (name . "\\.\(c|cpp|cxx\)$")
 		      (name . "\\.(h|hpp)$")))
+	 ("Erlang" (or (mode . erlang-mode)
+		       (name . "\\.erl$")))
 	 ("Additional" (or
 			(name . "^\\*scratch\\*$")
 			(name . "^\\*Messages\\*$")
 			(name . "^\\*compilation")
-			(name . "^\\*semantic"))))))
+			(name . "^\\*semantic")))
+	 ("Build" (or (mode . cmake-mode)
+		      (mode . makefile-mode))))))
 
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
