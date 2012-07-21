@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-32:17 Июль 20 2008]
-;; Modified: [22-56:32 Июль 20 2008]
+;; Modified: [18.55:27 Январь 16 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -35,7 +35,7 @@
 
 (defun erc-save-buffers-in-logs ()
   (interactive)
-  (mapc (lambda(buf)
+  (mapc (lambda (buf)
 	  (save-excursion
 	    (set-buffer buf)
 	    (erc-save-buffer-in-logs)))

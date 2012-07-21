@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:31 Июль 19 2008]
-;; Modified: [01.20:17 Сентябрь 19 2008]
+;; Modified: [08.59:53 Июль 21 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -11,7 +11,7 @@
 ;; Desktop ;;
 
 (require 'desktop)
-;;(desktop-load-default)
+
 (desktop-save-mode 1)
 
 (mapc
@@ -40,3 +40,6 @@
 (setq-default desktop-save t)
 (setq-default desktop-save-mode t)
 (setq-default save-place t)
+
+(add-to-list 'load-path "~/elisp/emacs-nav/")
+(require 'nav)

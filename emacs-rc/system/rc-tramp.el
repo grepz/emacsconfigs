@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created:  [02-09:15 Февраль 21 2008]
-;; Modified: [15.41:15 Август 12 2010]
+;; Modified: [21.39:13 Июль 21 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -60,10 +60,11 @@
 ;; Tramp host autocompletion
 
 (defun* my-add-host-to-tramp (host &key
+				   (alias nil)
 				   (user tramp-default-user)
 				   (port "22")
 				   (method tramp-default-method))
-  (setf (gethash (intern host) host-hash)
+  (setf (gethash (if (null alias) (intern host) (intern alias)) host-hash)
 	(concat "/" method ":" user "@" host "#" port ":~/")))
 
 (defun hash-keys-to-list (hashtable)
@@ -84,13 +85,7 @@
 		  "[Tramp]"
 		  (gethash (intern host) host-hash))))))
 
-(global-set-key [(s r)] 'my-tramp-connect-to-server)
+(global-set-key [(s x) (r)] 'my-tramp-connect-to-server)
 
-(my-add-host-to-tramp "192.168.1.2" :user "esgal" :port "8022")
-(my-add-host-to-tramp "concat.info" :user "root" :port "8022")
-
-
-;;(add-to-list tramp-methods
-;;	     '("wget"
-;;	       (tramp-login-program "wget")
-;;	       (tramp-login-args (("%h")))
+(my-add-host-to-tramp "46.254.240.98" :alias "Work server"
+		      :user "root" :port "58022")

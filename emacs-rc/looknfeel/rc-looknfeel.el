@@ -1,18 +1,32 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [17-23:32 Июль 19 2008]
-;; Modified: [11.57:48 Июль 18 2011]
-;; Description: 
-;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;;; rc-looknfeel.el --- 
+
+;; Copyright (C) 2012  Stanislav M. Ivankin
+
+;; Author: Stanislav M. Ivankin <lessgrep@gmail.conf>
+;; Keywords: 
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; 
+
+;;; Code:
 
 (fset 'yes-or-no-p 'y-or-n-p)
-
 (put 'narrow-to-region 'disabled nil)
-
 (transient-mark-mode 1)
-;; Try C-Enter :)
 (cua-selection-mode 1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -31,7 +45,8 @@
  '(display-time-load-average t)
  '(display-time-day-and-date t)
  '(timeclock-modeline-display t)
- '(inhibit-startup-message t))
+ '(inhibit-startup-message t)
+ '(font-lock-maximum-decoration nil))
 
 ;; Change  mouse scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control))))
@@ -39,25 +54,29 @@
 ;; show/hide menu-bar
 (global-set-key (kbd "C-c o") 'menu-bar-mode)
 
+(setq split-width-threshold nil
+      split-window-preferred-function 'split-window-sensibly)
+
+(when (> emacs-major-version 22)
+  (global-set-key (kbd "<C-right>") 'forward-symbol)
+  (global-set-key (kbd "<C-left>") '(lambda () (interactive)
+				      (forward-symbol -1))))
+
 ;; Imenu
 (require 'imenu)
-
 ;; iswitchbuf
 (require 'iswitchb)
 (iswitchb-mode 1)
-
 (nconc (list "*compilation" "*semantic" "*Possible Completions" "*Completions"
 	     "*Backtrace" "*Messages*") iswitchb-buffer-ignore)
-
 ;; buff-menu+
 (require 'buff-menu+)
 
-;; IBuffer
 (require 'ibuffer)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(setq ibuffer-show-empty-filter-groups nil)
+(setq-default ibuffer-show-empty-filter-groups nil)
 
 (setq ibuffer-saved-filter-groups
       '(("Custom"
@@ -92,39 +111,17 @@
 	     (ibuffer-auto-mode 1)
 	     (ibuffer-switch-to-saved-filter-groups "Custom")))
 
-;; Stripes are horizontal lines with different color
-(require 'stripes)
 
-;; WithOut man
-(setq woman-use-own-frame nil)
+(if (eq window-system 'x)
+    (progn
+      (load-theme 'deeper-blue t)
+      (setq x-select-enable-clipboard t)
+      (if (and (> emacs-major-version 22))
+	  (set-frame-font "consolas 11")
+	(set-frame-font "9x15")))
+  (progn
+    (message "Terminal decorations")
+    (load-theme 'tango-dark t)))
 
-;; sr-speedbars
-(require 'sr-speedbar)
-(global-set-key (kbd "s-s") 'sr-speedbar-toggle)
-
-(global-set-key (kbd "s-c o") 'other-frame)
-
-;;(when (eq window-system 'x)
-;;  (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F15'")
-;;  (global-set-key [F13] 'toggle-input-method))
-
-(when (> emacs-major-version 22)
-  (global-set-key (kbd "<C-right>") 'forward-symbol)
-  (global-set-key (kbd "<C-left>") '(lambda () (interactive)
-				      (forward-symbol -1))))
-
-;; (defun display-buffer-fn (buf ow)
-;;   (or (get-buffer-window buf)
-;;       (let (new-win)
-;; 	(if (one-window-p t)
-;; 	    (if (window-splittable-p (get-buffer-window))
-;; 		  (setq new-win (split-window-vertically))
-;; 	      (setq new-win (split-window (get-largest-window))))
-;; 	  (setq new-win (get-lru-window)))
-;; 	(set-window-buffer new-win buf)
-;; 	new-win)))
-
-;;(setq display-buffer-function 'display-buffer-fn)
-
-(setq split-width-threshold nil
-      split-window-preferred-function 'split-window-sensibly)
+(provide 'rc-looknfeel)
+;;; rc-looknfeel.el ends here

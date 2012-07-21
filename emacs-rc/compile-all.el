@@ -5,7 +5,6 @@
 (load-file "helpers.el")
 
 (add-subdirs-to-load-path "~/elisp")
-(add-subdirs-to-load-path "~/emacs/emacs-rc/extensions")
 
 (defun compile-rc-files (rc-dir)
   (let ((categories 

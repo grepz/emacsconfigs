@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [19.45:34 Май 16 2010]
+;; Modified: [08.59:18 Июль 21 2012]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -36,9 +36,6 @@
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
 (global-set-key [f9] 'term)
-;;(custom-set-variables
-;; '(term-default-fg-color "white")
-;; '(term-default-bg-color "black"))
 
 (require 'tar-mode)
 
@@ -53,52 +50,10 @@
 ;; Restructured text, an easy to use and handfull util for editing simple text
 (require 'rst)
 
-;; Bookmarks
-(require 'bookmark)
-(require 'bookmark+)
-
-;; Debian stuff
-(autoload 'wajig "wajig"
-  "Create a *wajig* buffer." t)
-
-;;(load-library "~/elisp/apt/apt-mode")
-
-;; Top mode
-;;(require 'top-mode)
-;;(load-library "~/elisp/top-mode")
-
-;; crontab
-;;(load-library "~/elisp/crontab-mode")
-;;(require 'crontab-mode)
-;;(add-to-list 'auto-mode-alist '("\\.cron\\(tab\\)?\\'" . crontab-mode))
-;;(add-to-list 'auto-mode-alist '("cron\\(tab\\)?\\."    . crontab-mode))
-
-;; Spook with your mail
-(require 'spook)
-
-;; Highlight current line
-;;(global-hl-line-mode 1)
-
-;; Elscreen
-;;(load "elscreen" "ElScreen" t)
-
 ;; Command-line menu
 (require 'lacarte)
 (global-set-key [f10]   'lacarte-execute-menu-command)
 
-
-;; Mailcrypt
-
-(add-to-list 'load-path "~/elisp/mailcrypt")
-
-(require 'mailcrypt)
-
-(mc-setversion "gpg")
-(autoload 'mc-install-write-mode "mailcrypt" nil t)
-(autoload 'mc-install-read-mode "mailcrypt" nil t)
-(add-hook 'mail-mode-hook 'mc-install-write-mode)
-
 ;; Somewhat more advanced fill paragraph mode for emacs
-
 (require 'filladapt)
 (setq-default filladapt-mode t)

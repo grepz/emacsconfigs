@@ -17,7 +17,6 @@
 (load "~/emacs/emacs-rc/helpers")
 
 (add-subdirs-to-load-path "~/elisp")
-(add-subdirs-to-load-path "~/emacs/emacs-rc/extensions")
 
 (require 'usage-memo)
 (umemo-initialize)
@@ -26,7 +25,6 @@
 (load-custom-rc-files "~/emacs/emacs-rc/looknfeel")
 (load-custom-rc-files "~/emacs/emacs-rc/devel")
 (load-custom-rc-files "~/emacs/emacs-rc/network")
-(load-custom-rc-files "~/emacs/emacs-rc/media")
 (load-custom-rc-files "~/emacs/emacs-rc/other")
 
 ;; Must be last to load

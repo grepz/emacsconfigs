@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-03:27 Июль 19 2008]
-;; Modified: [12.08:08 Июль 21 2008]
+;; Modified: [21.42:05 Июль 21 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -16,17 +16,18 @@
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 
-(defvar orgplace "~/emacs/etc/orgmode/")
+;;(defvar *orgplace* "~/emacs/etc/orgmode/")
+
 (setq org-log-done '(done))
 
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
 (custom-set-variables
- '(org-agenda-files (list "~/emacs/etc/orgmode/devel.org"
-			  "~/emacs/etc/orgmode/dates.org"
-			  "~/emacs/etc/orgmode/health.org"
-			  "~/emacs/etc/orgmode/purchases.org"))
- '(org-default-notes-file "~/emacs/etc/orgmode/notes.org")
+ '(org-directory "~/emacs/etc/orgmode/")
+ '(org-mobile-directory "~/emacs/etc/orgmode/mobile")
+ '(org-mobile-inbox-for-pull "~/emacs/etc/orgmode/mobile/from-mobile.org")
+ '(org-agenda-files (list "~/emacs/etc/orgmode/work.org"))
+ '(org-default-notes-file "~/emacs/etc/orgmode/all.org")
  '(org-agenda-ndays 7)
  '(org-deadline-warning-days 14)
  '(org-agenda-show-all-dates t)
@@ -36,9 +37,6 @@
  '(org-reverse-note-order t)
  '(org-fast-tag-selection-single-key (quote expert))
  '(org-remember-store-without-prompt t)
- '(org-remember-templates
-   (quote ((116 "* TODO %?\n  %u" "~/emacs/etc/orgmode/todo.org" "Tasks")
-           (110 "* %u %?" "~/emacs/etc/orgmode/notes.org" "Notes"))))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler)))
  '(org-agenda-custom-commands

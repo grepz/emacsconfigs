@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16.12:28 Июль 19 2008]
-;; Modified: [16.48:37 Май 27 2009]
+;; Modified: [03.05:39 Июнь 10 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -8,7 +8,7 @@
 ;; License: 
 
 (defvar myself "Stanislav M. Ivankin")
-(defvar myemail "stas@concat.info")
+(defvar myemail "lessgrep@gmail.com")
 (defvar my-coding-system "utf-8")
 
 ;; TODO: If we cant guess file type, try to guess

@@ -1,13 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [20.57:59 Октябрь 15 2010]
+;; Modified: [21.37:53 Июль 21 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
 
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m/")
+(add-to-list 'load-path "~/elisp/emacs-w3m/")
 
 (custom-set-variables
  '(w3m-coding-system           'utf-8)
@@ -30,8 +30,6 @@
 (require 'w3m-load)
 (require 'w3m)
 (require 'w3m-ccl)
-;; Make mail clients happy with fucking html mail
-(require 'mime-w3m)
 
 (autoload 'w3m-antenna "w3m-antenna" "Report changes of web sites." t)
 
@@ -65,7 +63,3 @@
 	  (interactive "Save to: ")
 	  (cd dir)
 	  (start-process "curl" "*curl*" "curl.exe" "-O" "-s" (w3m-anchor)))))
-
-;; (defadvice url-cookie-host-can-set-p (before reddit-cookie-fix 'activate)
-;;     (and (string= (ad-get-arg 0) "www.reddit.com")
-;; 	 (string= (ad-get-arg 1) "reddit.com"))) 

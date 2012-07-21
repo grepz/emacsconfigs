@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22-55:36 Июль 19 2008]
-;; Modified: [16-32:06 Июль 20 2008]
+;; Modified: [09.03:39 Июль 21 2012]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -8,8 +8,8 @@
 ;; License: 
 
 ;;;; Notes:
-;; 1. wdired-change-to-wdired-mode, then rename files, simple and fast.
-;; Oh, and if to use keyboard macroses {C-x ( ; C-x )}, it is really great! :)
+;; wdired-change-to-wdired-mode, then rename files, simple and fast.
+;; {C-x ( ; C-x )} macro with dired
 ;; C-x C-j - dired jump(return from editable file for e.g.
 ;; M-! run command
 
@@ -30,6 +30,8 @@
 
 (define-key dired-mode-map [return] 'dired-find-alternate-file)
 (define-key dired-mode-map [(a)] 'dired-advertised-find-file)
+
+(define-key global-map [(control x) (control j)]  'dired-jump)
 
 (autoload 'thumbs "thumbs" "Preview images in a directory." t)
 
