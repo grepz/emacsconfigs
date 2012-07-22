@@ -25,7 +25,9 @@
 ;;; Code:
 
 ;; Line numbers
-(require 'linum)
+
+(add-to-list 'load-path "/home/esgal/.emacs.d/elpa/nlinum-1.0/")
+(load "~/.emacs.d/elpa/nlinum-1.0/nlinum")
 ;; Emacs tags
 ;;(require 'etags)
 
@@ -134,6 +136,9 @@
 
 (require 'magit)
 (autoload 'magit-status "magit" nil t)
+
+(require 'usage-memo)
+(umemo-initialize)
 
 (provide 'rc-general)
 ;;; rc-general.el ends here

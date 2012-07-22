@@ -49,7 +49,7 @@
 ;;       (c-set-offset 'member-init-intro '++)
        (setq show-trailing-whitespace t)
        (setq indent-tabs-mode nil)
-       (linum-mode 1)
+       (nlinum-mode 1)
        (c-toggle-auto-hungry-state 1)
 ;;       (abbrev-mode 1)
        (auto-fill-mode 1)
@@ -102,7 +102,7 @@
 
 (add-hook 'lisp-mode-hook
 	  '(lambda ()
-	     (linum-mode 1)
+	     (nlinum-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
 	     (paredit-mode)
@@ -111,7 +111,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
-	     (linum-mode 1)
+	     (nlinum-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)))
 
@@ -164,7 +164,7 @@
 	  (lambda ()
 	    (local-set-key (kbd "C-h f") 'cperl-perldoc)
 	    (local-set-key [return] 'newline-and-indent)
-	    (linum-mode 1)
+	    (nlinum-mode 1)
 	    (flymake-mode 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -182,15 +182,14 @@
   (local-set-key [return] 'newline-and-indent)
   (local-set-key (kbd "\C-c#") 'comment-region)
   (eldoc-mode 1)
-  (linum-mode 1))
+  (nlinum-mode 1))
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;;;;;;;;;;;;;;
 ;; Sh/Bash  ;;
 
-(add-hook 'sh-mode-hook '(lambda ()
-			   (linum-mode 1)))
+(add-hook 'sh-mode-hook '(lambda () (nlinum-mode 1)))
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here
