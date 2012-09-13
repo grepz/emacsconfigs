@@ -15,8 +15,6 @@
 
 (add-subdirs-to-load-path "~/elisp")
 
-(require 'package)
-
 (load-custom-rc-files "~/emacs/emacs-rc/system")
 (load-custom-rc-files "~/emacs/emacs-rc/looknfeel")
 (load-custom-rc-files "~/emacs/emacs-rc/devel")

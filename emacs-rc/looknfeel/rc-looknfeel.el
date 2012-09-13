@@ -104,7 +104,15 @@
 			(name . "^\\*compilation")
 			(name . "^\\*semantic")))
 	 ("Build" (or (mode . cmake-mode)
-		      (mode . makefile-mode))))))
+		      (mode . makefile-mode)
+		      (mode . makefile-gmake-mode)
+		      (mode . kconfig-mode)
+		      (mode . ld-script-mode)))
+	 ("Assembler" (mode . asm-mode))
+	 ("Scheme"    (mode . scheme-mode))
+	 ("OrgMode"   (mode . org-mode))
+	 ("Python"    (or (mode . python-mode)
+			  (name . "^\\*Python\\*$"))))))
 
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
