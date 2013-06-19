@@ -1,8 +1,9 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22-55:36 Май 19 2008]
-;; Modified: [17.11:32 Март 15 2010]
+;; Modified: [23.21:58 Июнь 19 2013]
 ;; Description:
-;;  The idea of using muse as a site backend and some code was taken from Alex Ott
+;;  The idea of using muse as a site backend and some code was taken
+;;  from Alex Ott
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: muse, emacs, elisp
@@ -64,12 +65,18 @@ if files has some private data, clean it first by hand"
 
 (defun generate-concat.info-menu ()
   (let* ((current-muse-file (muse-current-file))
-	 (link-path (replace-regexp-in-string "\\.muse" ".html" current-muse-file))
-	 (dir (if (> (length (file-name-directory (muse-wiki-resolve-project-page (muse-project)))) 2)
+	 (link-path
+	  (replace-regexp-in-string "\\.muse" ".html" current-muse-file))
+	 (dir (if (> (length
+		      (file-name-directory
+		       (muse-wiki-resolve-project-page (muse-project)))) 2)
 		  "../"
 		"")))
     (apply #'concat
-	   (mapcar #'(lambda (x) (concat "<li><a href=\"" dir (car x) "\">" (cdr x) "</a></li>"))
+	   (mapcar #'(lambda (x) (concat
+			     "<li><a href=\""
+			     dir (car x) "\">"
+			     (cdr x) "</a></li>"))
 		   concat.info-muse-menu))))
 
 (add-to-list 'auto-mode-alist '("\\.muse$" . muse-mode))
@@ -81,8 +88,9 @@ if files has some private data, clean it first by hand"
  '(muse-mode-auto-p nil)
  '(muse-wiki-allow-nonexistent-wikiword nil)
  '(muse-wiki-use-wikiword nil)
- '(muse-ignored-extensions (quote ("bz2" "gz" "[Zz]" "rej" "orig" "png" "hgignore" "gif"
-				   "css" "jpg" "html" "sh" "lftp" "pdf"))))
+ '(muse-ignored-extensions
+   (quote ("bz2" "gz" "[Zz]" "rej" "orig" "png" "hgignore" "gif"
+	   "css" "jpg" "html" "sh" "lftp" "pdf"))))
 
 (add-hook 'muse-mode-hook 'my-muse-mode-hook)
 
@@ -90,10 +98,12 @@ if files has some private data, clean it first by hand"
                    :header "~/Projects/concat.info/muse/header.tmpl"
                    :footer "~/Projects/concat.info/muse/footer.tmpl")
 
-(setq muse-project-alist `(("muse-concat-info"
-			    (,@(muse-project-alist-dirs  "~/Projects/concat.info/muse/") :default "index")
-			    ,@(muse-project-alist-styles "~/Projects/concat.info/muse/"
-							 "~/Projects/concat.info/muse/"
-							 "concat-info-muse-html"))))
+(setq muse-project-alist
+      `(("muse-concat-info"
+	 (,@(muse-project-alist-dirs
+	     "~/Projects/concat.info/muse/") :default "index")
+	 ,@(muse-project-alist-styles "~/Projects/concat.info/muse/"
+				      "~/Projects/concat.info/muse/"
+				      "concat-info-muse-html"))))
 
 (require 'thumb-page)

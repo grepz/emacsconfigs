@@ -1,15 +1,15 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16.12:28 Июль 19 2008]
-;; Modified: [03.05:39 Июнь 10 2012]
+;; Modified: [23.18:51 Июнь 19 2013]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
 ;; License: 
 
-(defvar myself "Stanislav M. Ivankin")
-(defvar myemail "lessgrep@gmail.com")
-(defvar my-coding-system "utf-8")
+(defvar *myself* "Stanislav M. Ivankin")
+(defvar *myemail* "lessgrep@gmail.com")
+(defvar *my-coding-system* "utf-8")
 
 ;; TODO: If we cant guess file type, try to guess
 ;; it from activated mode, then prompt user
@@ -73,13 +73,13 @@
 	   (when (looking-at "#!")
 	     (goto-line 2))
 	   (let ((comment (cadr infoheader)))
-	     (insert (concat comment (car infoheader) " -*- coding: " my-coding-system " -*-" "\n"
+	     (insert (concat comment (car infoheader) " -*- coding: " *my-coding-system* " -*-" "\n"
 			     comment "Created: ["
 			     (format-time-string "%H.%M:%S %B %d %Y" (current-time)) "]\n"
 			     comment "Modified: [---]\n"
 			     comment "Description: \n"
-			     comment "Author: " myself "\n"
-			     comment "Email: " myemail "\n"
+			     comment "Author: " *myself* "\n"
+			     comment "Email: " *myemail* "\n"
 			     comment "Tags: \n"
 			     comment "License: \n\n")))))))))
 
