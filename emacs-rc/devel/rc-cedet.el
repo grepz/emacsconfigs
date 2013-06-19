@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [00.43:47 Июль 21 2012]
+;; Modified: [15.18:03 Апрель 19 2013]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -9,7 +9,7 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/elisp/cedet")
+;;(add-to-list 'load-path "~/elisp/cedet")
 ;;;;(setq semantic-load-turn-everything-on t)
 ;;(load-file "~/elisp/cedet/common/cedet.el")
 
@@ -28,7 +28,7 @@
 (require 'semantic-sb nil t)
 (require 'semanticdb nil t)
 
-(semantic-load-enable-gaudy-code-helpers)
+;;(semantic-load-enable-gaudy-code-helpers)
 
 ;; smart complitions
 ;;(require 'semantic-ia)

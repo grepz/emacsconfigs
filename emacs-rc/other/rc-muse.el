@@ -31,11 +31,11 @@
   "Files to publish with muse project")
 
 (files-listing-action
- "/home/esgal/emacs/emacs-rc/"
+ "~/emacs/emacs-rc/"
  #'(lambda (x)
      (add-to-list 'my-muse-publish-files x)) t "\\.elc$")
 
-(defvar my-muse-protected-files '("/home/esgal/emacs/emacs-rc/passwords.el")
+(defvar my-muse-protected-files '("~/emacs/emacs-rc/passwords.el")
   "Files that needs to be edited before publishing")
 
 (defun my-muse-mode-hook ()

@@ -14,7 +14,7 @@
 
 (setq tramp-default-method "scp"
       tramp-default-user "root"
-      tramp-auto-save-directory "/home/esgal/emacs/tmp/tramp-autosave")
+      tramp-auto-save-directory "~/emacs/tmp/tramp-autosave")
 
 (defvar find-file-root-prefix
   (if (featurep 'xemacs)

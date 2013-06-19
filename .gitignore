@@ -1,7 +1,9 @@
-/emacs-rc/passwords.el
-/emacs-rc/passwords.el.gpg
+/emacs-rc/passwords\.el
+/emacs-rc/passwords\.el\.gpg
 /etc/
 /share/
 /emacsconfigs/
 /tmp/
-*.elc
+*\.elc
+*\.*~
+wget-log

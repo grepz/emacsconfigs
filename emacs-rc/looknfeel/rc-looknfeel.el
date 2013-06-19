@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2012  Stanislav M. Ivankin
 
-;; Author: Stanislav M. Ivankin <lessgrep@gmail.conf>
+;; Author: Stanislav M. Ivankin <lessgrep@gmail.com>
 ;; Keywords: 
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode 0)
 
-(setq frame-title-format "esgal@eternal")
+(setq frame-title-format "grepz@eternal")
 
 (custom-set-variables
  '(display-time-24hr-format t)
@@ -111,6 +111,8 @@
 	 ("Assembler" (mode . asm-mode))
 	 ("Scheme"    (mode . scheme-mode))
 	 ("OrgMode"   (mode . org-mode))
+	 ("Java"      (or (mode . java-mode)
+			  (name . "\\.java$")))
 	 ("Python"    (or (mode . python-mode)
 			  (name . "^\\*Python\\*$"))))))
 
@@ -122,10 +124,10 @@
 
 (if (eq window-system 'x)
     (progn
-      (load-theme 'deeper-blue t)
+      (load-theme 'manoj-dark t)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas 11")
+	  (set-frame-font "consolas 10")
 	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")

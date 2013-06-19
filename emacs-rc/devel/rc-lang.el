@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2012  
 
-;; Author:  <esgal@eternote>
+;; Author:  <grepz@eternote>
 ;; Keywords: 
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -46,18 +46,15 @@
 (setq require-final-newline t)
 
 (defun my-c-mode-common-hook ()
-;;       (c-set-offset 'member-init-intro '++)
-       (setq show-trailing-whitespace t)
-       (setq indent-tabs-mode nil)
-       (linum-mode 1)
-       (c-toggle-auto-hungry-state 1)
-;;       (abbrev-mode 1)
-       (auto-fill-mode 1)
-       (cwarn-mode 1)
-       (local-set-key [delete] 'delete-char)
-       (local-set-key [return] 'newline-and-indent)
-       (local-set-key (kbd "s-g") 'gdb-restore-windows)
-       (local-set-key "\C-hf" 'woman))
+  (setq indent-tabs-mode nil)
+  (linum-mode 1)
+  (c-toggle-auto-hungry-state 1)
+  (auto-fill-mode 1)
+  (cwarn-mode 1)
+  (local-set-key [delete] 'delete-char)
+  (local-set-key [return] 'newline-and-indent)
+  (local-set-key (kbd "s-g") 'gdb-restore-windows)
+  (local-set-key "\C-hf" 'woman))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
@@ -65,9 +62,7 @@
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.6.7/emacs/")
-
-(load "/usr/lib/erlang/lib/tools-2.6.7/emacs/erlang-start.el")
+(load "/usr/share/emacs24/site-lisp/erlang/erlang-start.elc")
 
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
@@ -105,8 +100,7 @@
 	     (linum-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
-	     (paredit-mode)
-	     (setq show-trailing-whitespace t)))
+	     (paredit-mode)))
 ;;	     (turn-on-redshank-mode)))
 
 (add-hook 'emacs-lisp-mode-hook

@@ -86,32 +86,31 @@
   (add-fontlocked-keywords mode warn-keywords 'my-warn-face)
   (add-fontlocked-keywords mode notice-keywords 'my-notice-face))
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; 80 characters long ;;
+;;;;;;;;;;;;;;;;
+;; whitespace ;;
 
-(require 'highlight-80+)
+(require 'whitespace)
 
-(dolist (hook '(python-mode-hook
-		emacs-lisp-mode-hook
-		c-mode-common-hook 
-	        tuareg-mode-hook))
-  (add-hook hook 'highlight-80+-mode))
+(setq whitespace-style
+      '(face empty lines-tail lines trailing))
+
+(global-whitespace-mode 1)
 
 ;;;;;;;;;;;
 ;; Paren ;;
 
 (show-paren-mode 1)
-
-(set-face-background 'show-paren-match-face "#BBBBBB")
-(set-face-attribute 'show-paren-match-face nil 
+;;BBBBBB
+(set-face-background 'show-paren-match-face "#00BB00")
+(set-face-attribute 'show-paren-match-face nil
 		    :weight 'bold :underline nil :overline nil
 		    :slant 'normal)
-(set-face-foreground 'show-paren-mismatch-face "red")
-(set-face-attribute 'show-paren-mismatch-face nil 
+(set-face-foreground 'show-paren-mismatch-face "#BB0000")
+(set-face-attribute 'show-paren-mismatch-face nil
                     :weight 'bold :underline nil :overline nil
 		    :slant 'normal)
 ;;;;;;;;;;;;;;;;
-;; Prerrt lambda's ;;
+;; Pretty lambda's ;;
 
 (require 'pretty-lambdada)
 (pretty-lambda-for-modes)
