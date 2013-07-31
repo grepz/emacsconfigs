@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [22-55:36 Май 19 2008]
-;; Modified: [23.21:58 Июнь 19 2013]
+;; Modified: [21.54:21 Июль 31 2013]
 ;; Description:
 ;;  The idea of using muse as a site backend and some code was taken
 ;;  from Alex Ott
@@ -106,4 +106,4 @@ if files has some private data, clean it first by hand"
 				      "~/Projects/concat.info/muse/"
 				      "concat-info-muse-html"))))
 
-(require 'thumb-page)
+;;(require 'thumb-page)

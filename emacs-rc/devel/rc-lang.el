@@ -86,11 +86,12 @@
 (require 'slime)
 (slime-setup)
 
-(require 'cldoc)
+;;(require 'cldoc)
+(add-to-list 'load-path "~/elisp/paredit")
 (require 'paredit)
 
+(add-to-list 'load-path "~/elisp/redshank")
 (require 'redshank-loader)
-
 (eval-after-load "redshank-loader"
   '(redshank-setup '(lisp-mode-hook
 		     slime-repl-mode-hook) t))
@@ -137,7 +138,7 @@
   t)
 
 ;; Display lisp pitfalls on SLIME startup
-(require 'slime-cl-pitfalls)
+;;(require 'slime-cl-pitfalls)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Perl
@@ -165,20 +166,20 @@
 ;; Python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'python-mode)
+(require 'python)
 
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-				   interpreter-mode-alist))
-(autoload 'python-mode "python-mode" "Python editing mode." t)
+;; (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;; (setq interpreter-mode-alist (cons '("python" . python-mode)
+;; 				   interpreter-mode-alist))
+;; (autoload 'python-mode "python-mode" "Python editing mode." t)
 
-(defun my-python-mode-hook ()
-  (local-set-key [return] 'newline-and-indent)
-  (local-set-key (kbd "\C-c#") 'comment-region)
-  (eldoc-mode 1)
-  (linum-mode 1))
+;; (defun my-python-mode-hook ()
+;;   (local-set-key [return] 'newline-and-indent)
+;;   (local-set-key (kbd "\C-c#") 'comment-region)
+;;   (eldoc-mode 1)
+;;   (linum-mode 1))
 
-(add-hook 'python-mode-hook 'my-python-mode-hook)
+;; (add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;;;;;;;;;;;;;;
 ;; Sh/Bash  ;;
@@ -187,7 +188,7 @@
 
 ;;;;;;;;;;;;;;
 ;; KConfig  ;;
-(require 'kconfig-mode)
+;;(require 'kconfig-mode)
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [21-00:48 Март 13 2008]
-;; Modified: [08.59:18 Июль 21 2012]
+;; Modified: [21.45:18 Июль 31 2013]
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
 ;; Tags: 
@@ -51,8 +51,8 @@
 (require 'rst)
 
 ;; Command-line menu
-(require 'lacarte)
-(global-set-key [f10]   'lacarte-execute-menu-command)
+;;(require 'lacarte)
+;;(global-set-key [f10]   'lacarte-execute-menu-command)
 
 ;; Somewhat more advanced fill paragraph mode for emacs
 (require 'filladapt)

@@ -135,11 +135,11 @@
 (require 'magit)
 (autoload 'magit-status "magit" nil t)
 
-(require 'usage-memo)
-(umemo-initialize)
+;;(require 'usage-memo)
+;;(umemo-initialize)
 
-(require 'android-mode)
-(setq android-mode-sdk-dir "~/Projects/android/android-sdk-linux")
+;;(require 'android-mode)
+;;(setq android-mode-sdk-dir "~/Projects/android/android-sdk-linux")
 
 (provide 'rc-general)
 ;;; rc-general.el ends here

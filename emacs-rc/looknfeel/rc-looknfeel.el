@@ -70,7 +70,7 @@
 (nconc (list "*compilation" "*semantic" "*Possible Completions" "*Completions"
 	     "*Backtrace" "*Messages*") iswitchb-buffer-ignore)
 ;; buff-menu+
-(require 'buff-menu+)
+;;(require 'buff-menu+)
 
 (require 'ibuffer)
 
@@ -106,7 +106,7 @@
 	 ("Build" (or (mode . cmake-mode)
 		      (mode . makefile-mode)
 		      (mode . makefile-gmake-mode)
-		      (mode . kconfig-mode)
+;;		      (mode . kconfig-mode)
 		      (mode . ld-script-mode)))
 	 ("Assembler" (mode . asm-mode))
 	 ("Scheme"    (mode . scheme-mode))
@@ -127,7 +127,7 @@
       (load-theme 'manoj-dark t)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas 10")
+	  (set-frame-font "consolas 17")
 	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")
