@@ -127,7 +127,7 @@
       (load-theme 'manoj-dark t)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas 17")
+	  (set-frame-font "consolas 14")
 	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")

@@ -27,7 +27,7 @@
 ;; Starting emacs server, so we can connect to it with commands: emacsclient -t/-c
 (server-start)
 
-(message "Emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+(message "Emacs loaded in %ds" (destructuring-bind (hi lo ms ps) (current-time)
 				 (- (+ hi lo) (+ (first *emacs-load-start*)
 						 (second *emacs-load-start*)))))
 

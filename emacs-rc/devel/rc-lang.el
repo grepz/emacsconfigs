@@ -72,6 +72,7 @@
 (add-to-list 'exec-path "/usr/lib/erlang/bin")
 
 (defun my-erlang-mode-hook ()
+  (linum-mode 1)
   ;; add Erlang functions to an imenu menu
   (imenu-add-to-menubar "imenu")
   ;; customize keys
@@ -83,8 +84,8 @@
 ;; Lisp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'slime)
-(slime-setup)
+;;(require 'slime)
+;;(slime-setup)
 
 ;;(require 'cldoc)
 (add-to-list 'load-path "~/elisp/paredit")
@@ -157,6 +158,7 @@
 
 (add-hook 'cperl-mode-hook
 	  (lambda ()
+	    (linum-mode 1)
 	    (local-set-key (kbd "C-h f") 'cperl-perldoc)
 	    (local-set-key [return] 'newline-and-indent)
 	    (linum-mode 1)
@@ -173,13 +175,11 @@
 ;; 				   interpreter-mode-alist))
 ;; (autoload 'python-mode "python-mode" "Python editing mode." t)
 
-;; (defun my-python-mode-hook ()
-;;   (local-set-key [return] 'newline-and-indent)
-;;   (local-set-key (kbd "\C-c#") 'comment-region)
-;;   (eldoc-mode 1)
-;;   (linum-mode 1))
+(defun my-python-mode-hook ()
+  (local-set-key [return] 'newline-and-indent)
+  (linum-mode 1))
 
-;; (add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;;;;;;;;;;;;;;
 ;; Sh/Bash  ;;
