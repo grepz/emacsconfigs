@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [16.12:28 Июль 19 2008]
-;; Modified: [23.18:51 Июнь 19 2013]
+;; Modified: [13.16:30 Январь 03 2014]
 ;; Description: 
 ;; Author: Stanislav M. Ivankin
 ;; Email: stas@concat.info
@@ -37,7 +37,7 @@
     (list (concat (car infoheader) " source code header") (cadr infoheader))))
 
 (defun update-my-info-header ()
-  "If there is info header, changes its timestamp, when file is saved"
+  "If there is info header, change its timestamp, when file is saved"
   (interactive)
   (let ((infoheader (my-define-file-type)))
     (unless (null infoheader)
@@ -62,26 +62,27 @@
 (defun create-my-info-header ()
   "Creates info header for source code file"
   (interactive)
-  (let ((exists nil) (infoheader (my-define-file-type)))
+  (let ((exists nil) (infoheader (my-define-file-type))
+	(license (completing-read "License: " '("GPLv2" "GPLv3") nil))
+	(tags (completing-read "Tags: " nil nil)))
     (when infoheader
       (save-r/e/md
        (goto-char (point-min))
        (if (search-forward (car infoheader) nil t)
 	   (message "Header already exists.")
-	 (when (equal "y" (completing-read "Create info header?: " nil nil nil))
-	   (goto-char (point-min))
-	   (when (looking-at "#!")
-	     (goto-line 2))
-	   (let ((comment (cadr infoheader)))
-	     (insert (concat comment (car infoheader) " -*- coding: " *my-coding-system* " -*-" "\n"
-			     comment "Created: ["
-			     (format-time-string "%H.%M:%S %B %d %Y" (current-time)) "]\n"
-			     comment "Modified: [---]\n"
-			     comment "Description: \n"
-			     comment "Author: " *myself* "\n"
-			     comment "Email: " *myemail* "\n"
-			     comment "Tags: \n"
-			     comment "License: \n\n")))))))))
+	 (progn (goto-char (point-min))
+		(when (looking-at "#!")
+		  (goto-line 2))
+		(let ((comment (cadr infoheader)))
+		  (insert (concat comment (car infoheader) " -*- coding: " *my-coding-system* " -*-" "\n"
+				  comment "Created: ["
+				  (format-time-string "%H.%M:%S %B %d %Y" (current-time)) "]\n"
+				  comment "Modified: [---]\n"
+				  comment "Description: \n"
+				  comment "Author: " *myself* "\n"
+				  comment "Email: " *myemail* "\n"
+				  comment "Tags: " tags "\n"
+				  comment "License: " license "\n\n")))))))))
 
 
 (add-hook 'before-save-hook 'update-my-info-header)

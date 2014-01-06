@@ -27,10 +27,7 @@
 ;; Line numbers
 (require 'linum)
 
-;; Emacs tags
-;;(require 'etags)
-
-(custom-set-variables 
+(custom-set-variables
  '(compilation-scroll-output 1)
  '(compilation-window-height 20)
  '(fill-column 78)
@@ -70,8 +67,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Fontlocking keywords ;;
 
-;; Make special keywords colorfull, just like in vim.
-;; TODO: User friendly interface
+;; Make special keywords colored
 
 (eval-and-compile
   (defvar warn-keywords   '("FIXME" "WARN" "ERR" "BUG"))
@@ -100,7 +96,7 @@
 ;; Paren ;;
 
 (show-paren-mode 1)
-;;BBBBBB
+
 (set-face-background 'show-paren-match-face "#00BB00")
 (set-face-attribute 'show-paren-match-face nil
 		    :weight 'bold :underline nil :overline nil
@@ -134,12 +130,6 @@
 
 (require 'magit)
 (autoload 'magit-status "magit" nil t)
-
-;;(require 'usage-memo)
-;;(umemo-initialize)
-
-;;(require 'android-mode)
-;;(setq android-mode-sdk-dir "~/Projects/android/android-sdk-linux")
 
 (provide 'rc-general)
 ;;; rc-general.el ends here
