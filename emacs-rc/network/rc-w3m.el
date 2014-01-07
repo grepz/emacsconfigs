@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [12-37:32 Июль 20 2008]
-;; Modified: [12.58:16 Январь 03 2014]
-;; Description: 
+;; Created: [14.39:59 Январь 07 2014]
+;; Modified: [14.40:00 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,w3m
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (add-to-list 'load-path "~/elisp/emacs-w3m/")
 

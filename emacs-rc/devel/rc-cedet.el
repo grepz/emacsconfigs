@@ -1,13 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [16-06:15 Июль 19 2008]
-;; Modified: [18.11:00 Январь 02 2014]
-;; Description: 
+;; Created: [14.38:14 Январь 07 2014]
+;; Modified: [14.38:15 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
-
-;;; Code:
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,cedet,devel
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (global-ede-mode t)
 (semantic-mode t)

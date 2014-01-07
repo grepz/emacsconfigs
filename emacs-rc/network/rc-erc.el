@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [12-32:17 Июль 20 2008]
-;; Modified: [18.55:27 Январь 16 2012]
-;; Description: 
+;; Created: [14.39:27 Январь 07 2014]
+;; Modified: [14.39:28 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,erc
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (require 'erc)
 (require 'erc-join)

@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [12-38:12 Июль 20 2008]
-;; Modified: [21.44:03 Июль 31 2013]
-;; Description: 
+;; Created: [14.39:43 Январь 07 2014]
+;; Modified: [14.39:44 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,jabber
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 ;;(add-to-list 'load-path "~/elisp/emacs-jabber")
 

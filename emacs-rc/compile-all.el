@@ -1,4 +1,13 @@
-;;; -*- Mode: Emacs-Lisp; Coding:utf-8 -*-
+;; Elisp source code header -*- coding: utf-8 -*-
+;; Created: [14.37:34 Январь 07 2014]
+;; Modified: [14.37:35 Январь 07 2014]
+;;  ---------------------------
+;; Author: Stanislav M. Ivankin
+;; Email: lessgrep@gmail.com
+;; Tags: emacs,elisp,make
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (require 'cl)
 

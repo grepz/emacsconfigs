@@ -1,10 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [21-00:48 Март 13 2008]
-;; Modified: [21.45:18 Июль 31 2013]
+;; Created: [14.40:17 Январь 07 2014]
+;; Modified: [14.40:18 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,utils
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (custom-set-variables
  '(mc-gpg-user-id "Stanislav M. Ivankin")

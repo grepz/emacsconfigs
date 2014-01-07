@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [13.04:54 Январь 03 2014]
-;; Modified: [13.04:57 Январь 03 2014]
-;; Description: 
+;; Created: [14.38:39 Январь 07 2014]
+;; Modified: [14.38:40 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
-;; Tags: 
-;; License: 
+;; Tags: elisp,emacs,devel
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OCaml
@@ -37,7 +39,8 @@
   (local-set-key [delete] 'delete-char)
   (local-set-key [return] 'newline-and-indent)
   (local-set-key (kbd "s-g") 'gdb-restore-windows)
-  (local-set-key "\C-hf" 'woman))
+  (local-set-key "\C-hf" 'woman)
+  (local-unset-key (kbd "C-c C-d")))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 

@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [16.12:28 Июль 19 2008]
-;; Modified: [13.16:30 Январь 03 2014]
-;; Description: 
+;; Created: [14.35:09 Январь 07 2014]
+;; Modified: [14.40:27 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,header
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (defvar *myself* "Stanislav M. Ivankin")
 (defvar *myemail* "lessgrep@gmail.com")
@@ -46,7 +48,8 @@
        (goto-char (point-min))
        (when (search-forward (car infoheader) nil t)
 	 (goto-line (+ (line-number-at-pos) 2))
-	 (when (looking-at (concat (cadr (my-define-file-type)) "Modified: \\["))
+	 (when (looking-at (concat (cadr (my-define-file-type))
+				   "Modified: \\["))
 	   (let ((start (+ (point)
 			   (+ (length (cadr (my-define-file-type)))
 			      (length "Modified: ["))))
@@ -56,7 +59,8 @@
 		 (progn
 		   (delete-region start (- (point) 1))
 		   (goto-char start)
-		   (insert (format-time-string "%H.%M:%S %B %d %Y" (current-time))))
+		   (insert (format-time-string "%H.%M:%S %B %d %Y"
+					       (current-time))))
 	       (message "rc-headers.el: Can't find closing ']' on modification time")))))))))
 
 (defun create-my-info-header ()
@@ -74,15 +78,19 @@
 		(when (looking-at "#!")
 		  (goto-line 2))
 		(let ((comment (cadr infoheader)))
-		  (insert (concat comment (car infoheader) " -*- coding: " *my-coding-system* " -*-" "\n"
+		  (insert (concat comment (car infoheader)
+				  " -*- coding: " *my-coding-system* " -*-" "\n"
 				  comment "Created: ["
-				  (format-time-string "%H.%M:%S %B %d %Y" (current-time)) "]\n"
+				  (format-time-string "%H.%M:%S %B %d %Y"
+						      (current-time)) "]\n"
 				  comment "Modified: [---]\n"
-				  comment "Description: \n"
+				  comment " ---------------------------\n"
 				  comment "Author: " *myself* "\n"
 				  comment "Email: " *myemail* "\n"
 				  comment "Tags: " tags "\n"
-				  comment "License: " license "\n\n")))))))))
+				  comment "License: " license "\n"
+				  comment " ---------------------------\n"
+				  comment "Description:\n\n")))))))))
 
 
 (add-hook 'before-save-hook 'update-my-info-header)

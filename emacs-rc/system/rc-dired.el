@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [22-55:36 Июль 19 2008]
-;; Modified: [09.03:39 Июль 21 2012]
-;; Description: 
+;; Created: [14.42:18 Январь 07 2014]
+;; Modified: [14.42:19 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,dired,search
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 ;;;; Notes:
 ;; wdired-change-to-wdired-mode, then rename files, simple and fast.

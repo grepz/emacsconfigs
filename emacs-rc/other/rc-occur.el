@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [18.24:34 Сентябрь 08 2008]
-;; Modified: [18.10:36 Январь 06 2014]
-;; Description: 
+;; Created: [14.41:33 Январь 07 2014]
+;; Modified: [14.41:34 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,search,devel
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (require 'color-moccur)
 

@@ -1,11 +1,13 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created:  [02-09:15 Февраль 21 2008]
-;; Modified: [21.39:13 Июль 21 2012]
-;; Description: 
+;; Created: [14.42:34 Январь 07 2014]
+;; Modified: [14.42:34 Январь 07 2014]
+;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
-;; Email: stas@concat.info
-;; Tags: 
-;; License: 
+;; Email: lessgrep@gmail.com
+;; Tags: elisp,emacs,ssh,admin,devel
+;; License: GPLv3
+;;  ---------------------------
+;; Description:
 
 (require 'tramp)
 (require 'tramp-cmds)
