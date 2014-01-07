@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [14.39:10 Январь 07 2014]
+;; Modified: [14.50:04 Январь 07 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -62,6 +62,9 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (setq-default ibuffer-show-empty-filter-groups nil)
+
+;; Why it hasnt been defvar'ed in ibuffer???
+(defvar ibuffer-saved-filter-groups)
 
 (setq ibuffer-saved-filter-groups
       '(("Custom"

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.39:27 Январь 07 2014]
-;; Modified: [14.39:28 Январь 07 2014]
+;; Modified: [14.51:52 Январь 07 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -38,8 +38,7 @@
 (defun erc-save-buffers-in-logs ()
   (interactive)
   (mapc (lambda (buf)
-	  (save-excursion
-	    (set-buffer buf)
+	  (with-current-buffer buf
 	    (erc-save-buffer-in-logs)))
 	(erc-buffer-filter (lambda() t))))
 
