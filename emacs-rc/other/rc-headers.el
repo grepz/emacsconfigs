@@ -1,13 +1,15 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.35:09 Январь 07 2014]
-;; Modified: [14.40:27 Январь 07 2014]
+;; Created: [19.28:59 Январь 08 2014]
+;; Modified: [19.29:33 Январь 08 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,header
+;; Tags: devel,emacs,elisp,header
 ;; License: GPLv3
 ;;  ---------------------------
 ;; Description:
+
+;; Code:
 
 (defvar *myself* "Stanislav M. Ivankin")
 (defvar *myemail* "lessgrep@gmail.com")
@@ -90,7 +92,8 @@
 				  comment "Tags: " tags "\n"
 				  comment "License: " license "\n"
 				  comment " ---------------------------\n"
-				  comment "Description:\n\n")))))))))
+				  comment "Description:\n\n"
+				  comment "Code:\n\n")))))))))
 
 
 (add-hook 'before-save-hook 'update-my-info-header)
