@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.40:17 Январь 07 2014]
-;; Modified: [14.40:18 Январь 07 2014]
+;; Modified: [19.26:50 Январь 08 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -60,3 +60,9 @@
 ;; Somewhat more advanced fill paragraph mode for emacs
 (require 'filladapt)
 (setq-default filladapt-mode t)
+
+;; Elpa package system for Emacs
+(require 'package)
+(setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa"     . "http://melpa.milkbox.net/packages/")))
