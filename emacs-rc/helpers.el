@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.39:00 Январь 07 2014]
-;; Modified: [14.39:01 Январь 07 2014]
+;; Modified: [01.04:55 Февраль 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -12,9 +12,9 @@
 (eval-when-compile
   (require 'cl))
 
-(defun filter (func lst) 
+(defun filter (func lst)
   (cond ((null lst)  '())
-	((funcall func (car lst)) 
+	((funcall func (car lst))
 	 (cons (car lst) (filter func (cdr lst))))
 	(t (filter func (cdr lst)))))
 
@@ -138,3 +138,8 @@ u  - underline"
 			    (unless (member x rc-filter) x))
 			(directory-files rc-dir t "^rc-[^/]+?\.el$")))
     (safe-load (subseq file 0 (position ?. file :from-end)))))
+
+(defun my-substr (str sublen)
+  (if (>= sublen (length str))
+      str
+    (concat (substring str 0 sublen) "...")))

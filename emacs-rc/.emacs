@@ -14,15 +14,15 @@
 (load "~/emacs/emacs-rc/helpers")
 
 (add-subdirs-to-load-path "~/elisp")
+(package-initialize)
+
+(safe-load "~/emacs/emacs-rc/passwords.el.gpg")
 
 (load-custom-rc-files "~/emacs/emacs-rc/system")
 (load-custom-rc-files "~/emacs/emacs-rc/looknfeel")
 (load-custom-rc-files "~/emacs/emacs-rc/devel")
 (load-custom-rc-files "~/emacs/emacs-rc/network")
 (load-custom-rc-files "~/emacs/emacs-rc/other")
-
-;; Must be last to load
-(safe-load "~/emacs/emacs-rc/passwords.el.gpg")
 
 ;; Starting emacs server, so we can connect to it with commands: emacsclient -t/-c
 (server-start)

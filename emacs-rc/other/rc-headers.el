@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [19.28:59 Январь 08 2014]
-;; Modified: [19.29:33 Январь 08 2014]
+;; Modified: [14.15:36 Январь 28 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -37,6 +37,8 @@
 		'("Shell" "## "))
 	       ((string-match "\\.pl$" buf)
 		'("Perl" "## "))
+	       ((string-match "\\.\\(erl\\|app\\)$" buf)
+		'("Erlang" "%% "))
 	       (t '("File" "## ")))))))
     (list (concat (car infoheader) " source code header") (cadr infoheader))))
 

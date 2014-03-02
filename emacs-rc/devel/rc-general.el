@@ -71,16 +71,19 @@
 
 (eval-and-compile
   (defvar warn-keywords   '("FIXME" "WARN" "ERR" "BUG"))
-  (defvar notice-keywords '("TODO" "XXX" "NOTE")))
+  (defvar notice-keywords '("XXX" "NOTE"))
+  (defvar todo-keywords   '("TODO")))
 
-(make-my-face 'my-warn-face "red" "white" t)
-(make-my-face 'my-notice-face "yellow" "black" t)
+(make-my-face 'my-warn-face   "red"    "white" t)
+(make-my-face 'my-notice-face "green"  "black" t)
+(make-my-face 'my-todo-face   "yellow" "black" t)
 
 (dolist (mode '(c-mode c++-mode cperl-mode sh-mode
 		slime-mode emacs-lisp-mode lisp-mode
 		tuareg-mode haskell-mode python-mode))
   (add-fontlocked-keywords mode warn-keywords 'my-warn-face)
-  (add-fontlocked-keywords mode notice-keywords 'my-notice-face))
+  (add-fontlocked-keywords mode notice-keywords 'my-notice-face)
+  (add-fontlocked-keywords mode todo-keywords 'my-todo-face))
 
 ;;;;;;;;;;;;;;;;
 ;; whitespace ;;
@@ -130,6 +133,14 @@
 
 (require 'magit)
 (autoload 'magit-status "magit" nil t)
+
+;; Turn on ANSI colors in make buffer
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (read-only-mode)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (read-only-mode))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (provide 'rc-general)
 ;;; rc-general.el ends here

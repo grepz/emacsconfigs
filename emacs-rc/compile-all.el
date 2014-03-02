@@ -14,6 +14,7 @@
 (load-file "helpers.el")
 
 (add-subdirs-to-load-path "~/elisp")
+(package-initialize)
 
 (defun compile-rc-files (rc-dir)
   (let ((categories 
