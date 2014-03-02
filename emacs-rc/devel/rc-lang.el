@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [23.03:17 Февраль 13 2014]
+;; Modified: [21.01:23 Март 02 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -171,6 +171,15 @@
 ;; Sh/Bash  ;;
 
 (add-hook 'sh-mode-hook '(lambda () (linum-mode 1)))
+
+;;;;;;;;;;;;;;
+;; Verilog  ;;
+
+(add-hook 'verilog-mode-hook
+	  '(lambda ()
+	     (linum-mode 1)
+	     (setq-default compilation-error-regexp-alist
+			   (mapcar 'cdr verilog-error-regexp-emacs-alist))))
 
 ;;;;;;;;;;;;;;
 ;; KConfig  ;;
