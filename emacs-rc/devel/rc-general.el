@@ -144,3 +144,10 @@
 
 (provide 'rc-general)
 ;;; rc-general.el ends here
+
+;; Notice
+
+(setq user-mail-address "lessgrep@gmail.com")
+(setq user-full-name "Stanislav M. Ivankin")
+
+(require 'autoinsert)

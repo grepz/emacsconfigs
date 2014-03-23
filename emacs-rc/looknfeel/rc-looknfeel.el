@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [20.50:03 Март 02 2014]
+;; Modified: [10.38:25 Март 06 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -103,8 +103,8 @@
 			  (name . "\\.java$")))
 	 ("Python"    (or (mode . python-mode)
 			  (name . "^\\*Python\\*$")))
-	 ("Verilog"   ((or (mode . verilog-mode)
-			   (name . "\\.v$")))))))
+	 ("Verilog"   (or (mode . verilog-mode)
+			  (name . "\\.v$"))))))
 
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
