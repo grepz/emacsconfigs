@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.41:49 Январь 07 2014]
-;; Modified: [14.41:49 Январь 07 2014]
+;; Modified: [20.56:29 Март 23 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -29,7 +29,7 @@
  '(org-mobile-directory "~/emacs/etc/orgmode/mobile")
  '(org-mobile-inbox-for-pull "~/emacs/etc/orgmode/mobile/from-mobile.org")
  '(org-agenda-files (list "~/emacs/etc/orgmode/work.org"))
- '(org-default-notes-file "~/emacs/etc/orgmode/all.org")
+ '(org-default-notes-file "~/emacs/etc/orgmode/bookmarks.org")
  '(org-agenda-ndays 7)
  '(org-deadline-warning-days 14)
  '(org-agenda-show-all-dates t)

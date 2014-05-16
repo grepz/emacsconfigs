@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [10.38:25 Март 06 2014]
+;; Modified: [16.46:41 Май 16 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -111,7 +111,6 @@
 	     (ibuffer-auto-mode 1)
 	     (ibuffer-switch-to-saved-filter-groups "Custom")))
 
-
 (if (eq window-system 'x)
     (progn
       (load-theme 'manoj-dark t)
@@ -122,6 +121,22 @@
   (progn
     (message "Terminal decorations")
     (load-theme 'tango-dark t)))
+
+;; Modeline
+
+;; Use icon for auto-fill mode
+(eval-after-load 'diminish-autoloads
+  '(eval-after-load 'simple
+     '(diminish 'auto-fill-function (concat " " [#xF036]))))
+
+;; Use the tags icon for `ggtags-mode'.
+(add-hook 'ggtags-mode-hook
+	  '(lambda ()
+	     (diminish 'ggtags-mode (concat " " [#xF02C]))))
+
+(add-hook 'slime-mode-hook
+	  '(lambda ()
+	     (diminish 'slime-mode (concat " " [#xF109]))))
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [21.01:23 Март 02 2014]
+;; Modified: [14.04:18 Май 15 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -34,6 +34,8 @@
   (setq indent-tabs-mode nil)
   (linum-mode 1)
   (c-toggle-auto-hungry-state 1)
+  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+    (ggtags-mode 1))
   (auto-fill-mode 1)
   (cwarn-mode 1)
   (local-set-key [delete] 'delete-char)
@@ -86,6 +88,7 @@
 (add-hook 'lisp-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
 	     (paredit-mode)))
@@ -94,6 +97,7 @@
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)))
 
