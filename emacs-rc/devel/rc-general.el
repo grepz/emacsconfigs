@@ -149,5 +149,3 @@
 
 (setq user-mail-address "lessgrep@gmail.com")
 (setq user-full-name "Stanislav M. Ivankin")
-
-(require 'autoinsert)
