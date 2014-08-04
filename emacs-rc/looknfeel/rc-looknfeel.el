@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [16.46:41 Май 16 2014]
+;; Modified: [00.35:33 Август 05 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -137,6 +137,10 @@
 (add-hook 'slime-mode-hook
 	  '(lambda ()
 	     (diminish 'slime-mode (concat " " [#xF109]))))
+
+;; Text scale
+(global-set-key (kbd "s-+") 'text-scale-increase)
+(global-set-key (kbd "s--") 'text-scale-decrease)
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here

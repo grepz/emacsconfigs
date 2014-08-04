@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [18.36:18 Август 02 2014]
+;; Modified: [01.00:00 Август 05 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -72,14 +72,10 @@
 ;; Lisp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;(require 'slime)
-;;(slime-setup)
+;; Turn on paredit mode when required
+(autoload 'paredit-mode "paredit" t)
 
-;;(require 'cldoc)
-(add-to-list 'load-path "~/elisp/paredit")
-(require 'paredit)
-
-(add-to-list 'load-path "~/elisp/redshank")
+;; Redshank mode
 (require 'redshank-loader)
 (eval-after-load "redshank-loader"
   '(redshank-setup '(lisp-mode-hook
@@ -92,7 +88,6 @@
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
 	     (paredit-mode)))
-;;	     (turn-on-redshank-mode)))
 
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
@@ -103,13 +98,12 @@
 
 ;; Slime for Lisp
 
-(add-to-list 'load-path "~/elisp/slime")
-
 (autoload 'slime "slime" t)
 
 (eval-after-load "slime"
   '(progn
      (message "-> slime loaded")
+     (require 'slime-autoloads)
      (setq slime-repl-history-size 1000
 	   slime-net-coding-system 'utf-8-unix
 	   ;; when nil - truncate lines
@@ -122,11 +116,11 @@
      (require 'slime-fuzzy)
      (slime-fuzzy-init)
      (slime-mode t)
-     (global-set-key (kbd "C-c s") 'slime-indent-and-complete-symbol)))
-
-(autoload 'paredit-mode "paredit"
-  "Minor mode for pseudo-structurally editing Lisp code."
-  t)
+     (global-set-key (kbd "C-c s") 'slime-indent-and-complete-symbol)
+     (require 'ac-slime)
+     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+     (slime-scratch)))
 
 ;; Display lisp pitfalls on SLIME startup
 ;;(require 'slime-cl-pitfalls)
@@ -166,11 +160,6 @@
 
 (require 'python)
 
-;; (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-;; (setq interpreter-mode-alist (cons '("python" . python-mode)
-;; 				   interpreter-mode-alist))
-;; (autoload 'python-mode "python-mode" "Python editing mode." t)
-
 (defun my-python-mode-hook ()
   (local-set-key [return] 'newline-and-indent)
   (linum-mode 1))
@@ -193,6 +182,7 @@
 
 ;;;;;;;;;;;;;;
 ;; KConfig  ;;
+
 ;;(require 'kconfig-mode)
 
 (provide 'rc-lang)
