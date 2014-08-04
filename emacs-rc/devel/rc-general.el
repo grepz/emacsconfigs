@@ -149,3 +149,11 @@
 
 (setq user-mail-address "lessgrep@gmail.com")
 (setq user-full-name "Stanislav M. Ivankin")
+
+;; Neotree
+
+(add-to-list 'load-path "~/elisp/neotree")
+
+(require 'neotree)
+
+(global-set-key [f8] 'neotree-toggle)

@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [14.04:18 Май 15 2014]
+;; Modified: [18.36:18 Август 02 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -130,6 +130,12 @@
 
 ;; Display lisp pitfalls on SLIME startup
 ;;(require 'slime-cl-pitfalls)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Scheme
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'geiser)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Perl

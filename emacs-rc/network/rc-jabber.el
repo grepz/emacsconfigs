@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.49:20 Январь 31 2014]
-;; Modified: [02.16:20 Февраль 07 2014]
+;; Modified: [12.40:39 Июль 01 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -31,7 +31,7 @@
    '(jabber-connection-ssl-program 'gnutls)
    '(starttls-extra-arguments '("--insecure"))
    '(jabber-lost-connection-hook 'my-connect-jabber)
-   '(jabber-username "stanislav.ivankin@sjaptech.ru")
+   '(jabber-username "stanislav.ivankin@saptech.ru")
    '(jabber-server "server.rpk-idea.ru"))
 
 (setq jabber-account-list `((,jabber-saptech-user
