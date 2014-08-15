@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.42:18 Январь 07 2014]
-;; Modified: [14.42:19 Январь 07 2014]
+;; Modified: [14.15:56 Август 15 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -12,14 +12,15 @@
 ;;;; Notes:
 ;; wdired-change-to-wdired-mode, then rename files, simple and fast.
 ;; {C-x ( ; C-x )} macro with dired
-;; C-x C-j - dired jump(return from editable file for e.g.
+;; C-x j - dired jump(return from editable file for e.g.
 ;; M-! run command
 
 (require 'dired)
 (require 'dired-x)
+(require 'dired+)
 
 (setq dired-omit-files
-      "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^RCS$\\|^\\.svn$\\|,v$")
+      "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")
 
 (add-hook 'dired-mode-hook
 	  (lambda ()
@@ -33,7 +34,8 @@
 (define-key dired-mode-map [return] 'dired-find-alternate-file)
 (define-key dired-mode-map [(a)] 'dired-advertised-find-file)
 
-(define-key global-map [(control x) (control j)]  'dired-jump)
+;; Open dired buffer, path set to current file directory
+(define-key global-map (kbd "C-x j") 'dired-jump)
 
 (autoload 'thumbs "thumbs" "Preview images in a directory." t)
 
