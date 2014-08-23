@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [00.35:33 Август 05 2014]
+;; Modified: [09.02:17 August 23 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -49,11 +49,14 @@
 
 ;; Imenu
 (require 'imenu)
-;; iswitchbuf
+
+(require 'icomplete)
+(icomplete-mode 99)
+
+;; They say that iswitch is obsolete, but thats lies
 (require 'iswitchb)
 (iswitchb-mode 1)
-(nconc (list "*compilation" "*semantic" "*Possible Completions" "*Completions"
-	     "*Backtrace" "*Messages*") iswitchb-buffer-ignore)
+
 ;; buff-menu+
 ;;(require 'buff-menu+)
 
@@ -116,7 +119,7 @@
       (load-theme 'manoj-dark t)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas 15")
+	  (set-frame-font "consolas 13")
 	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")
@@ -124,16 +127,19 @@
 
 ;; Modeline
 
-;; Use icon for auto-fill mode
+;;;; Font-Awesome hacks(http://fortawesome.github.io/Font-Awesome)
+
+;; auto-fill
 (eval-after-load 'diminish-autoloads
   '(eval-after-load 'simple
      '(diminish 'auto-fill-function (concat " " [#xF036]))))
 
-;; Use the tags icon for `ggtags-mode'.
+;; gtags
 (add-hook 'ggtags-mode-hook
 	  '(lambda ()
 	     (diminish 'ggtags-mode (concat " " [#xF02C]))))
 
+;; slime
 (add-hook 'slime-mode-hook
 	  '(lambda ()
 	     (diminish 'slime-mode (concat " " [#xF109]))))
@@ -141,6 +147,16 @@
 ;; Text scale
 (global-set-key (kbd "s-+") 'text-scale-increase)
 (global-set-key (kbd "s--") 'text-scale-decrease)
+
+;; Powerline
+
+(require 'powerline)
+(custom-set-faces
+ '(mode-line
+   ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive
+   ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+(powerline-default-theme)
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here

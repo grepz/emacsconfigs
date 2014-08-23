@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [01.00:00 Август 05 2014]
+;; Modified: [06.52:13 August 23 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -50,7 +50,7 @@
 ;; Erlang
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load "/usr/share/emacs24/site-lisp/erlang/erlang-start.elc")
+(require 'erlang)
 
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
@@ -75,6 +75,8 @@
 ;; Turn on paredit mode when required
 (autoload 'paredit-mode "paredit" t)
 
+(add-to-list 'load-path "/home/grepz/elisp/slime/")
+
 ;; Redshank mode
 (require 'redshank-loader)
 (eval-after-load "redshank-loader"
@@ -98,12 +100,13 @@
 
 ;; Slime for Lisp
 
+(require 'slime-autoloads)
+
 (autoload 'slime "slime" t)
 
 (eval-after-load "slime"
   '(progn
      (message "-> slime loaded")
-     (require 'slime-autoloads)
      (setq slime-repl-history-size 1000
 	   slime-net-coding-system 'utf-8-unix
 	   ;; when nil - truncate lines
@@ -117,9 +120,8 @@
      (slime-fuzzy-init)
      (slime-mode t)
      (global-set-key (kbd "C-c s") 'slime-indent-and-complete-symbol)
-     (require 'ac-slime)
-     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;;     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+;;     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
      (slime-scratch)))
 
 ;; Display lisp pitfalls on SLIME startup

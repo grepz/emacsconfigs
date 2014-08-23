@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.42:18 Январь 07 2014]
-;; Modified: [14.15:56 Август 15 2014]
+;; Modified: [20.38:07 August 22 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
