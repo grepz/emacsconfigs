@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.41:59 Январь 07 2014]
-;; Modified: [14.42:00 Январь 07 2014]
+;; Modified: [18.48:39 Август 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -17,7 +17,7 @@
 (desktop-save-mode 1)
 
 (mapc
- (lambda (symbol) 
+ (lambda (symbol)
    (add-to-list 'desktop-globals-to-save symbol))
  '((buffer-name-history      . 100)
    (dired-regexp-history     . 20)

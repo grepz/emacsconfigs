@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.39:00 Январь 07 2014]
-;; Modified: [01.04:55 Февраль 24 2014]
+;; Modified: [23.07:20 Август 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -46,9 +46,9 @@ set to t, then remove execution bit"
 		   (- (string-match " Bcast:" netconf interface_pos) 1))))))
 
 (defconst +emacs-build-version+
-  (string-to-number 
-   (substring emacs-version 
-	      (string-match "[0-9]+\\.[0-9]+$" emacs-version) 
+  (string-to-number
+   (substring emacs-version
+	      (string-match "[0-9]+\\.[0-9]+$" emacs-version)
 	      (string-match "\\.[0-9]+$" emacs-version)))
   "Emacs minor build version")
 
@@ -101,7 +101,7 @@ u  - underline"
        (message "Error with %s: %s" library err)
        (sleep-for 3)))))
 
-(defun parse-mailencoded-string (string coding)    
+(defun parse-mailencoded-string (string coding)
   (let ((encstr (base64-encode-string (encode-coding-string string coding))))
     (substring encstr 0 (- (length encstr) 1))))
 
@@ -120,7 +120,8 @@ u  - underline"
       (cond ((member elem '("." "..")))
 	    ((file-directory-p (concat dir elem))
 	     (when recursive
-	       (files-listing-action (concat dir elem) action recursive filter)))
+	       (files-listing-action
+		(concat dir elem) action recursive filter)))
 	    (t (if filter
 		   (unless (string-match filter (concat dir elem))
 		     (funcall action (concat dir elem)))

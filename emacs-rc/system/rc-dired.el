@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.42:18 Январь 07 2014]
-;; Modified: [20.38:07 August 22 2014]
+;; Modified: [18.47:24 Август 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -17,7 +17,7 @@
 
 (require 'dired)
 (require 'dired-x)
-(require 'dired+)
+;;(require 'dired+)
 
 (setq dired-omit-files
       "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")

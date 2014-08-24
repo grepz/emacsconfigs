@@ -8,8 +8,6 @@
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file 'noerror)
 
-(add-to-list 'load-path "~/.emacs.d")
-
 ;; Must be first to load
 (load "~/emacs/emacs-rc/helpers")
 
@@ -24,7 +22,8 @@
 (load-custom-rc-files "~/emacs/emacs-rc/network")
 (load-custom-rc-files "~/emacs/emacs-rc/other")
 
-;; Starting emacs server, so we can connect to it with commands: emacsclient -t/-c
+;; Starting emacs server, so we can connect to it with commands:
+;;  sh> emacsclient -t/-c
 (server-start)
 
 (message "Emacs loaded in %ds" (destructuring-bind (hi lo ms ps) (current-time)

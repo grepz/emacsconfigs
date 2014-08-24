@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [09.02:17 August 23 2014]
+;; Modified: [18.28:09 Август 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -33,37 +33,29 @@
  '(inhibit-startup-message t)
  '(font-lock-maximum-decoration nil))
 
+(setq split-width-threshold nil
+      split-window-preferred-function 'split-window-sensibly)
+
 ;; Change  mouse scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control))))
 
 ;; show/hide menu-bar
 (global-set-key (kbd "C-c o") 'menu-bar-mode)
 
-(setq split-width-threshold nil
-      split-window-preferred-function 'split-window-sensibly)
-
-(when (> emacs-major-version 22)
-  (global-set-key (kbd "<C-right>") 'forward-symbol)
-  (global-set-key (kbd "<C-left>") '(lambda () (interactive)
-				      (forward-symbol -1))))
-
-;; Imenu
-(require 'imenu)
-
+;; Minibufer completion
 (require 'icomplete)
-(icomplete-mode 99)
+(icomplete-mode 1)
 
-;; They say that iswitch is obsolete, but thats lies
-(require 'iswitchb)
-(iswitchb-mode 1)
+(eval-after-load "icomplete"
+  '(progn
+     (require 'icomplete+)
+     ;; C-, ; C-. to cycle.
+     ;; C-j to jump to current completion
+     (icompletep-cycling-mode)))
 
-;; buff-menu+
-;;(require 'buff-menu+)
-
+;; Convenient buffer menu
 (require 'ibuffer)
-
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
 (setq-default ibuffer-show-empty-filter-groups nil)
 
 ;; Why it hasnt been defvar'ed in ibuffer???
@@ -129,34 +121,43 @@
 
 ;;;; Font-Awesome hacks(http://fortawesome.github.io/Font-Awesome)
 
+(defvar fa-syms-codes
+  '(:computer     [#xF109]
+    :tag          [#xF02C]
+    :lines-lalign [#xF036]))
+(defmacro fa-sym (key)
+  `(plist-get fa-syms-codes ,key))
+
 ;; auto-fill
 (eval-after-load 'diminish-autoloads
   '(eval-after-load 'simple
-     '(diminish 'auto-fill-function (concat " " [#xF036]))))
-
+     '(diminish 'auto-fill-function (concat " " (fa-sym :lines-lalign)))))
 ;; gtags
 (add-hook 'ggtags-mode-hook
 	  '(lambda ()
-	     (diminish 'ggtags-mode (concat " " [#xF02C]))))
-
+	     (diminish 'ggtags-mode (concat " " (fa-sym :tag)))))
 ;; slime
 (add-hook 'slime-mode-hook
 	  '(lambda ()
-	     (diminish 'slime-mode (concat " " [#xF109]))))
+	     (diminish 'slime-mode (concat " " (fa-sym :computer)))))
 
 ;; Text scale
 (global-set-key (kbd "s-+") 'text-scale-increase)
 (global-set-key (kbd "s--") 'text-scale-decrease)
 
 ;; Powerline
-
 (require 'powerline)
 (custom-set-faces
  '(mode-line
-   ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+   ((t (:foreground "#f9f9f9" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive
-   ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+   ((t (:foreground "#898989" :background "#666666" :box nil)))))
 (powerline-default-theme)
+
+;; When 2 buffers(files) has the same names code below will mark both buffers
+;; with directory specification
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward uniquify-separator "@")
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here

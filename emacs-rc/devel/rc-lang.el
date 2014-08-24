@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [06.52:13 August 23 2014]
+;; Modified: [21.35:21 Август 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -96,7 +96,8 @@
 	     (linum-mode 1)
 	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
-	     (local-set-key [return] 'newline-and-indent)))
+	     (local-set-key [return] 'newline-and-indent)
+	     (paredit-mode)))
 
 ;; Slime for Lisp
 
@@ -119,6 +120,8 @@
      (require 'slime-fuzzy)
      (slime-fuzzy-init)
      (slime-mode t)
+     (paredit-mode)
+     (redshank-mode)
      (global-set-key (kbd "C-c s") 'slime-indent-and-complete-symbol)
 ;;     (add-hook 'slime-mode-hook 'set-up-slime-ac)
 ;;     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
