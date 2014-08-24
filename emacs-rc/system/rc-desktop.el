@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.41:59 Январь 07 2014]
-;; Modified: [18.48:39 Август 24 2014]
+;; Modified: [18.57:03 Август 24 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -42,6 +42,3 @@
 (setq-default desktop-save t)
 (setq-default desktop-save-mode t)
 (setq-default save-place t)
-
-;;(add-to-list 'load-path "~/elisp/emacs-nav/")
-;;(require 'nav)
