@@ -111,10 +111,9 @@
 ;;;;;;;;;;;;;;;;
 ;; Pretty lambda's ;;
 
-(require 'pretty-lambdada)
-(pretty-lambda-for-modes)
-(pretty-lambda 'emacs-lisp-mode)
-(pretty-lambda 'tuareg-mode)
+;;lisp--prettify-symbols-alist
+
+(global-prettify-symbols-mode 1)
 
 ;;;;;;;;;;;
 ;; CMake ;;
