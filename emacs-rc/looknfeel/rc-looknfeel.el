@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [19.00:16 Август 24 2014]
+;; Modified: [22.29:20 Август 26 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -48,9 +48,15 @@
 
 (eval-after-load "icomplete"
   '(progn
+     (define-key icomplete-minibuffer-map (kbd "C-r")
+       'icomplete-backward-completions)
+     (define-key icomplete-minibuffer-map (kbd "C-s")
+       'icomplete-forward-completions)
+     (define-key icomplete-minibuffer-map [return]
+       'minibuffer-force-complete-and-exit)
      (require 'icomplete+)
-     ;; C-, ; C-. to cycle.
-     ;; C-j to jump to current completion
+     ;; C-r ; C-s to cycle.
+     ;; [Enter] to jump to current completion
      (icompletep-cycling-mode)))
 
 ;; Convenient buffer menu

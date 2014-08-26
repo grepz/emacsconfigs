@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.49:20 Январь 31 2014]
-;; Modified: [12.40:39 Июль 01 2014]
+;; Modified: [01.03:54 Август 26 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -10,8 +10,6 @@
 ;; Description:
 
 ;; Code:
-
-;;(add-to-list 'load-path "/usr/share/emacs/site-lisp/emacs-jabber/")
 
 (require 'jabber)
 (require 'jabber-autoaway)
@@ -30,21 +28,21 @@
    '(jabber-vcard-avatars-retrieve nil)
    '(jabber-connection-ssl-program 'gnutls)
    '(starttls-extra-arguments '("--insecure"))
-   '(jabber-lost-connection-hook 'my-connect-jabber)
-   '(jabber-username "stanislav.ivankin@saptech.ru")
-   '(jabber-server "server.rpk-idea.ru"))
+;;   '(jabber-lost-connection-hook 'my-connect-jabber)
+   )
 
-(setq jabber-account-list `((,jabber-saptech-user
-			     (:password . nil) or
+(setq jabber-account-list `((,jabber-eterhost-user
+			     (:password . ,jabber-eterhost-password)
+			     (:network-server . "eterhost.org")
+			     (:port . 5222))
+			    (,jabber-saptech-user
 			     (:password . ,jabber-saptech-password)
 			     (:network-server . "server.rpk-idea.ru")
 ;;			     (:connection-type . ssl)
 			     (:port . 5222))
 			    (,jabber-dukgo-user
-			     (:password . nil) or
 			     (:password . ,jabber-dukgo-password)
 			     (:network-server . "dukgo.com")
-;;			     (:connection-type . ssl)
 			     (:port . 5222))))
 
 (jabber-mode-line-mode)
