@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [01.57:31 Август 26 2014]
+;; Modified: [14.20:12 Август 31 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -75,7 +75,7 @@
 ;; Turn on paredit mode when required
 (autoload 'paredit-mode "paredit" t)
 
-(add-to-list 'load-path "/home/grepz/elisp/slime/")
+;;(add-to-list 'load-path "/home/grepz/elisp/slime/")
 
 ;; Redshank mode
 (require 'redshank-loader)
@@ -103,29 +103,35 @@
 
 (require 'slime-autoloads)
 
-(autoload 'slime "slime" t)
-
-(eval-after-load "slime"
-  '(progn
-     (message "-> slime loaded")
-     (setq slime-repl-history-size 1000
+(setq slime-repl-history-size 1000
 	   slime-net-coding-system 'utf-8-unix
 	   ;; when nil - truncate lines
 	   slime-truncate-lines nil
 	   inferior-lisp-program "/usr/bin/sbcl"
 	   slime-kill-without-query-p t
-	   slime-lisp-implementations
-	   `((sbcl ("sbcl") :coding-system utf-8-unix)))
-     (slime-setup '(slime-fancy slime-asdf slime-tramp))
+	   slime-contribs '(slime-fancy slime-tramp slime-asdf)
+	   slime-lisp-implementations `((sbcl ("sbcl")
+					      :coding-system utf-8-unix)))
+
+(eval-after-load "slime"
+  '(progn
      (require 'slime-fuzzy)
      (slime-fuzzy-init)
-     (slime-mode t)
+     (slime-setup '(slime-fancy slime-asdf slime-tramp))
      (paredit-mode)
      (redshank-mode)
-     (global-set-key (kbd "C-c s") 'slime-indent-and-complete-symbol)
 ;;     (add-hook 'slime-mode-hook 'set-up-slime-ac)
 ;;     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-     (slime-scratch)))
+     (slime-mode t)
+     (slime-scratch)
+     (message "-> slime loaded")))
+
+
+(defun slime-run ()
+  (interactive)
+  (slime))
+
+;;(autoload 'slime "slime" t)
 
 ;; Display lisp pitfalls on SLIME startup
 ;;(require 'slime-cl-pitfalls)

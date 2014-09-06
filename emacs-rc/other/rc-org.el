@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.41:49 Январь 07 2014]
-;; Modified: [23.41:48 Август 26 2014]
+;; Modified: [14.52:05 Сентябрь 02 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -12,7 +12,7 @@
 (require 'org)
 
 (add-hook 'org-mode-hook #'(lambda ()
-;;			     (set-default 'truncate-lines t)
+			     (set-default 'truncate-lines t)
 			     (auto-fill-mode 1)))
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))

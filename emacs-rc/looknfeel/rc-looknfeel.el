@@ -1,6 +1,6 @@
 ;; Elisp source code header -*- coding: utf-8 -*-
 ;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [22.29:20 Август 26 2014]
+;; Modified: [14.17:33 Август 31 2014]
 ;;  ---------------------------
 ;; Author: Stanislav M. Ivankin
 ;; Email: lessgrep@gmail.com
@@ -52,8 +52,8 @@
        'icomplete-backward-completions)
      (define-key icomplete-minibuffer-map (kbd "C-s")
        'icomplete-forward-completions)
-     (define-key icomplete-minibuffer-map [return]
-       'minibuffer-force-complete-and-exit)
+     ;; (define-key icomplete-minibuffer-map (kbd "<return>")
+     ;;   'minibuffer-force-complete-and-exit)
      (require 'icomplete+)
      ;; C-r ; C-s to cycle.
      ;; [Enter] to jump to current completion
@@ -152,13 +152,13 @@
 (global-set-key (kbd "s--") 'text-scale-decrease)
 
 ;; Powerline
-(require 'powerline)
-(custom-set-faces
- '(mode-line
-   ((t (:foreground "#f9f9f9" :background "#bdbdbd" :box nil))))
- '(mode-line-inactive
-   ((t (:foreground "#898989" :background "#666666" :box nil)))))
-(powerline-default-theme)
+;; (require 'powerline)
+;; (custom-set-faces
+;;  '(mode-line
+;;    ((t (:foreground "#f9f9f9" :background "#bdbdbd" :box nil))))
+;;  '(mode-line-inactive
+;;    ((t (:foreground "#898989" :background "#666666" :box nil)))))
+;; (powerline-default-theme)
 
 ;; When 2 buffers(files) has the same names code below will mark both buffers
 ;; with directory specification
