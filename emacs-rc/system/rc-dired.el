@@ -1,13 +1,50 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.42:18 Январь 07 2014]
-;; Modified: [18.47:24 Август 24 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,dired,search
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-dired.el ---
+;;
+;; Filename: rc-dired.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:08:11 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:08:18 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 3
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 ;;;; Notes:
 ;; wdired-change-to-wdired-mode, then rename files, simple and fast.
@@ -17,10 +54,8 @@
 
 (require 'dired)
 (require 'dired-x)
-;;(require 'dired+)
 
-(setq dired-omit-files
-      "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")
+(setq dired-omit-files "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")
 
 (add-hook 'dired-mode-hook
 	  (lambda ()
@@ -34,10 +69,10 @@
 (define-key dired-mode-map [return] 'dired-find-alternate-file)
 (define-key dired-mode-map [(a)] 'dired-advertised-find-file)
 
-;; Open dired buffer, path set to current file directory
 (define-key global-map (kbd "C-x j") 'dired-jump)
 
-(autoload 'thumbs "thumbs" "Preview images in a directory." t)
+(setq auto-mode-alist
+	  (cons '("[^/]\\.dired$" . dired-virtual-mode) auto-mode-alist))
 
-(setq auto-mode-alist (cons '("[^/]\\.dired$" . dired-virtual-mode)
-			    auto-mode-alist))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rc-dired.el ends here

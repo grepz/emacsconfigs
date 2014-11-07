@@ -1,25 +1,61 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.41:49 Январь 07 2014]
-;; Modified: [14.52:05 Сентябрь 02 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,devel,org
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-org.el ---
+;;
+;; Filename: rc-org.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:09:14 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:09:28 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 (require 'org)
 
-(add-hook 'org-mode-hook #'(lambda ()
-			     (set-default 'truncate-lines t)
-			     (auto-fill-mode 1)))
+(add-hook 'org-mode-hook
+ #'(lambda ()
+	 (set-default 'truncate-lines t)
+	 (auto-fill-mode 1)))
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
-
-;;(defvar *orgplace* "~/emacs/etc/orgmode/")
 
 (setq org-log-done '(done))
 
@@ -47,3 +83,6 @@
       ((tags-todo "@HOME")))
      ("w" "Work related tasks"
       ((tags-todo "@WORK"))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rc-org.el ends here

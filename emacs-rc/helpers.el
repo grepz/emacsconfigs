@@ -1,13 +1,50 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.39:00 Январь 07 2014]
-;; Modified: [23.07:20 Август 24 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,utils
-;; License: GPLv3
-;;  ---------------------------
+;;; helpers.el ---
+;;
+;; Filename: helpers.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:10:34 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:10:39 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 (eval-when-compile
   (require 'cl))
@@ -144,3 +181,6 @@ u  - underline"
   (if (>= sublen (length str))
       str
     (concat (substring str 0 sublen) "...")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; helpers.el ends here

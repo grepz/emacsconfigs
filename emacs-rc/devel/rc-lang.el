@@ -1,29 +1,60 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.38:39 Январь 07 2014]
-;; Modified: [14.20:12 Август 31 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,devel
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-lang.el ---
+;;
+;; Filename: rc-lang.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:06:35 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:07:12 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 4
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; OCaml
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; TODO:
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; CC-Mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (require 'cwarn)
 
-(setq auto-mode-alist (cons '("\\.h\\'" . c++-mode) auto-mode-alist))
-
 (defconst use-backup-dir t)
+
+(setq auto-mode-alist (cons '("\\.h\\'" . c++-mode) auto-mode-alist))
 
 (c-add-style "k&r-2" '("k&r" (intent-tabs-mode . nil) (c-basic-offset . 4)))
 (setq c-default-style "k&r-2")
@@ -46,11 +77,15 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Erlang
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (require 'erlang)
+
+(add-to-list 'load-path "~/elisp/distel/elisp/")
+(require 'distel)
+(distel-setup)
 
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
@@ -61,16 +96,18 @@
 
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
+  (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
   (imenu-add-to-menubar "imenu")
   ;; customize keys
+  (local-set-key (kbd "C-h f") 'erlang-man-function)
   (local-set-key [return] 'newline-and-indent))
 
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Lisp
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 ;; Turn on paredit mode when required
 (autoload 'paredit-mode "paredit" t)
@@ -136,15 +173,15 @@
 ;; Display lisp pitfalls on SLIME startup
 ;;(require 'slime-cl-pitfalls)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Scheme
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (require 'geiser)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Perl
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (fset 'perl-mode 'cperl-mode)
 
@@ -165,9 +202,9 @@
 	    (linum-mode 1)
 	    (flymake-mode 1)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Python
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (require 'python)
 
@@ -177,13 +214,15 @@
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
-;;;;;;;;;;;;;;
-;; Sh/Bash  ;;
+;;
+;; Sh/Bash
+;;
 
 (add-hook 'sh-mode-hook '(lambda () (linum-mode 1)))
 
-;;;;;;;;;;;;;;
-;; Verilog  ;;
+;;
+;; Verilog
+;;
 
 (add-hook 'verilog-mode-hook
 	  '(lambda ()
@@ -191,10 +230,8 @@
 	     (setq-default compilation-error-regexp-alist
 			   (mapcar 'cdr verilog-error-regexp-emacs-alist))))
 
-;;;;;;;;;;;;;;
-;; KConfig  ;;
-
-;;(require 'kconfig-mode)
-
 (provide 'rc-lang)
+;;; rc-lang.el ends here
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-lang.el ends here

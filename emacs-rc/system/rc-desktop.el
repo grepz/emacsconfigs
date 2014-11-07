@@ -1,25 +1,15 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.41:59 Январь 07 2014]
-;; Modified: [18.57:03 Август 24 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs
-;; License: GPLv3
-;;  ---------------------------
-;; Description:
-
-;;;;;;;;;;;;;
-;; Desktop ;;
-
 (require 'desktop)
 
 (desktop-save-mode 1)
+
+(setq desktop-dirname "~/emacs/tmp/desktop"
+	  desktop-path "~/emacs/tmp/desktop")
 
 (mapc
  (lambda (symbol)
    (add-to-list 'desktop-globals-to-save symbol))
  '((buffer-name-history      . 100)
+   (undo-limit               . 500000)
    (dired-regexp-history     . 20)
    (extended-command-history . 100)
    (file-name-history        . 500)
@@ -32,13 +22,14 @@
    (search-ring              . 20)
    (shell-command-history    . 50)))
 
-(add-to-list 'desktop-locals-to-save 'buffer-file-coding-system)
-(add-to-list 'desktop-locals-to-save 'tab-width)
+(mapc
+ (lambda (symbol)
+   (add-to-list 'desktop-locals-to-save symbol))
+ '(buffer-file-coding-system
+   tab-width))
 
-(setq desktop-dirname "~/emacs/tmp/desktop")
-
-(setq-default desktop-missing-file-warning nil)
-(setq-default desktop-path (quote ("~")))
-(setq-default desktop-save t)
-(setq-default desktop-save-mode t)
-(setq-default save-place t)
+(setq-default desktop-missing-file-warning nil
+			  desktop-path '("~/emacs/tmp/desktop")
+			  desktop-save t
+			  desktop-save-mode t
+			  save-place t)

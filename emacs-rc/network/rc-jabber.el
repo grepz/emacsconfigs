@@ -1,15 +1,50 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.49:20 Январь 31 2014]
-;; Modified: [01.03:54 Август 26 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: jabber,emacs,elisp
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-jabber.el ---
+;;
+;; Filename: rc-jabber.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:09:48 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:09:53 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
 
-;; Code:
 
 (require 'jabber)
 (require 'jabber-autoaway)
@@ -27,9 +62,7 @@
    '(jabber-xosd-display-time 5)
    '(jabber-vcard-avatars-retrieve nil)
    '(jabber-connection-ssl-program 'gnutls)
-   '(starttls-extra-arguments '("--insecure"))
-;;   '(jabber-lost-connection-hook 'my-connect-jabber)
-   )
+   '(starttls-extra-arguments '("--insecure")))
 
 (setq jabber-account-list `((,jabber-eterhost-user
 			     (:password . ,jabber-eterhost-password)
@@ -48,3 +81,6 @@
 (jabber-mode-line-mode)
 
 (global-set-key (kbd "s-j") 'jabber-connect-all)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rc-jabber.el ends here

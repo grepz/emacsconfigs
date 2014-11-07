@@ -1,13 +1,50 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.39:59 Январь 07 2014]
-;; Modified: [14.40:00 Январь 07 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,w3m
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-w3m.el ---
+;;
+;; Filename: rc-w3m.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:09:57 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:10:05 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 (add-to-list 'load-path "~/elisp/emacs-w3m/")
 
@@ -33,7 +70,8 @@
 (require 'w3m)
 (require 'w3m-ccl)
 
-(autoload 'w3m-antenna "w3m-antenna" "Report changes of web sites." t)
+(autoload 'w3m-antenna "w3m-antenna"
+  "Report changes of web sites." t)
 
 (defun w3m-new-tab ()
   (interactive)
@@ -51,13 +89,14 @@
   (let ((url (or (w3m-anchor) (w3m-image))))
     (if url
 	(let ((proc (start-process "wget" (format "*wget %s*" url)
-				   "wget" "--passive-ftp" "-nv" 
-				   "-P" (expand-file-name loc) url)))
+							   "wget" "--passive-ftp" "-nv"
+							   "-P" (expand-file-name loc) url)))
 	  (with-current-buffer (process-buffer proc)
 	    (erase-buffer))
-	  (set-process-sentinel proc (lambda (proc str)
-				       (message "wget download done"))))
-      (message "Nothing to get"))))
+	  (set-process-sentinel proc
+		(lambda (proc str)
+		  (message "wget download done"))))
+	(message "Nothing to get"))))
 
  (defun w3m-download-with-curl (loc)
   (define-key w3m-mode-map "c"
@@ -65,3 +104,6 @@
 	  (interactive "Save to: ")
 	  (cd dir)
 	  (start-process "curl" "*curl*" "curl.exe" "-O" "-s" (w3m-anchor)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rc-w3m.el ends here

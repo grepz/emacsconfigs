@@ -1,13 +1,50 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.42:34 Январь 07 2014]
-;; Modified: [14.42:34 Январь 07 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,ssh,admin,devel
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-tramp.el ---
+;;
+;; Filename: rc-tramp.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:08:01 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:08:05 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 (require 'tramp)
 (require 'tramp-cmds)
@@ -57,17 +94,22 @@
 
 (global-set-key [(control x) (control r)] 'find-file-root)
 
+;;
+;; SSH to a host
+;;
+
 (defvar host-hash (make-hash-table))
 
 ;; Tramp host autocompletion
 
-(defun* my-add-host-to-tramp (host &key
-				   (alias nil)
-				   (user tramp-default-user)
-				   (port "22")
-				   (method tramp-default-method))
+(defun* add-host-to-tramp
+	(host &key
+		  (alias nil)
+		  (user tramp-default-user)
+		  (port "22")
+		  (method tramp-default-method))
   (setf (gethash (if (null alias) (intern host) (intern alias)) host-hash)
-	(concat "/" method ":" user "@" host "#" port ":~/")))
+		(concat "/" method ":" user "@" host "#" port ":~/")))
 
 (defun hash-keys-to-list (hashtable)
   (let (key-list)
@@ -76,7 +118,7 @@
 	     hashtable)
     key-list))
 
-(defun my-tramp-connect-to-server ()
+(defun tramp-connect-to-server ()
   (interactive)
   (let* ((host-list (mapcar #'symbol-name
 			   (hash-keys-to-list host-hash)))
@@ -87,7 +129,10 @@
 		  "[Tramp]"
 		  (gethash (intern host) host-hash))))))
 
-(global-set-key [(s x) (r)] 'my-tramp-connect-to-server)
+(global-set-key [(s x) (r)] 'tramp-connect-to-server)
 
-(my-add-host-to-tramp "46.254.240.98" :alias "Work server"
-		      :user "root" :port "58022")
+;; (add-host-to-tramp "1.1.1.1" :alias "Some server"
+;; 				   :user "user" :port "1111")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rc-tramp.el ends here

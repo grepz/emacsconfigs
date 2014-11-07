@@ -1,13 +1,54 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.34:49 Январь 07 2014]
-;; Modified: [14.17:33 Август 31 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,font
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-looknfeel.el ---
+;;
+;; Filename: rc-looknfeel.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:10:12 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:10:16 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
+
+(setq user-mail-address "lessgrep@gmail.com")
+(setq user-full-name "Stanislav M. Ivankin")
+
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
@@ -20,6 +61,7 @@
 (setq frame-title-format "grepz@eternal")
 
 (custom-set-variables
+ '(tab-width 4)
  '(display-time-24hr-format t)
  '(display-time-format "[%H:%M %d/%m]")
  '(line-number-mode t)
@@ -55,8 +97,7 @@
      ;; (define-key icomplete-minibuffer-map (kbd "<return>")
      ;;   'minibuffer-force-complete-and-exit)
      (require 'icomplete+)
-     ;; C-r ; C-s to cycle.
-     ;; [Enter] to jump to current completion
+     ;; C-r ; C-s to cycle ; C-j jump to completion.
      (icompletep-cycling-mode)))
 
 ;; Convenient buffer menu
@@ -64,53 +105,44 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (setq-default ibuffer-show-empty-filter-groups nil)
 
-;; Why it hasnt been defvar'ed in ibuffer???
-(defvar ibuffer-saved-filter-groups)
-
-(setq ibuffer-saved-filter-groups
-      '(("Custom"
+;; Why it hasnt been defvar'ed in ibuffer ???
+(defvar ibuffer-saved-filter-groups
+  '(("Custom"
 	 ("Dired" (mode . dired-mode))
-	 ("Perl" (mode . cperl-mode))
-	 ("Erc" (mode . erc-mode))
-	 ("Elisp" (or (mode .emacs-lisp-mode)
-		      (name . "\\.el$")))
-	 ("Lisp" (or (mode . sbcl-mode)
-		     (mode . lisp-mode)))
-	 ("Help" (or (name . "\*Help\*")
-		     (mode . help-mode)
-		     (name . "\*Apropos\*")
-		     (name . "\*info\*")))
-	 ("w3m" (mode . w3m-mode))
-	 ("c/cpp" (or (mode . c-mode)
-		      (mode . c++-mode)
-		      (name . "\\.\(c|cpp|cxx\)$")
-		      (name . "\\.(h|hpp)$")))
-	 ("Erlang" (or (mode . erlang-mode)
-		       (name . "\\.erl$")))
-	 ("Additional" (or
-			(name . "^\\*scratch\\*$")
-			(name . "^\\*Messages\\*$")
-			(name . "^\\*compilation")
-			(name . "^\\*semantic")))
-	 ("Build" (or (mode . cmake-mode)
-		      (mode . makefile-mode)
-		      (mode . makefile-gmake-mode)
-;;		      (mode . kconfig-mode)
-		      (mode . ld-script-mode)))
+	 ("Perl"  (mode . cperl-mode))
+	 ("Erc"   (mode . erc-mode))
+	 ("Elisp" (or (mode .emacs-lisp-mode) (name . "\\.el$")))
+	 ("Lisp"  (or (mode . sbcl-mode) (mode . lisp-mode)))
+	 ("Help"  (or (name . "\*Help\*") (mode . help-mode)
+				  (name . "\*Apropos\*") (name . "\*info\*")))
+	 ("w3m"   (mode . w3m-mode))
+	 ("c/cpp" (or (mode . c-mode) (mode . c++-mode)
+				  (name . "\\.\(c|cpp|cxx\)$")
+				  (name . "\\.(h|hpp)$")))
+	 ("Erlang"     (or (mode . erlang-mode) (name . "\\.erl$")))
+	 ("Additional" (or (name . "^\\*scratch\\*$")
+					   (name . "^\\*Messages\\*$")
+					   (name . "^\\*compilation")
+					   (name . "^\\*semantic")))
+	 ("Build" (or (mode . cmake-mode) (mode . makefile-mode)
+				  (mode . makefile-gmake-mode)
+				  (mode . ld-script-mode)))
 	 ("Assembler" (mode . asm-mode))
-	 ("Scheme"    (mode . scheme-mode))
-	 ("OrgMode"   (mode . org-mode))
-	 ("Java"      (or (mode . java-mode)
-			  (name . "\\.java$")))
-	 ("Python"    (or (mode . python-mode)
-			  (name . "^\\*Python\\*$")))
-	 ("Verilog"   (or (mode . verilog-mode)
-			  (name . "\\.v$"))))))
+	 ("Scheme"  (mode . scheme-mode))
+	 ("OrgMode" (mode . org-mode))
+	 ("Java"    (or (mode . java-mode) (name . "\\.java$")))
+	 ("Python"  (or (mode . python-mode) (name . "^\\*Python\\*$")))
+	 ("Verilog" (or (mode . verilog-mode) (name . "\\.v$"))))))
 
 (add-hook 'ibuffer-mode-hook
 	  (lambda ()
 	     (ibuffer-auto-mode 1)
 	     (ibuffer-switch-to-saved-filter-groups "Custom")))
+
+;; (set-frame-font "mono 12")
+;; (set-frame-font "input 12")
+;; (set-frame-font "consolas 12")
+;; (set-frame-font "inconsolata 12")
 
 (if (eq window-system 'x)
     (progn
@@ -152,13 +184,14 @@
 (global-set-key (kbd "s--") 'text-scale-decrease)
 
 ;; Powerline
-;; (require 'powerline)
-;; (custom-set-faces
-;;  '(mode-line
-;;    ((t (:foreground "#f9f9f9" :background "#bdbdbd" :box nil))))
-;;  '(mode-line-inactive
-;;    ((t (:foreground "#898989" :background "#666666" :box nil)))))
-;; (powerline-default-theme)
+(require 'powerline)
+(custom-set-faces
+ '(mode-line
+   ((t (:foreground "#f9f9f9" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive
+   ((t (:foreground "#898989" :background "#666666" :box nil)))))
+(powerline-default-theme)
+(powerline-reset)
 
 ;; When 2 buffers(files) has the same names code below will mark both buffers
 ;; with directory specification
@@ -166,4 +199,7 @@
 (setq uniquify-buffer-name-style 'post-forward uniquify-separator "@")
 
 (provide 'rc-looknfeel)
+;;; rc-looknfeel.el ends here
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-looknfeel.el ends here

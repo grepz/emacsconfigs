@@ -1,23 +1,52 @@
-;; Elisp source code header -*- coding: utf-8 -*-
-;; Created: [14.40:17 Январь 07 2014]
-;; Modified: [05.40:24 August 23 2014]
-;;  ---------------------------
-;; Author: Stanislav M. Ivankin
-;; Email: lessgrep@gmail.com
-;; Tags: elisp,emacs,utils
-;; License: GPLv3
-;;  ---------------------------
+;;; rc-features.el ---
+;;
+;; Filename: rc-features.el
 ;; Description:
+;; Author: Stanislav M. Ivankin
+;; Maintainer:
+;; Created: Sat Nov  8 02:08:29 2014 (+0800)
+;; Version:
+;; Package-Requires: ()
+;; Last-Updated: Sat Nov  8 02:08:34 2014 (+0800)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 2
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Commentary:
+;;
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Change Log:
+;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;; Code:
+
 
 (custom-set-variables
- '(mc-gpg-user-id "Stanislav M. Ivankin")
- '(Info-fontify "t")
- '(ispell-program-name "aspell")
- '(ispell-extra-args '("--sug-mode=ultra"))
- '(ispell-enable-tex-parser t)
- '(flyspell-default-dictionary "english")
- '(flyspell-delay '1)
- '(flyspell-issue-message-flag nil)
  '(undo-limit 500000))
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -38,35 +67,34 @@
 
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
-(global-set-key [f9] 'term)
-
-(require 'tar-mode)
-
-;; Tex/Latex stuff
-(add-hook 'reftex-load-hook 'imenu-add-menubar-index)
-(add-hook 'reftex-mode-hook 'imenu-add-menubar-index)
-
-;; ispell
-(require 'ispell)
-(require 'flyspell)
-
-;; Restructured text, an easy to use and handfull util for editing simple text
-(require 'rst)
-
-;; Command-line menu
-;;(require 'lacarte)
-;;(global-set-key [f10]   'lacarte-execute-menu-command)
-
-;; Somewhat more advanced fill paragraph mode for emacs
-;;(require 'filladapt)
-;;(setq-default filladapt-mode t)
-
 ;; Elpa package system for Emacs
 (require 'package)
-(setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
-;;                         ("marmalade" . "http://marmalade-repo.org/packages/")))
-                         ("melpa"     . "http://melpa.milkbox.net/packages/")))
+(setq package-archives
+	  '(("gnu"       . "http://elpa.gnu.org/packages/")
+		("melpa"     . "http://melpa.milkbox.net/packages/")))
 
-;; Bookmarks
-(require 'bookmark)
-;;(require 'bookmark+)
+
+;;
+;; Frequency of keys pressed during session
+;;
+
+(require 'keyfreq)
+
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+
+
+;;
+;; Easy to use occur on buffers opened
+;;
+
+(require 'color-moccur)
+
+(setq *moccur-buffer-name-exclusion-list*
+      '(".+TAGS.+" "*Completions*" "*Messages*" ".bbdb" "\\.txt$"))
+
+(global-set-key "\C-c\C-s" 'moccur)
+(global-set-key "\C-c\C-d" 'moccur-grep-find)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rc-features.el ends here
