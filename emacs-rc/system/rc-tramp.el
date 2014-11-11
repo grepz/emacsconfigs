@@ -129,7 +129,7 @@
 		  "[Tramp]"
 		  (gethash (intern host) host-hash))))))
 
-(global-set-key [(s x) (r)] 'tramp-connect-to-server)
+;; (global-set-key [(s x) (r)] 'tramp-connect-to-server)
 
 ;; (add-host-to-tramp "1.1.1.1" :alias "Some server"
 ;; 				   :user "user" :port "1111")

@@ -4,6 +4,7 @@
 
 ;; Common lisp compatibility
 (require 'cl)
+(require 'macroexp)
 
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file 'noerror)
@@ -12,6 +13,8 @@
 (load "~/emacs/emacs-rc/helpers")
 
 (add-subdirs-to-load-path "~/elisp")
+
+(require 'package)
 (package-initialize)
 
 (safe-load "~/emacs/emacs-rc/passwords.el.gpg")

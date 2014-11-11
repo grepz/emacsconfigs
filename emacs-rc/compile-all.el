@@ -45,12 +45,13 @@
 ;;
 ;;; Code:
 
-
 (require 'cl)
 
 (load-file "helpers.el")
 
 (add-subdirs-to-load-path "~/elisp")
+
+(require 'package)
 (package-initialize)
 
 (defun compile-rc-files (rc-dir)

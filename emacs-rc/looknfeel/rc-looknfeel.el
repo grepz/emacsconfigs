@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:10:16 2014 (+0800)
+;; Last-Updated: Tue Nov 11 15:58:39 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -73,6 +73,7 @@
  '(display-time-day-and-date t)
  '(timeclock-modeline-display t)
  '(inhibit-startup-message t)
+ '(visible-bell t)
  '(font-lock-maximum-decoration nil))
 
 (setq split-width-threshold nil
@@ -146,10 +147,10 @@
 
 (if (eq window-system 'x)
     (progn
-      (load-theme 'manoj-dark t)
+      (load-theme 'tango-dark t)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "consolas 13")
+	  (set-frame-font "inconsolata 11")
 	(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:07:12 2014 (+0800)
+;; Last-Updated: Tue Nov 11 16:02:45 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 4
+;;     Update #: 7
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -68,6 +68,7 @@
   (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
     (ggtags-mode 1))
   (auto-fill-mode 1)
+  (fci-mode)
   (cwarn-mode 1)
   (local-set-key [delete] 'delete-char)
   (local-set-key [return] 'newline-and-indent)
@@ -99,6 +100,7 @@
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
   (imenu-add-to-menubar "imenu")
+  (fci-mode)
   ;; customize keys
   (local-set-key (kbd "C-h f") 'erlang-man-function)
   (local-set-key [return] 'newline-and-indent))
@@ -123,6 +125,7 @@
 (add-hook 'lisp-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+		 (fci-mode)
 	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
@@ -197,6 +200,7 @@
 (add-hook 'cperl-mode-hook
 	  (lambda ()
 	    (linum-mode 1)
+		(fci-mode)
 	    (local-set-key (kbd "C-h f") 'cperl-perldoc)
 	    (local-set-key [return] 'newline-and-indent)
 	    (linum-mode 1)
@@ -209,6 +213,7 @@
 (require 'python)
 
 (defun my-python-mode-hook ()
+  (fci-mode)
   (local-set-key [return] 'newline-and-indent)
   (linum-mode 1))
 
@@ -218,7 +223,10 @@
 ;; Sh/Bash
 ;;
 
-(add-hook 'sh-mode-hook '(lambda () (linum-mode 1)))
+(add-hook 'sh-mode-hook
+		  '(lambda ()
+			 (linum-mode 1)
+			 (fci-mode)))
 
 ;;
 ;; Verilog
@@ -227,6 +235,7 @@
 (add-hook 'verilog-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+		 (fci-mode)
 	     (setq-default compilation-error-regexp-alist
 			   (mapcar 'cdr verilog-error-regexp-emacs-alist))))
 

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:06:24 2014 (+0800)
+;; Last-Updated: Tue Nov 11 16:15:49 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 6
+;;     Update #: 9
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -52,7 +52,7 @@
 (custom-set-variables
  '(compilation-scroll-output 1)
  '(compilation-window-height 20)
- '(fill-column 78)
+ '(fill-column 80)
  '(cscope-do-not-update-database t)
  '(flymake-no-changes-timeout 3)
  '(flymake-start-syntax-check-on-newline nil)
@@ -87,6 +87,14 @@
 (global-set-key (kbd "\C-cm") 'user-save-and-make-all)
 
 ;;
+;; Fill column
+;;
+
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "#555555")
+
+;;
 ;; Fontlocking keywords
 ;;
 
@@ -114,7 +122,7 @@
 
 (require 'whitespace)
 
-(setq whitespace-style '(face empty lines-tail lines trailing))
+(setq whitespace-style '(face empty trailing))
 
 (global-whitespace-mode 1)
 

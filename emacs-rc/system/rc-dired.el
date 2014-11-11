@@ -55,6 +55,11 @@
 (require 'dired)
 (require 'dired-x)
 
+;; OSX ls can't do long keys like --dired, so use gls from coreutils
+(when (boundp 'aquamacs-version)
+  (setf ls-lisp-use-insert-directory-program t
+		insert-directory-program "gls"))
+
 (setq dired-omit-files "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")
 
 (add-hook 'dired-mode-hook
