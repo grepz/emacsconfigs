@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:48 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:09:53 2014 (+0800)
+;; Last-Updated: Wed Nov 12 01:43:36 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 4
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -67,16 +67,11 @@
 (setq jabber-account-list `((,jabber-eterhost-user
 			     (:password . ,jabber-eterhost-password)
 			     (:network-server . "eterhost.org")
-			     (:port . 5222))
-			    (,jabber-saptech-user
-			     (:password . ,jabber-saptech-password)
-			     (:network-server . "server.rpk-idea.ru")
-;;			     (:connection-type . ssl)
-			     (:port . 5222))
-			    (,jabber-dukgo-user
-			     (:password . ,jabber-dukgo-password)
-			     (:network-server . "dukgo.com")
 			     (:port . 5222))))
+			    ;; (,jabber-dukgo-user
+			    ;;  (:password . ,jabber-dukgo-password)
+			    ;;  (:network-server . "dukgo.com")
+			    ;;  (:port . 5222))))
 
 (jabber-mode-line-mode)
 

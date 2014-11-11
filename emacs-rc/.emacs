@@ -1,5 +1,8 @@
 (defvar *emacs-load-start* (current-time))
 
+(add-to-list 'load-path "~/elisp")
+(require 'macroexp)
+
 (setq my-system 'osx)
 (load "~/emacs/emacs-rc/configuration")
 
@@ -7,7 +10,6 @@
 
 ;; Common lisp compatibility
 (require 'cl)
-(require 'macroexp)
 
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file 'noerror)
