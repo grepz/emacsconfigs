@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:57 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:10:05 2014 (+0800)
+;; Last-Updated: Tue Nov 11 18:47:34 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -66,7 +66,7 @@
  '(w3m-cookie-accept-domains '("reddit.com" "livejournal.com"))
  '(browse-url-browser-function 'w3m-browse-url))
 
-(require 'w3m-load)
+;;(require 'w3m-load)
 (require 'w3m)
 (require 'w3m-ccl)
 

@@ -1,5 +1,8 @@
 (defvar *emacs-load-start* (current-time))
 
+(setq my-system 'osx)
+(load "~/emacs/emacs-rc/configuration")
+
 (display-time-mode -1)
 
 ;; Common lisp compatibility

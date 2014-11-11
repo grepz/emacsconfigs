@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Tue Nov 11 15:58:39 2014 (+0300)
+;; Last-Updated: Tue Nov 11 18:45:21 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 3
+;;     Update #: 8
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -145,13 +145,14 @@
 ;; (set-frame-font "consolas 12")
 ;; (set-frame-font "inconsolata 12")
 
-(if (eq window-system 'x)
+(if (boundp 'window-system)
     (progn
-      (load-theme 'tango-dark t)
+	  (message "Graphical decorations")
+      (load-theme 'distinguished t)
       (setq x-select-enable-clipboard t)
       (if (and (> emacs-major-version 22))
-	  (set-frame-font "inconsolata 11")
-	(set-frame-font "9x15")))
+		  (set-frame-font "inconsolata 11")
+		(set-frame-font "9x15")))
   (progn
     (message "Terminal decorations")
     (load-theme 'tango-dark t)))
@@ -192,7 +193,6 @@
  '(mode-line-inactive
    ((t (:foreground "#898989" :background "#666666" :box nil)))))
 (powerline-default-theme)
-(powerline-reset)
 
 ;; When 2 buffers(files) has the same names code below will mark both buffers
 ;; with directory specification

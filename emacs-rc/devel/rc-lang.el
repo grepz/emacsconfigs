@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Tue Nov 11 16:02:45 2014 (+0300)
+;; Last-Updated: Wed Nov 12 01:03:50 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 7
+;;     Update #: 9
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -91,10 +91,6 @@
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
-(setq-default erlang-root-dir "/usr/lib/erlang")
-(setq-default erlang-man-root-dir "/usr/lib/erlang/man")
-(add-to-list 'exec-path "/usr/lib/erlang/bin")
-
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
@@ -137,6 +133,7 @@
 	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
+		 (fci-mode)
 	     (paredit-mode)))
 
 ;; Slime for Lisp
