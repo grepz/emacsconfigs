@@ -1,15 +1,15 @@
 (defvar *emacs-load-start* (current-time))
 
+(require 'cl)
+
 (add-to-list 'load-path "~/elisp")
+
 (require 'macroexp)
 
 (setq my-system 'osx)
 (load "~/emacs/emacs-rc/configuration")
 
 (display-time-mode -1)
-
-;; Common lisp compatibility
-(require 'cl)
 
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file 'noerror)
@@ -24,8 +24,8 @@
 
 (safe-load "~/emacs/emacs-rc/passwords.el.gpg")
 
-(load-custom-rc-files "~/emacs/emacs-rc/system")
 (load-custom-rc-files "~/emacs/emacs-rc/looknfeel")
+(load-custom-rc-files "~/emacs/emacs-rc/system")
 (load-custom-rc-files "~/emacs/emacs-rc/devel")
 (load-custom-rc-files "~/emacs/emacs-rc/network")
 (load-custom-rc-files "~/emacs/emacs-rc/other")
@@ -37,5 +37,7 @@
 (message "Emacs loaded in %ds" (destructuring-bind (hi lo ms ps) (current-time)
 				 (- (+ hi lo) (+ (first *emacs-load-start*)
 						 (second *emacs-load-start*)))))
+
+;;(setq message-log-max t)
 
 (message "Happy hacking, %s!" (user-login-name))
