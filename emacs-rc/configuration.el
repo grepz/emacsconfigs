@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 12 00:49:28 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 12 01:02:59 2014 (+0300)
+;; Last-Updated: Thu Nov 13 01:37:04 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 7
+;;     Update #: 10
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -57,4 +57,5 @@
 
 (setq-default erlang-root-dir erlang-root)
 (setq-default erlang-man-root-dir (concatenate 'string erlang-root "/man"))
+
 (add-to-list 'exec-path (concatenate 'string erlang-root "/bin"))

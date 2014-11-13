@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 12 20:25:07 2014 (+0300)
+;; Last-Updated: Thu Nov 13 01:36:02 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 15
+;;     Update #: 24
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -49,14 +49,14 @@
 (setq user-mail-address "lessgrep@gmail.com")
 (setq user-full-name "Stanislav M. Ivankin")
 
-
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
 (transient-mark-mode 1)
 (cua-selection-mode 1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(tool-bar-mode 0)
+(tool-bar-mode -1)
+(tabbar-mode -1)
 
 (setq frame-title-format "grepz@eternal")
 
@@ -84,6 +84,12 @@
 
 ;; show/hide menu-bar
 (global-set-key (kbd "C-c o") 'menu-bar-mode)
+
+;; Redefine keys for OS X Aquamacs
+(when (eq my-system 'osx)
+  (global-set-key [(meta .)] 'hippie-expand)
+  (global-set-key [(control right)] 'end-of-line)
+  (global-set-key [(control left)] 'beginning-of-line))
 
 ;; Minibufer completion
 (require 'icomplete)
