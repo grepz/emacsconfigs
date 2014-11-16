@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 12 23:25:18 2014 (+0300)
+;; Last-Updated: Sun Nov 16 22:00:25 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 13
+;;     Update #: 17
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -60,6 +60,7 @@
 (setq c-default-style "k&r-2")
 
 (setq require-final-newline t)
+(setq-default indent-tabs-mode nil)
 
 (defun my-c-mode-common-hook ()
   (setq indent-tabs-mode nil)
@@ -113,10 +114,10 @@
 ;;(add-to-list 'load-path "/home/grepz/elisp/slime/")
 
 ;; Redshank mode
+
 (require 'redshank-loader)
 (eval-after-load "redshank-loader"
-  '(redshank-setup '(lisp-mode-hook
-		     slime-repl-mode-hook) t))
+  '(redshank-setup '(lisp-mode-hook slime-repl-mode-hook) t))
 
 (add-hook 'lisp-mode-hook
 	  '(lambda ()

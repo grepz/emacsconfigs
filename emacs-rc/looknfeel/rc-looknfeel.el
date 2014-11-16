@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Nov 13 01:36:02 2014 (+0300)
+;; Last-Updated: Sun Nov 16 21:59:50 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 24
+;;     Update #: 43
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -158,12 +158,14 @@
 	  (message "Graphical decorations")
       (load-theme 'distinguished t)
 	  (enable-theme 'distinguished)
+      (set-background-color "#111111")
+      (set-foreground-color "#efefef")
       (setq x-select-enable-clipboard t)
-      (if (and (> emacs-major-version 22))
-		  (set-frame-font "inconsolata 11")
+      (if (> emacs-major-version 22)
+		  (set-frame-font "monaco 12")
 		(set-frame-font "9x15")))
   (progn
-    (message "Terminal decorations")
+    (message "Terminal decoratioqns")
     (load-theme 'tango-dark t)))
 
 ;; Modeline
