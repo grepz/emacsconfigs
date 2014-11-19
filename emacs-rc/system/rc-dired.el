@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:11 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:08:18 2014 (+0800)
+;; Last-Updated: Wed Nov 19 22:45:11 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 3
+;;     Update #: 5
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -56,15 +56,15 @@
 (require 'dired-x)
 
 ;; OSX ls can't do long keys like --dired, so use gls from coreutils
-(when (boundp 'aquamacs-version)
+(when (eq my-system 'osx)
   (setf ls-lisp-use-insert-directory-program t
 		insert-directory-program "gls"))
 
-(setq dired-omit-files "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")
+;; (setq dired-omit-files "^\\.?#\\|^\\.$\\|^INDEX$\\|^_darcs$\\|^CVS$\\|^.git$\\|^RCS$\\|^\\.svn$\\|,v$")
 
-(add-hook 'dired-mode-hook
-	  (lambda ()
-	    (dired-omit-mode 1)))
+;; (add-hook 'dired-mode-hook
+;; 	  (lambda ()
+;; 	    (dired-omit-mode 1)))
 
 (setq dired-use-ls-dired t
       dired-shell-command-history t)

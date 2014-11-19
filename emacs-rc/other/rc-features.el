@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:29 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:08:34 2014 (+0800)
+;; Last-Updated: Wed Nov 19 07:39:51 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -73,28 +73,26 @@
 	  '(("gnu"       . "http://elpa.gnu.org/packages/")
 		("melpa"     . "http://melpa.milkbox.net/packages/")))
 
-
 ;;
 ;; Frequency of keys pressed during session
 ;;
 
-(require 'keyfreq)
+;; (require 'keyfreq)
 
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
-
+;; (keyfreq-mode 1)
+;; (keyfreq-autosave-mode 1)
 
 ;;
 ;; Easy to use occur on buffers opened
 ;;
 
-(require 'color-moccur)
+;; (require 'color-moccur)
 
-(setq *moccur-buffer-name-exclusion-list*
-      '(".+TAGS.+" "*Completions*" "*Messages*" ".bbdb" "\\.txt$"))
+;; (setq *moccur-buffer-name-exclusion-list*
+;;       '(".+TAGS.+" "*Completions*" "*Messages*" ".bbdb" "\\.txt$"))
 
-(global-set-key "\C-c\C-s" 'moccur)
-(global-set-key "\C-c\C-d" 'moccur-grep-find)
+;; (global-set-key "\C-c\C-s" 'moccur)
+;; (global-set-key "\C-c\C-d" 'moccur-grep-find)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-features.el ends here

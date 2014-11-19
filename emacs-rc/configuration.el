@@ -55,6 +55,10 @@
 		('osx   "~/erlang/erlang")
 		('linux "/usr/lib/erlang")))
 
+(when (eq my-system 'osx)
+  (setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
+  (setq exec-path (append exec-path '("/opt/local/bin"))))
+
 (setq-default erlang-root-dir erlang-root)
 (setq-default erlang-man-root-dir (concatenate 'string erlang-root "/man"))
 

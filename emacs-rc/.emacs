@@ -4,8 +4,6 @@
 
 (add-to-list 'load-path "~/elisp")
 
-(require 'macroexp)
-
 (setq my-system 'osx)
 (load "~/emacs/emacs-rc/configuration")
 

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sun Nov 16 21:59:50 2014 (+0300)
+;; Last-Updated: Wed Nov 19 22:41:35 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 43
+;;     Update #: 58
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -73,7 +73,7 @@
  '(display-time-day-and-date t)
  '(timeclock-modeline-display t)
  '(inhibit-startup-message t)
- '(visible-bell t)
+ '(visible-bell nil)
  '(font-lock-maximum-decoration nil))
 
 (setq split-width-threshold nil
@@ -101,8 +101,6 @@
        'icomplete-backward-completions)
      (define-key icomplete-minibuffer-map (kbd "C-s")
        'icomplete-forward-completions)
-     ;; (define-key icomplete-minibuffer-map (kbd "<return>")
-     ;;   'minibuffer-force-complete-and-exit)
      (require 'icomplete+)
      ;; C-r ; C-s to cycle ; C-j jump to completion.
      (icompletep-cycling-mode)))
@@ -151,18 +149,18 @@
 ;; (set-frame-font "consolas 12")
 ;; (set-frame-font "inconsolata 12")
 
-(color-theme-initialize)
+;;(color-theme-initialize)
 
 (if (boundp 'window-system)
     (progn
 	  (message "Graphical decorations")
       (load-theme 'distinguished t)
 	  (enable-theme 'distinguished)
-      (set-background-color "#111111")
-      (set-foreground-color "#efefef")
+      (set-background-color "#0b1226")
+      (set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "monaco 12")
+		  (set-frame-font "monaco 13")
 		(set-frame-font "9x15")))
   (progn
     (message "Terminal decoratioqns")
@@ -184,26 +182,26 @@
   '(eval-after-load 'simple
      '(diminish 'auto-fill-function (concat " " (fa-sym :lines-lalign)))))
 ;; gtags
-(add-hook 'ggtags-mode-hook
-	  '(lambda ()
-	     (diminish 'ggtags-mode (concat " " (fa-sym :tag)))))
+(add-hook
+ 'ggtags-mode-hook
+ '(lambda () (diminish 'ggtags-mode (concat " " (fa-sym :tag)))))
 ;; slime
-(add-hook 'slime-mode-hook
-	  '(lambda ()
-	     (diminish 'slime-mode (concat " " (fa-sym :computer)))))
+(add-hook
+ 'slime-mode-hook
+ '(lambda () (diminish 'slime-mode (concat " " (fa-sym :computer)))))
 
 ;; Text scale
-(global-set-key (kbd "s-+") 'text-scale-increase)
-(global-set-key (kbd "s--") 'text-scale-decrease)
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 
 ;; Powerline
-(require 'powerline)
-(custom-set-faces
- '(mode-line
-   ((t (:foreground "#f9f9f9" :background "#222222" :box nil))))
- '(mode-line-inactive
-   ((t (:foreground "#898989" :background "#666666" :box nil)))))
-(powerline-default-theme)
+;; (require 'powerline)
+;; (custom-set-faces
+;;  '(mode-line
+;;    ((t (:foreground "#f9f9f9" :background "#222222" :box nil))))
+;;  '(mode-line-inactive
+;;    ((t (:foreground "#898989" :background "#666666" :box nil)))))
+;; (powerline-vim-theme)
 
 ;; When 2 buffers(files) has the same names code below will mark both buffers
 ;; with directory specification

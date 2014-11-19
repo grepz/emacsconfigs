@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sun Nov 16 22:00:25 2014 (+0300)
+;; Last-Updated: Wed Nov 19 22:40:57 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 17
+;;     Update #: 26
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -60,7 +60,6 @@
 (setq c-default-style "k&r-2")
 
 (setq require-final-newline t)
-(setq-default indent-tabs-mode nil)
 
 (defun my-c-mode-common-hook ()
   (setq indent-tabs-mode nil)
@@ -94,6 +93,7 @@
 
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
+  (setq erlang-indent-level 1)
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
   (imenu-add-to-menubar "imenu")
@@ -151,18 +151,18 @@
 	   slime-lisp-implementations `((sbcl ("sbcl")
 					      :coding-system utf-8-unix)))
 
-(eval-after-load "slime"
-  '(progn
-     (require 'slime-fuzzy)
-     (slime-fuzzy-init)
-     (slime-setup '(slime-fancy slime-asdf slime-tramp))
-     (paredit-mode)
-     (redshank-mode)
-;;     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-;;     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-     (slime-mode t)
-     (slime-scratch)
-     (message "-> slime loaded")))
+;; (eval-after-load "slime"
+;;   '(progn
+;;      (require 'slime-fuzzy)
+;;      (slime-fuzzy-init)
+;;      (slime-setup '(slime-fancy slime-asdf slime-tramp))
+;;      (paredit-mode)
+;;      (redshank-mode)
+;; ;;     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+;; ;;     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;;      (slime-mode t)
+;;      (slime-scratch)
+;;      (message "-> slime loaded")))
 
 
 (defun slime-run ()

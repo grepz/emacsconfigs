@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Tue Nov 11 16:15:49 2014 (+0300)
+;; Last-Updated: Tue Nov 18 13:59:25 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 9
+;;     Update #: 11
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -50,6 +50,7 @@
 (require 'linum)
 
 (custom-set-variables
+ '(indent-tabs-mode nil)
  '(compilation-scroll-output 1)
  '(compilation-window-height 20)
  '(fill-column 80)

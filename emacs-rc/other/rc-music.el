@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:00 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:09:10 2014 (+0800)
+;; Last-Updated: Wed Nov 19 07:40:45 2014 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 3
+;;     Update #: 5
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -46,12 +46,12 @@
 ;;; Code:
 
 
-(require 'emms-setup)
-(emms-all)
-(emms-default-players)
+;; (require 'emms-setup)
+;; (emms-all)
+;; (emms-default-players)
 
-;;(emms-standard)
-;;(emms-default-players)
+;; (emms-standard)
+;; (emms-default-players)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-music.el ends here
