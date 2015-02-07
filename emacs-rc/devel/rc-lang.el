@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 19 22:40:57 2014 (+0300)
+;; Last-Updated: Sat Feb  7 16:53:30 2015 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 26
+;;     Update #: 37
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -46,20 +46,19 @@
 ;;; Code:
 
 
+(setq require-final-newline t)
+(defconst use-backup-dir t)
+
 ;;
 ;; CC-Mode
 ;;
 
 (require 'cwarn)
 
-(defconst use-backup-dir t)
-
 (setq auto-mode-alist (cons '("\\.h\\'" . c++-mode) auto-mode-alist))
 
 (c-add-style "k&r-2" '("k&r" (intent-tabs-mode . nil) (c-basic-offset . 4)))
 (setq c-default-style "k&r-2")
-
-(setq require-final-newline t)
 
 (defun my-c-mode-common-hook ()
   (setq indent-tabs-mode nil)
@@ -85,6 +84,7 @@
 (require 'erlang)
 
 (add-to-list 'load-path "~/elisp/distel/elisp/")
+
 (require 'distel)
 (distel-setup)
 
@@ -93,6 +93,7 @@
 
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
+  (hl-line-mode 1)
   (setq erlang-indent-level 1)
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
@@ -122,6 +123,7 @@
 (add-hook 'lisp-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+         (hl-line-mode 1)
 		 (fci-mode)
 	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
@@ -131,6 +133,7 @@
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+         (hl-line-mode 1)
 	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
@@ -198,6 +201,7 @@
 (add-hook 'cperl-mode-hook
 	  (lambda ()
 	    (linum-mode 1)
+        (hl-line-mode 1)
 		(fci-mode)
 	    (local-set-key (kbd "C-h f") 'cperl-perldoc)
 	    (local-set-key [return] 'newline-and-indent)
@@ -211,11 +215,32 @@
 (require 'python)
 
 (defun my-python-mode-hook ()
+  (setq indent-tabs-mode nil
+        tab-width 4
+        python-indent-offset 4)
   (fci-mode)
+  (hl-line-mode 1)
   (local-set-key [return] 'newline-and-indent)
   (linum-mode 1))
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+;;
+;; Rust
+;;
+
+(require 'rust-mode)
+
+(defun my-rust-mode-hook ()
+  (setq indent-tabs-mode nil
+        tab-width 4
+        rust-indent-offset 4)
+  (fci-mode)
+  (hl-line-mode 1)
+  (local-set-key [return] 'newline-and-indent)
+  (linum-mode 1))
+
+(add-hook 'rust-mode-hook 'my-rust-mode-hook)
 
 ;;
 ;; Sh/Bash
@@ -233,6 +258,7 @@
 (add-hook 'verilog-mode-hook
 	  '(lambda ()
 	     (linum-mode 1)
+         (hl-line-mode 1)
 		 (fci-mode)
 	     (setq-default compilation-error-regexp-alist
 			   (mapcar 'cdr verilog-error-regexp-emacs-alist))))

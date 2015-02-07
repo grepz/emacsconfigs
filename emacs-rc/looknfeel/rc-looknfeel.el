@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 19 22:41:35 2014 (+0300)
+;; Last-Updated: Sat Feb  7 19:07:56 2015 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 58
+;;     Update #: 73
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -155,12 +155,12 @@
     (progn
 	  (message "Graphical decorations")
       (load-theme 'distinguished t)
-	  (enable-theme 'distinguished)
+      (enable-theme 'distinguished)
       (set-background-color "#0b1226")
       (set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "monaco 13")
+		  (set-frame-font "monaco 12")
 		(set-frame-font "9x15")))
   (progn
     (message "Terminal decoratioqns")
@@ -207,6 +207,11 @@
 ;; with directory specification
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward uniquify-separator "@")
+
+;; hl-line
+(require 'hl-line)
+(set-face-background hl-line-face "#2222535")
+(set-face-foreground font-lock-string-face "#509920")
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here

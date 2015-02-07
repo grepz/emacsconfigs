@@ -32,9 +32,10 @@
 ;;  sh> emacsclient -t/-c
 (server-start)
 
-(message "Emacs loaded in %ds" (destructuring-bind (hi lo ms ps) (current-time)
-				 (- (+ hi lo) (+ (first *emacs-load-start*)
-						 (second *emacs-load-start*)))))
+(message "Emacs loaded in %ds"
+         (destructuring-bind (hi lo ms ps) (current-time)
+           (- (+ hi lo) (+ (first *emacs-load-start*)
+                           (second *emacs-load-start*)))))
 
 ;;(setq message-log-max t)
 
