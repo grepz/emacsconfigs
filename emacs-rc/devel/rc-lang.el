@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Feb  7 16:53:30 2015 (+0300)
+;; Last-Updated: Sat Mar 14 15:29:55 2015 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 37
+;;     Update #: 41
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -94,7 +94,7 @@
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
   (hl-line-mode 1)
-  (setq erlang-indent-level 1)
+  (setq erlang-indent-level 4)
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
   (imenu-add-to-menubar "imenu")
@@ -110,7 +110,7 @@
 ;;
 
 ;; Turn on paredit mode when required
-(autoload 'paredit-mode "paredit" t)
+;; (autoload 'paredit-mode "paredit" t)
 
 ;;(add-to-list 'load-path "/home/grepz/elisp/slime/")
 
@@ -128,7 +128,8 @@
 	     (auto-fill-mode 1)
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
-	     (paredit-mode)))
+	     ;;(paredit-mode)
+         ))
 
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
@@ -138,7 +139,8 @@
 	     (local-set-key [delete]  'delete-char)
 	     (local-set-key [return] 'newline-and-indent)
 		 (fci-mode)
-	     (paredit-mode)))
+	     ;;(paredit-mode)
+         ))
 
 ;; Slime for Lisp
 
