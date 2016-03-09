@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Tue Nov 18 13:59:25 2014 (+0300)
+;; Last-Updated: Wed Mar  9 22:19:34 2016 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 11
+;;     Update #: 25
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -111,8 +111,8 @@
 (make-my-face 'my-todo-face   "yellow" "black" t)
 
 (dolist (mode '(c-mode c++-mode cperl-mode sh-mode erlang-mode
-					   slime-mode emacs-lisp-mode lisp-mode
-					   tuareg-mode haskell-mode python-mode))
+                       slime-mode emacs-lisp-mode lisp-mode
+                       tuareg-mode haskell-mode python-mode))
   (add-fontlocked-keywords mode warn-keywords 'my-warn-face)
   (add-fontlocked-keywords mode notice-keywords 'my-notice-face)
   (add-fontlocked-keywords mode todo-keywords 'my-todo-face))
@@ -135,12 +135,12 @@
 
 (set-face-background 'show-paren-match-face "#00BB00")
 (set-face-attribute 'show-paren-match-face nil
-					:weight 'bold :underline nil :overline nil
-					:slant 'normal)
+                    :weight 'bold :underline nil :overline nil
+                    :slant 'normal)
 (set-face-foreground 'show-paren-mismatch-face "#BB0000")
 (set-face-attribute 'show-paren-mismatch-face nil
                     :weight 'bold :underline nil :overline nil
-					:slant 'normal)
+                    :slant 'normal)
 ;;
 ;; Pretty lambda's
 ;;
@@ -192,13 +192,13 @@
 
 (setq semantic-default-submodes
       '(global-semanticdb-minor-mode
-		global-semantic-idle-scheduler-mode
-		global-semantic-idle-summary-mode
-		global-semantic-decoration-mode
-		global-semantic-highlight-func-mode
-		global-semantic-stickyfunc-mode
-		global-semantic-mru-bookmark-mode
-		global-semantic-idle-local-symbol-highlight-mode))
+        global-semantic-idle-scheduler-mode
+        global-semantic-idle-summary-mode
+        global-semantic-decoration-mode
+        global-semantic-highlight-func-mode
+        global-semantic-stickyfunc-mode
+        global-semantic-mru-bookmark-mode
+        global-semantic-idle-local-symbol-highlight-mode))
 
 ;;
 ;; Cedet
@@ -233,6 +233,23 @@
 
 (provide 'rc-general)
 ;;; rc-general.el ends here
+
+;; (require 'highlight-indentation)
+
+;; (set-face-background 'highlight-indentation-face "#e3e3d3")
+;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
+;; Highlight indentation symbols
+(require 'highlight-chars)
+
+(set-face-background 'hc-tab "#BB0000")
+
+(defun highlight-indent-chars ()
+  (interactive)
+  (if (null hc-highlight-tabs-p)
+      (message "Highlighting tabs")
+    (message "Turning highlight mode off"))
+  (hc-toggle-highlight-tabs))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-general.el ends here

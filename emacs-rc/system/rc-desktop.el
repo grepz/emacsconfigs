@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 19 07:42:07 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 19 07:42:33 2014 (+0300)
+;; Last-Updated: Wed Mar  9 21:32:23 2016 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -66,12 +66,6 @@
    (regexp-search-ring       . 20)
    (search-ring              . 20)
    (shell-command-history    . 50)))
-
-;; (mapc
-;;  (lambda (symbol)
-;;    (add-to-list 'desktop-locals-to-save symbol))
-;;  '(buffer-file-coding-system
-;;    tab-width))
 
 (setq-default desktop-missing-file-warning nil
               desktop-dirname "~/emacs/tmp/desktop"

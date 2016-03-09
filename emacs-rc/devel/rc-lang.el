@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Mar 14 15:29:55 2015 (+0300)
+;; Last-Updated: Wed Mar  9 21:45:05 2016 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 41
+;;     Update #: 44
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -121,40 +121,40 @@
   '(redshank-setup '(lisp-mode-hook slime-repl-mode-hook) t))
 
 (add-hook 'lisp-mode-hook
-	  '(lambda ()
-	     (linum-mode 1)
-         (hl-line-mode 1)
-		 (fci-mode)
-	     (auto-fill-mode 1)
-	     (local-set-key [delete]  'delete-char)
-	     (local-set-key [return] 'newline-and-indent)
-	     ;;(paredit-mode)
-         ))
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (fci-mode)
+             (auto-fill-mode 1)
+             (local-set-key [delete]  'delete-char)
+             (local-set-key [return] 'newline-and-indent)
+             ;;(paredit-mode)
+             ))
 
 (add-hook 'emacs-lisp-mode-hook
-	  '(lambda ()
-	     (linum-mode 1)
-         (hl-line-mode 1)
-	     (auto-fill-mode 1)
-	     (local-set-key [delete]  'delete-char)
-	     (local-set-key [return] 'newline-and-indent)
-		 (fci-mode)
-	     ;;(paredit-mode)
-         ))
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (auto-fill-mode 1)
+             (local-set-key [delete]  'delete-char)
+             (local-set-key [return] 'newline-and-indent)
+             (fci-mode)
+             ;;(paredit-mode)
+             ))
 
 ;; Slime for Lisp
 
 (require 'slime-autoloads)
 
 (setq slime-repl-history-size 1000
-	   slime-net-coding-system 'utf-8-unix
-	   ;; when nil - truncate lines
-	   slime-truncate-lines nil
-	   inferior-lisp-program "/usr/bin/sbcl"
-	   slime-kill-without-query-p t
-	   slime-contribs '(slime-fancy slime-tramp slime-asdf)
-	   slime-lisp-implementations `((sbcl ("sbcl")
-					      :coding-system utf-8-unix)))
+      slime-net-coding-system 'utf-8-unix
+      ;; when nil - truncate lines
+      slime-truncate-lines nil
+      inferior-lisp-program "/usr/bin/sbcl"
+      slime-kill-without-query-p t
+      slime-contribs '(slime-fancy slime-tramp slime-asdf)
+      slime-lisp-implementations `((sbcl ("sbcl")
+                                         :coding-system utf-8-unix)))
 
 ;; (eval-after-load "slime"
 ;;   '(progn
@@ -201,14 +201,14 @@
  '(cperl-indent-parens-as-block t))
 
 (add-hook 'cperl-mode-hook
-	  (lambda ()
-	    (linum-mode 1)
-        (hl-line-mode 1)
-		(fci-mode)
-	    (local-set-key (kbd "C-h f") 'cperl-perldoc)
-	    (local-set-key [return] 'newline-and-indent)
-	    (linum-mode 1)
-	    (flymake-mode 1)))
+          (lambda ()
+            (linum-mode 1)
+            (hl-line-mode 1)
+            (fci-mode)
+            (local-set-key (kbd "C-h f") 'cperl-perldoc)
+            (local-set-key [return] 'newline-and-indent)
+            (linum-mode 1)
+            (flymake-mode 1)))
 
 ;;
 ;; Python
@@ -217,9 +217,7 @@
 (require 'python)
 
 (defun my-python-mode-hook ()
-  (setq indent-tabs-mode nil
-        tab-width 4
-        python-indent-offset 4)
+  (setq python-indent-offset 4)
   (fci-mode)
   (hl-line-mode 1)
   (local-set-key [return] 'newline-and-indent)
@@ -235,7 +233,6 @@
 
 (defun my-rust-mode-hook ()
   (setq indent-tabs-mode nil
-        tab-width 4
         rust-indent-offset 4)
   (fci-mode)
   (hl-line-mode 1)
@@ -249,21 +246,21 @@
 ;;
 
 (add-hook 'sh-mode-hook
-		  '(lambda ()
-			 (linum-mode 1)
-			 (fci-mode)))
+          '(lambda ()
+             (linum-mode 1)
+             (fci-mode)))
 
 ;;
 ;; Verilog
 ;;
 
 (add-hook 'verilog-mode-hook
-	  '(lambda ()
-	     (linum-mode 1)
-         (hl-line-mode 1)
-		 (fci-mode)
-	     (setq-default compilation-error-regexp-alist
-			   (mapcar 'cdr verilog-error-regexp-emacs-alist))))
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (fci-mode)
+             (setq-default compilation-error-regexp-alist
+                           (mapcar 'cdr verilog-error-regexp-emacs-alist))))
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here
