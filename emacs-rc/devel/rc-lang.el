@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Mar  9 21:45:05 2016 (+0300)
+;; Last-Updated: Sun Mar 13 19:41:45 2016 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 44
+;;     Update #: 54
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -83,6 +83,22 @@
 
 (require 'erlang)
 
+;; Fixing erlang issues
+
+(require 'indy)
+
+(setq indy-rules '(
+    (erlang-mode . (
+        ((and (indy--current 'indy--starts-with "end")
+         (indy--prev 'indy--ends-on ") ->"))      (indy--prev-tab))
+        ((indy--current 'indy--starts-with "end") (indy--prev-tab -1))
+        ((indy--prev 'indy--ends-on ") ->")       (indy--prev-tab 1))
+        ((indy--current 'indy--starts-with "]")   (indy--prev-tab -1))
+        ((indy--prev 'indy--ends-on "[")          (indy--prev-tab 1))
+        ((indy--prev 'indy--ends-on ",")          (indy--prev-tab))
+   ))
+))
+
 (add-to-list 'load-path "~/elisp/distel/elisp/")
 
 (require 'distel)
@@ -91,9 +107,16 @@
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
+(defun erlang-newline-and-indent ()
+  (interactive "*")
+  (delete-horizontal-space t)
+  (newline nil t)
+  (indy))
+
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
   (hl-line-mode 1)
+  (indy-mode 1)
   (setq erlang-indent-level 4)
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
@@ -101,6 +124,7 @@
   (fci-mode)
   ;; customize keys
   (local-set-key (kbd "C-h f") 'erlang-man-function)
+;;  (local-set-key [return] 'erlang-newline-and-indent))
   (local-set-key [return] 'newline-and-indent))
 
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
