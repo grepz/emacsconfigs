@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:48 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 12 01:43:36 2014 (+0300)
+;; Last-Updated: Fri Aug  7 19:08:37 2015 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 4
+;;     Update #: 6
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -64,10 +64,17 @@
    '(jabber-connection-ssl-program 'gnutls)
    '(starttls-extra-arguments '("--insecure")))
 
+
+(setq jabber-debug-log-xml t)
+(setq jabber-debug-keep-process-buffers t)
+
 (setq jabber-account-list `((,jabber-eterhost-user
-			     (:password . ,jabber-eterhost-password)
-			     (:network-server . "eterhost.org")
-			     (:port . 5222))))
+                             (:password . ,jabber-eterhost-password)
+                             (:network-server . "eterhost.org")
+                             (:port . 5222))
+                            ("140358@token1.localhost/wotba"
+                             (:network-server . "localhost")
+                             (:port . 5222))))
 			    ;; (,jabber-dukgo-user
 			    ;;  (:password . ,jabber-dukgo-password)
 			    ;;  (:network-server . "dukgo.com")

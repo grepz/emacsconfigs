@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Feb  7 19:07:56 2015 (+0300)
+;; Last-Updated: Tue Oct 27 17:11:17 2015 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 73
+;;     Update #: 80
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -75,6 +75,9 @@
  '(inhibit-startup-message t)
  '(visible-bell nil)
  '(font-lock-maximum-decoration nil))
+
+(setq-default global-visual-line-mode nil)
+(setq-default truncate-lines nil)
 
 (setq split-width-threshold nil
       split-window-preferred-function 'split-window-sensibly)
@@ -160,7 +163,7 @@
       (set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "monaco 12")
+		  (set-frame-font "monaco 11")
 		(set-frame-font "9x15")))
   (progn
     (message "Terminal decoratioqns")
@@ -211,7 +214,7 @@
 ;; hl-line
 (require 'hl-line)
 (set-face-background hl-line-face "#2222535")
-(set-face-foreground font-lock-string-face "#509920")
+(set-face-foreground font-lock-string-face "#40ff10")
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here
