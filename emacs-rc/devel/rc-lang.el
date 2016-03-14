@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Mon Feb 23 13:35:18 2015 (+0300)
+;; Last-Updated: Mon Mar 14 14:22:24 2016 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 38
+;;     Update #: 58
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -83,6 +83,22 @@
 
 (require 'erlang)
 
+;; Fixing erlang issues
+
+(require 'indy)
+
+(setq indy-rules '(
+    (erlang-mode . (
+        ((and (indy--current 'indy--starts-with "end")
+         (indy--prev 'indy--ends-on ") ->"))      (indy--prev-tab))
+        ((indy--current 'indy--starts-with "end") (indy--prev-tab -1))
+        ((indy--prev 'indy--ends-on ") ->")       (indy--prev-tab 1))
+        ((indy--current 'indy--starts-with "]")   (indy--prev-tab -1))
+        ((indy--prev 'indy--ends-on "[")          (indy--prev-tab 1))
+        ((indy--prev 'indy--ends-on ",")          (indy--prev-tab))
+   ))
+))
+
 (add-to-list 'load-path "~/elisp/distel/elisp/")
 
 (require 'distel)
@@ -91,9 +107,16 @@
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
+(defun erlang-newline-and-indent ()
+  (interactive "*")
+  (delete-horizontal-space t)
+  (newline nil t)
+  (indy))
+
 (defun my-erlang-mode-hook ()
   (linum-mode 1)
   (hl-line-mode 1)
+  (indy-mode 1)
   (setq erlang-indent-level 4)
   (setq inferior-erlang-machine-options '("-sname" "emacs"))
   ;; add Erlang functions to an imenu menu
@@ -101,6 +124,7 @@
   (fci-mode)
   ;; customize keys
   (local-set-key (kbd "C-h f") 'erlang-man-function)
+;;  (local-set-key [return] 'erlang-newline-and-indent))
   (local-set-key [return] 'newline-and-indent))
 
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
@@ -121,38 +145,40 @@
   '(redshank-setup '(lisp-mode-hook slime-repl-mode-hook) t))
 
 (add-hook 'lisp-mode-hook
-	  '(lambda ()
-	     (linum-mode 1)
-	     (hl-line-mode 1)
-	     (fci-mode)
-	     (auto-fill-mode 1)
-	     (local-set-key [delete]  'delete-char)
-	     (local-set-key [return] 'newline-and-indent)))
-	     ;;(paredit-mode)))
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (fci-mode)
+             (auto-fill-mode 1)
+             (local-set-key [delete]  'delete-char)
+             (local-set-key [return] 'newline-and-indent)
+             ;;(paredit-mode)
+             ))
 
 (add-hook 'emacs-lisp-mode-hook
-	  '(lambda ()
-	     (linum-mode 1)
-         (hl-line-mode 1)
-	     (auto-fill-mode 1)
-	     (local-set-key [delete]  'delete-char)
-	     (local-set-key [return] 'newline-and-indent)
-	     (fci-mode)))
-	     ;;(paredit-mode)))
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (auto-fill-mode 1)
+             (local-set-key [delete]  'delete-char)
+             (local-set-key [return] 'newline-and-indent)
+             (fci-mode)
+             ;;(paredit-mode)
+             ))
 
 ;; Slime for Lisp
 
 (require 'slime-autoloads)
 
 (setq slime-repl-history-size 1000
-	   slime-net-coding-system 'utf-8-unix
-	   ;; when nil - truncate lines
-	   slime-truncate-lines nil
-	   inferior-lisp-program "/usr/bin/sbcl"
-	   slime-kill-without-query-p t
-	   slime-contribs '(slime-fancy slime-tramp slime-asdf)
-	   slime-lisp-implementations `((sbcl ("sbcl")
-					      :coding-system utf-8-unix)))
+      slime-net-coding-system 'utf-8-unix
+      ;; when nil - truncate lines
+      slime-truncate-lines nil
+      inferior-lisp-program "/usr/bin/sbcl"
+      slime-kill-without-query-p t
+      slime-contribs '(slime-fancy slime-tramp slime-asdf)
+      slime-lisp-implementations `((sbcl ("sbcl")
+                                         :coding-system utf-8-unix)))
 
 ;; (eval-after-load "slime"
 ;;   '(progn
@@ -199,14 +225,14 @@
  '(cperl-indent-parens-as-block t))
 
 (add-hook 'cperl-mode-hook
-	  (lambda ()
-	    (linum-mode 1)
-	    (hl-line-mode 1)
-	    (fci-mode)
-	    (local-set-key (kbd "C-h f") 'cperl-perldoc)
-	    (local-set-key [return] 'newline-and-indent)
-	    (linum-mode 1)
-	    (flymake-mode 1)))
+          (lambda ()
+            (linum-mode 1)
+            (hl-line-mode 1)
+            (fci-mode)
+            (local-set-key (kbd "C-h f") 'cperl-perldoc)
+            (local-set-key [return] 'newline-and-indent)
+            (linum-mode 1)
+            (flymake-mode 1)))
 
 ;;
 ;; Python
@@ -215,9 +241,7 @@
 (require 'python)
 
 (defun my-python-mode-hook ()
-  (setq indent-tabs-mode nil
-        tab-width 4
-        python-indent-offset 4)
+  (setq python-indent-offset 4)
   (fci-mode)
   (hl-line-mode 1)
   (local-set-key [return] 'newline-and-indent)
@@ -233,7 +257,6 @@
 
 (defun my-rust-mode-hook ()
   (setq indent-tabs-mode nil
-        tab-width 4
         rust-indent-offset 4)
   (fci-mode)
   (hl-line-mode 1)
@@ -247,21 +270,21 @@
 ;;
 
 (add-hook 'sh-mode-hook
-		  '(lambda ()
-			 (linum-mode 1)
-			 (fci-mode)))
+          '(lambda ()
+             (linum-mode 1)
+             (fci-mode)))
 
 ;;
 ;; Verilog
 ;;
 
 (add-hook 'verilog-mode-hook
-	  '(lambda ()
-	     (linum-mode 1)
-         (hl-line-mode 1)
-		 (fci-mode)
-	     (setq-default compilation-error-regexp-alist
-			   (mapcar 'cdr verilog-error-regexp-emacs-alist))))
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (fci-mode)
+             (setq-default compilation-error-regexp-alist
+                           (mapcar 'cdr verilog-error-regexp-emacs-alist))))
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here

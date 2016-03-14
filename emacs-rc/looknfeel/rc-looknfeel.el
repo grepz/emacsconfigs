@@ -7,9 +7,15 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
+<<<<<<< HEAD
 ;; Last-Updated: Tue Oct 27 17:11:17 2015 (+0300)
 ;;           By: Stanislav M. Ivankin
 ;;     Update #: 80
+=======
+;; Last-Updated: Tue Mar 10 00:36:58 2015 (+0300)
+;;           By: Stanislav M. Ivankin
+;;     Update #: 76
+>>>>>>> d86e1debd1ae1ea2dfb09b04a14c481f650e23cf
 ;; URL:
 ;; Doc URL:
 ;; Keywords:

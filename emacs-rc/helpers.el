@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:34 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:10:39 2014 (+0800)
+;; Last-Updated: Thu Mar 10 10:23:57 2016 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -44,7 +44,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
-
 
 (eval-when-compile
   (require 'cl))
