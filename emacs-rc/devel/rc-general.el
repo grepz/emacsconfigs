@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Aug 24 21:49:31 2017 (+0300)
+;; Last-Updated: Thu Aug 24 21:54:22 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 35
+;;     Update #: 36
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -62,7 +62,7 @@
  '(gdb-use-separate-io-buffer nil)
  '(show-paren-style 'parenthesis))
 
-(setenv "PATH" (concat (getenv "PATH") "/usr/local/bin"))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin/")))
 
 (defun set-exec-path-from-shell-PATH ()

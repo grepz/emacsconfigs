@@ -76,6 +76,9 @@
  '(visible-bell nil)
  '(font-lock-maximum-decoration nil))
 
+(setq-default global-visual-line-mode nil)
+(setq-default truncate-lines nil)
+
 (setq split-width-threshold nil
       split-window-preferred-function 'split-window-sensibly)
 
