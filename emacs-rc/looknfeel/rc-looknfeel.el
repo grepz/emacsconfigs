@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Tue Mar 10 00:36:58 2015 (+0300)
+;; Last-Updated: Mon Jan  2 18:27:42 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 76
+;;     Update #: 78
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -97,6 +97,7 @@
 
 (eval-after-load "icomplete"
   '(progn
+     (setq icomplete-minibuffer-map (make-sparse-keymap))
      (define-key icomplete-minibuffer-map (kbd "C-r")
        'icomplete-backward-completions)
      (define-key icomplete-minibuffer-map (kbd "C-s")
@@ -154,13 +155,11 @@
 (if (boundp 'window-system)
     (progn
 	  (message "Graphical decorations")
-      (load-theme 'distinguished t)
-      (enable-theme 'distinguished)
       (set-background-color "#0b1226")
       (set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "monaco 11")
+		  (set-frame-font "monaco 12")
 		(set-frame-font "9x15")))
   (progn
     (message "Terminal decoratioqns")

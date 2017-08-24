@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:29 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 19 07:39:51 2014 (+0300)
+;; Last-Updated: Thu Aug 24 21:15:22 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 3
+;;     Update #: 4
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -70,8 +70,7 @@
 ;; Elpa package system for Emacs
 (require 'package)
 (setq package-archives
-	  '(("gnu"       . "http://elpa.gnu.org/packages/")
-		("melpa"     . "http://melpa.milkbox.net/packages/")))
+	  '(("melpa"     . "http://melpa.milkbox.net/packages/")))
 
 ;;
 ;; Frequency of keys pressed during session

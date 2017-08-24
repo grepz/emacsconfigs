@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Mar 10 10:38:30 2016 (+0300)
+;; Last-Updated: Thu Aug 24 21:49:31 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 29
+;;     Update #: 35
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -62,6 +62,17 @@
  '(gdb-use-separate-io-buffer nil)
  '(show-paren-style 'parenthesis))
 
+(setenv "PATH" (concat (getenv "PATH") "/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin/")))
+
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell
+      (replace-regexp-in-string "[[:space:]\n]*$" ""
+        (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+(when (equal system-type 'darwin) (set-exec-path-from-shell-PATH))
+
 (add-hook
  'after-save-hook
  #'(lambda ()
@@ -75,8 +86,8 @@
   "save and call compile as make all"
   (interactive)
   (save-buffer)
-  (compile "make all")
-  (message "make all executed!"))
+  (compile compile-command)
+  (message "make executed!"))
 
 (defun user-make-clean ()
   "save and clean build"
