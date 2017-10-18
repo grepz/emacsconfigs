@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:55 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Oct 18 13:45:59 2017 (+0300)
+;; Last-Updated: Wed Oct 18 23:41:30 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 3
+;;     Update #: 4
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -50,6 +50,7 @@
 (load-file "helpers.el")
 
 (add-subdirs-to-load-path "~/elisp")
+(add-subdirs-to-load-path "~/.emacs.d/el-get")
 (add-subdirs-to-load-path "/Applications/Emacs.app/Contents/Resources/lisp/emacs-lisp/")
 
 (require 'package)

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Aug 24 21:49:31 2017 (+0300)
+;; Last-Updated: Wed Oct 18 23:47:07 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 73
+;;     Update #: 74
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -156,16 +156,16 @@
 ;;              ;;(paredit-mode)
 ;;              ))
 
-;; (add-hook 'emacs-lisp-mode-hook
-;;           '(lambda ()
-;;              (linum-mode 1)
-;;              (hl-line-mode 1)
-;;              (auto-fill-mode 1)
-;;              (local-set-key [delete]  'delete-char)
-;;              (local-set-key [return] 'newline-and-indent)
-;;              (fci-mode)
-;;              ;;(paredit-mode)
-;;              ))
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (linum-mode 1)
+             (hl-line-mode 1)
+             (auto-fill-mode 1)
+             (local-set-key [delete]  'delete-char)
+             (local-set-key [return] 'newline-and-indent)
+             (fci-mode)
+             ;;(paredit-mode)
+             ))
 
 ;; ;; Slime for Lisp
 
