@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Oct 18 23:47:07 2017 (+0300)
+;; Last-Updated: Mon Nov 20 18:57:58 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 74
+;;     Update #: 75
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -297,6 +297,11 @@
 (setq auto-mode-alist
       (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
 (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
+
+;;
+;; Elixir
+;;
+(add-to-list 'auto-mode-alist '("\\.elixir2\\'" . elixir-mode))
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here

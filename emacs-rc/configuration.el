@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 12 00:49:28 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Nov 27 12:49:02 2014 (+0300)
+;; Last-Updated: Thu Oct 19 22:53:45 2017 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 11
+;;     Update #: 12
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -56,10 +56,21 @@
 		('linux "/usr/lib/erlang")))
 
 (when (eq my-system 'osx)
-  (setenv "PATH" (concat (getenv "PATH") ":/opt/local/bin"))
+  (setenv "PATH" (concat (getenv "PATH")
+                         ":/opt/local/bin"
+                         ":~/arm-none-eabi/bin"
+                         ":/opt/local/bin"
+                         ":/opt/local/sbin"
+                         ":~/bin:/opt/local/lib/mysql55/bin"
+                         ":/opt/local/lib/postgresql95/bin/"
+                         ":/opt/local/libexec/gnubin/"
+                         ":/Applications/Emacs.app/Contents/MacOS/bin/"))
   (setq exec-path (append exec-path '("/opt/local/bin"))))
 
 (setq-default erlang-root-dir erlang-root)
 (setq-default erlang-man-root-dir (concatenate 'string erlang-root "/man"))
 
 (add-to-list 'exec-path (concatenate 'string erlang-root "/bin"))
+
+
+(concat (list 1 2 3) (list 4))
