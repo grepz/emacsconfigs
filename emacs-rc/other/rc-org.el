@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:09:28 2014 (+0800)
+;; Last-Updated: Fri Jan  5 23:17:31 2018 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 12
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -56,16 +56,13 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-log-done '(done))
 
-(add-hook 'remember-mode-hook 'org-remember-apply-template)
-
 (custom-set-variables
  '(org-directory "~/emacs/etc/orgmode/")
- '(org-mobile-directory "~/emacs/etc/orgmode/mobile")
- '(org-mobile-inbox-for-pull "~/emacs/etc/orgmode/mobile/from-mobile.org")
- '(org-agenda-files (list "~/emacs/etc/orgmode/work.org"))
+ '(org-agenda-files (list "~/emacs/etc/orgmode/work.org" "~/emacs/etc/orgmode/todo.org"))
  '(org-default-notes-file "~/emacs/etc/orgmode/bookmarks.org")
  '(org-agenda-ndays 7)
  '(org-deadline-warning-days 14)
@@ -75,9 +72,6 @@
  '(org-agenda-start-on-weekday nil)
  '(org-reverse-note-order t)
  '(org-fast-tag-selection-single-key (quote expert))
- '(org-remember-store-without-prompt t)
- '(remember-annotation-functions (quote (org-remember-annotation)))
- '(remember-handler-functions (quote (org-remember-handler)))
  '(org-agenda-custom-commands
    '(("h" "Home related tasks"
       ((tags-todo "@HOME")))

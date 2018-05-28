@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Mon Nov 20 18:57:58 2017 (+0300)
+;; Last-Updated: Mon May 28 22:24:48 2018 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 75
+;;     Update #: 80
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -301,7 +301,12 @@
 ;;
 ;; Elixir
 ;;
-(add-to-list 'auto-mode-alist '("\\.elixir2\\'" . elixir-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(ex\\|exs\\)$'" . elixir-mode))
+
+(add-to-list 'elixir-mode-hook
+             '(lambda ()
+                (linum-mode 1)
+                (hl-line-mode 1)))
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here
