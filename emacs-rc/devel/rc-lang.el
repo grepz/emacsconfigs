@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Mon May 28 22:24:48 2018 (+0300)
+;; Last-Updated: Wed Jul 18 22:27:06 2018 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 80
+;;     Update #: 81
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -301,6 +301,9 @@
 ;;
 ;; Elixir
 ;;
+
+(require 'elixir-mode)
+
 (add-to-list 'auto-mode-alist '("\\.\\(ex\\|exs\\)$'" . elixir-mode))
 
 (add-to-list 'elixir-mode-hook

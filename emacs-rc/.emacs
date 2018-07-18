@@ -17,8 +17,8 @@
 
 (add-subdirs-to-load-path "~/elisp")
 
-;; (require 'package)
-;; (package-initialize)
+(require 'package)
+(package-initialize)
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)

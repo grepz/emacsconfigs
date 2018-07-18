@@ -142,14 +142,20 @@
 ;; Paren
 ;;
 
+(setq show-paren-delay 0)
 (show-paren-mode 1)
 
-(set-face-background 'show-paren-match-face "#00BB00")
-(set-face-attribute 'show-paren-match-face nil
+(require 'paren)
+
+(set-face-background 'show-paren-match "#00BB00")
+(set-face-foreground 'show-paren-match "#BB0000")
+(set-face-attribute 'show-paren-match nil :weight 'extra-bold)
+
+(set-face-attribute 'show-paren-match nil
                     :weight 'bold :underline nil :overline nil
                     :slant 'normal)
-(set-face-foreground 'show-paren-mismatch-face "#BB0000")
-(set-face-attribute 'show-paren-mismatch-face nil
+(set-face-foreground 'show-paren-mismatch "#BB0000")
+(set-face-attribute 'show-paren-mismatch nil
                     :weight 'bold :underline nil :overline nil
                     :slant 'normal)
 ;;
