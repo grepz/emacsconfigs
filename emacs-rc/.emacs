@@ -48,6 +48,8 @@
            (- (+ hi lo) (+ (first *emacs-load-start*)
                            (second *emacs-load-start*)))))
 
+(defalias 'string-to-int 'string-to-number)
+
 ;;(setq message-log-max t)
 
 (message "Happy hacking, %s!" (user-login-name))
