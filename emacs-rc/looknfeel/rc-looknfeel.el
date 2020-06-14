@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Oct 18 23:40:21 2017 (+0300)
+;; Last-Updated: Пн июн 15 01:05:40 2020 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 80
+;;     Update #: 81
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -161,7 +161,7 @@
       (set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "monaco 12")
+		  (set-frame-font "monaco 14")
 		(set-frame-font "9x15")))
   (progn
     (message "Terminal decoratioqns")

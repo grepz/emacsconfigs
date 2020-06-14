@@ -4,7 +4,7 @@
 
 (add-to-list 'load-path "~/elisp")
 
-(setq my-system 'osx)
+(setq my-system 'linux)
 (load "~/emacs/emacs-rc/configuration")
 
 (display-time-mode -1)

@@ -46,43 +46,43 @@
 ;;; Code:
 
 
-(require 'jabber)
-(require 'jabber-autoaway)
+;; (require 'jabber)
+;; (require 'jabber-autoaway)
 
-(add-hook 'jabber-post-connect-hook 'jabber-autoaway-start)
+;; (add-hook 'jabber-post-connect-hook 'jabber-autoaway-start)
 
-(custom-set-variables
-   '(jabber-history-enabled t)
-   '(jabber-use-global-history nil)
-   '(jabber-history-dir "~/emacs/tmp/.emacs-jabber")
-   '(jabber-backlog-days 60)
-   '(jabber-backlog-number 200)
-   '(jabber-history-enable-rotation t)
-   '(jabber-history-size-limit 16384)
-   '(jabber-xosd-display-time 5)
-   '(jabber-vcard-avatars-retrieve nil)
-   '(jabber-connection-ssl-program 'gnutls)
-   '(starttls-extra-arguments '("--insecure")))
+;; (custom-set-variables
+;;    '(jabber-history-enabled t)
+;;    '(jabber-use-global-history nil)
+;;    '(jabber-history-dir "~/emacs/tmp/.emacs-jabber")
+;;    '(jabber-backlog-days 60)
+;;    '(jabber-backlog-number 200)
+;;    '(jabber-history-enable-rotation t)
+;;    '(jabber-history-size-limit 16384)
+;;    '(jabber-xosd-display-time 5)
+;;    '(jabber-vcard-avatars-retrieve nil)
+;;    '(jabber-connection-ssl-program 'gnutls)
+;;    '(starttls-extra-arguments '("--insecure")))
 
 
-(setq jabber-debug-log-xml t)
-(setq jabber-debug-keep-process-buffers t)
+;; (setq jabber-debug-log-xml t)
+;; (setq jabber-debug-keep-process-buffers t)
 
-(setq jabber-account-list `((,jabber-eterhost-user
-                             (:password . ,jabber-eterhost-password)
-                             (:network-server . "eterhost.org")
-                             (:port . 5222))
-                            ("140358@token1.localhost/wotba"
-                             (:network-server . "localhost")
-                             (:port . 5222))))
-			    ;; (,jabber-dukgo-user
-			    ;;  (:password . ,jabber-dukgo-password)
-			    ;;  (:network-server . "dukgo.com")
-			    ;;  (:port . 5222))))
+;; (setq jabber-account-list `((,jabber-eterhost-user
+;;                              (:password . ,jabber-eterhost-password)
+;;                              (:network-server . "eterhost.org")
+;;                              (:port . 5222))
+;;                             ("140358@token1.localhost/wotba"
+;;                              (:network-server . "localhost")
+;;                              (:port . 5222))))
+;; 			    ;; (,jabber-dukgo-user
+;; 			    ;;  (:password . ,jabber-dukgo-password)
+;; 			    ;;  (:network-server . "dukgo.com")
+;; 			    ;;  (:port . 5222))))
 
-(jabber-mode-line-mode)
+;; (jabber-mode-line-mode)
 
-(global-set-key (kbd "s-j") 'jabber-connect-all)
+;; (global-set-key (kbd "s-j") 'jabber-connect-all)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-jabber.el ends here
