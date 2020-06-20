@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 12 00:49:28 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Oct 19 22:53:45 2017 (+0300)
+;; Last-Updated: Сб июн 20 21:18:03 2020 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 12
+;;     Update #: 13
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -72,5 +72,5 @@
 
 (add-to-list 'exec-path (concatenate 'string erlang-root "/bin"))
 
-
-(concat (list 1 2 3) (list 4))
+;; Make gpg2 happy about entering password in minibuffer
+(setq epa-pinentry-mode 'loopback)
