@@ -1,5 +1,5 @@
-FIles structure goes like this:
-
+# Files structure goes like this:
+```
     $HOME:
     ..
     emacs/
@@ -10,17 +10,44 @@ FIles structure goes like this:
     .emacs.d/
     .emacs -> emacs/emacs-rc/.emacs
     .wl -> emacs/emacs-rc/.wl
+```
 
-emacs-rc directory contains:
-
+# emacs-rc directory contains:
+```
     devel - Development related configuration
     looknfeel - All that is related to styles and emacs general interface
     network - various netowrk related setup(jabber clients, erc setup, etc)
     other - misc, anything without strict category
     system - system administration related, interaction with OS
-    
     passwords.el.gpg - gpg encrypted el file with authentication setup,
     		       when being loaded emacs will ask gpg encryption
 		       password
-
+```
 NOTE: Code needs cleanup.
+
+# HOWTO run
+
+1. Make a link to a .emacs file to your home directory.
+```
+ln -s /path/to/emacsconfigs/emacs-rc/.emacs ~/.emacs
+```
+2. Create elisp directory inside home.
+```
+mkdir ~/elisp
+```
+3. Create password file and encrypt it
+```
+touch ~/emacs/emacs-rc/passwords.el
+gpg --output ~/emacs/emacs-rc/passwords.el.gpg --symmetric ~/emacs/emacs-rc/passwords.el
+rm ~/emacs/emacs-rc/passwords.el
+```
+4. Run emacs(ignore errors) and install dependencies
+```
+M-x package-list-packages
+```
+Choose: fill-column-indicator(obsolete), magit, erlang, neotree, rust-mode, xcscope, elixir-mode, powerline
+Download from emacswiki(and save to ~/elisp): icomplete+.el, header2.el, highlight-chars
+5. Do M-x desktop-save manually once
+6. Install monaco font any was it suits you
+7. ...
+8. Profit

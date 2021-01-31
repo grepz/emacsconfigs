@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пн июн 15 01:05:40 2020 (+0300)
+;; Last-Updated: Ср сен 16 23:49:46 2020 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 81
+;;     Update #: 93
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -157,11 +157,12 @@
 (if (boundp 'window-system)
     (progn
 	  (message "Graphical decorations")
-      (set-background-color "#0b1226")
-      (set-foreground-color "#eeeeec")
+      (load-theme 'deeper-blue)
+      ;;(set-background-color "#011236")
+      ;;(set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "monaco 14")
+		  (set-frame-font "FiraCode 16")
 		(set-frame-font "9x15")))
   (progn
     (message "Terminal decoratioqns")
