@@ -1,6 +1,6 @@
 EMACS=emacs -q --no-site-file
 
-CC     = /Applications/Emacs.app/Contents/MacOS/Emacs
+CC     = emacs
 CFLAGS = -q --no-site-file -batch -l compile-all.el
 ECHO   = echo
 Q      ?= @

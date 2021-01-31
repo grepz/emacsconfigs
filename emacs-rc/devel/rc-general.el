@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Thu Aug 24 21:54:22 2017 (+0300)
+;; Last-Updated: Вс янв 31 22:42:07 2021 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 36
+;;     Update #: 45
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -44,10 +44,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
-
-
-;; Line numbers
-(require 'linum)
 
 (custom-set-variables
  '(indent-tabs-mode nil)
@@ -99,12 +95,19 @@
 (global-set-key (kbd "\C-cm") 'user-save-and-make-all)
 
 ;;
-;; Fill column
+;; Line numbers on
 ;;
 
-(require 'fill-column-indicator)
-(setq fci-rule-width 1)
-(setq fci-rule-color "#555555")
+(require 'display-line-numbers)
+
+(defcustom display-line-numbers-exempt-modes
+  '(vterm-mode eshell-mode shell-mode term-mode ansi-term-mode)
+  "Major modes on which to disable the linum mode, exempts them from global requirement"
+  :group 'display-line-numbers
+  :type 'list
+  :version "green")
+
+(global-display-line-numbers-mode)
 
 ;;
 ;; Fontlocking keywords

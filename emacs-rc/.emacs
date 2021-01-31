@@ -1,8 +1,8 @@
 (defvar *emacs-load-start* (current-time))
 
-(require 'cl)
-
 (add-to-list 'load-path "~/elisp")
+
+(require 'cl)
 
 (setq my-system 'linux)
 (load "~/emacs/emacs-rc/configuration")

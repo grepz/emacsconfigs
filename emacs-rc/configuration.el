@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 12 00:49:28 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Сб июн 20 21:18:03 2020 (+0300)
+;; Last-Updated: Вс янв 31 22:49:44 2021 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 13
+;;     Update #: 14
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
