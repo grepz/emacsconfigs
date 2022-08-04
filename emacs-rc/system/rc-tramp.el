@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:01 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Sat Nov  8 02:08:05 2014 (+0800)
+;; Last-Updated: Сб фев  6 22:18:05 2021 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 2
+;;     Update #: 3
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -92,7 +92,7 @@
       ;; allow some user customization
       (run-hooks 'find-file-root-hook))))
 
-(global-set-key [(control x) (control r)] 'find-file-root)
+(global-set-key [(super x) (super f)] 'find-file-root)
 
 ;;
 ;; SSH to a host

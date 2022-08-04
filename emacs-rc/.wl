@@ -9,7 +9,7 @@
 (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
 (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
 
-(setq wl-from "Stanislav M. Ivankin <stas@concat.info>")
+(setq wl-from "Stanislav M. Ivankin <lessgrep@gmail.com>")
 
 (setq wl-fcc "+sent")
 
@@ -107,40 +107,40 @@
 
 (setq elmo-msgdb-extra-fields
       '("x-ml-name"
-	"reply-to"
-	"sender"
-	"mailing-list"
-	"newsgroups"
-	"list-id"
-	"x-mail-count"
-	"x-ml-count"
-	"x-sequence"))
+	    "reply-to"
+	    "sender"
+	    "mailing-list"
+	    "newsgroups"
+	    "list-id"
+	    "x-mail-count"
+	    "x-ml-count"
+	    "x-sequence"))
 
-(setq wl-refile-rule-alist '(("From" ("noreply@getafreelancer.com" .
-				      "%inbox/GetAFreelancer"))
-			     ("From" ("haskell-cafe-request@haskell.org" .
-				      "%inbox/HaskellCafe"))
-			     ("From" ("devnull@yandex.ru" . "%inbox/YaRu"))
-			     ("List-ID" ("comp.lang.lisp.googlegroups.com" .
-					 "%inbox/comp_lang_lisp"))
-			     ("List-ID" ("Bug reports for GNU Emacs" .
-					 "%inbox/EmacsBugs"))
-			     ("List-ID"
-			      (".*libssh2-devel.lists.sourceforge.net.*" .
-			       "%inbox/libssh"))
-			     ("List-ID" ("<weblocks.googlegroups.com>" .
-					 "%inbox/weblocks"))
-			     ("From" ("lj_notify@livejournal.com" .
-				      "%inbox/LiveJournal"))
-			     ("From" ("@moikrug.ru" . "%inbox/Moikrug"))
-			     ("List-ID" ("<spbhug.googlegroups.com>" .
-					 "%inbox/SpbHUG"))
-			     ("From" ("listserv@ugu.com" . "%inbox/UnixTips"))
-			     ("From" ("no_reply@hh.ru" . "%inbox/HeadHunter"))
-			     ("From" ("address" . "%inbox/Family"))
-			     ("From" ("address" . "%inbox/Family"))
-			     ("From" ("meteo@angara.net" . "%inbox/angara")))
-      wl-summary-auto-refile-skip-marks nil)
+;; (setq wl-refile-rule-alist '(("From" ("noreply@getafreelancer.com" .
+;; 				      "%inbox/GetAFreelancer"))
+;; 			     ("From" ("haskell-cafe-request@haskell.org" .
+;; 				      "%inbox/HaskellCafe"))
+;; 			     ("From" ("devnull@yandex.ru" . "%inbox/YaRu"))
+;; 			     ("List-ID" ("comp.lang.lisp.googlegroups.com" .
+;; 					 "%inbox/comp_lang_lisp"))
+;; 			     ("List-ID" ("Bug reports for GNU Emacs" .
+;; 					 "%inbox/EmacsBugs"))
+;; 			     ("List-ID"
+;; 			      (".*libssh2-devel.lists.sourceforge.net.*" .
+;; 			       "%inbox/libssh"))
+;; 			     ("List-ID" ("<weblocks.googlegroups.com>" .
+;; 					 "%inbox/weblocks"))
+;; 			     ("From" ("lj_notify@livejournal.com" .
+;; 				      "%inbox/LiveJournal"))
+;; 			     ("From" ("@moikrug.ru" . "%inbox/Moikrug"))
+;; 			     ("List-ID" ("<spbhug.googlegroups.com>" .
+;; 					 "%inbox/SpbHUG"))
+;; 			     ("From" ("listserv@ugu.com" . "%inbox/UnixTips"))
+;; 			     ("From" ("no_reply@hh.ru" . "%inbox/HeadHunter"))
+;; 			     ("From" ("address" . "%inbox/Family"))
+;; 			     ("From" ("address" . "%inbox/Family"))
+;; 			     ("From" ("meteo@angara.net" . "%inbox/angara")))
+;;       wl-summary-auto-refile-skip-marks nil)
 
 ;; Articles expiring
 (setq wl-expire-alist
@@ -149,21 +149,21 @@
 	 (date 7) remove)))
 
 ;; BBDB
-(require 'bbdb-wl)
-(bbdb-wl-setup)
-(setq signature-use-bbdb t
-      wl-summary-from-function 'bbdb-wl-from-func)
-(add-hook 'bbdb-notice-hook 'bbdb-auto-notes-hook)
-(setq bbdb-auto-notes-alist
-      '(("Organization" (".*" company 0))
-	("X-URL" (".*" www 0))
-	("X-URI" (".*" www 0))
-	("User-Agent" (".*" mailer 0))
-	("X-Mailer" (".*" mailer 0))
-	("X-Newsreader" (".*" mailer 0))
-	("Subject" (".*" last-subj 0 'replace))
-	("X-Face" (".+" face 0 'replace))
-	("Face" (".+" cface 0 'replace))))
+;; (require 'bbdb-wl)
+;; (bbdb-wl-setup)
+;; (setq signature-use-bbdb t
+;;       wl-summary-from-function 'bbdb-wl-from-func)
+;; (add-hook 'bbdb-notice-hook 'bbdb-auto-notes-hook)
+;; (setq bbdb-auto-notes-alist
+;;       '(("Organization" (".*" company 0))
+;; 	("X-URL" (".*" www 0))
+;; 	("X-URI" (".*" www 0))
+;; 	("User-Agent" (".*" mailer 0))
+;; 	("X-Mailer" (".*" mailer 0))
+;; 	("X-Newsreader" (".*" mailer 0))
+;; 	("Subject" (".*" last-subj 0 'replace))
+;; 	("X-Face" (".+" face 0 'replace))
+;; 	("Face" (".+" cface 0 'replace))))
 
 (wl-generate-user-agent-string-1)
 (setq wl-generate-mailer-string-function
@@ -177,7 +177,7 @@
    (lambda () (when (string=
 		"flowed" (cdr (assoc "format"
 				     (mime-content-type-parameters
-				      (mime-entity-content-type entity)))))	
+				      (mime-entity-content-type entity)))))
 	   (fill-flowed))))
 
 ;; Mail encryption

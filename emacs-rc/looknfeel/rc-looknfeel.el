@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Ср сен 16 23:49:46 2020 (+0300)
+;; Last-Updated: Пт авг  5 00:53:27 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 93
+;;     Update #: 96
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -162,10 +162,10 @@
       ;;(set-foreground-color "#eeeeec")
       (setq x-select-enable-clipboard t)
       (if (> emacs-major-version 22)
-		  (set-frame-font "FiraCode 16")
+		  (set-frame-font "FiraCode 18")
 		(set-frame-font "9x15")))
   (progn
-    (message "Terminal decoratioqns")
+    (message "Terminal decorations")
     (load-theme 'tango-dark t)))
 
 ;; Modeline
@@ -215,6 +215,10 @@
 (require 'hl-line)
 (set-face-background hl-line-face "#2222535")
 (set-face-foreground font-lock-string-face "#40ff10")
+
+;; Use regex search by default
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here
