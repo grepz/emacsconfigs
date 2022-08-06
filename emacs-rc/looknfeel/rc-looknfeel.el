@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пт авг  5 00:53:27 2022 (+0300)
+;; Last-Updated: Сб авг  6 17:01:59 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 96
+;;     Update #: 145
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -219,6 +219,14 @@
 ;; Use regex search by default
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
+
+(if (executable-find "rg")
+    (grep-apply-setting 'grep-highlight-matches 'always)
+  (progn
+    (grep-apply-setting 'grep-command "rg -n -H --no-heading -e ")
+    (grep-apply-setting
+     'grep-find-command
+     '("find . -type f -exec rg --null -n -H --no-heading --with-filename -e  \\{\\} +" . 70))))
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here
