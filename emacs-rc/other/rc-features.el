@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:29 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс янв 31 22:58:00 2021 (+0300)
+;; Last-Updated: Вс авг  7 00:41:40 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 6
+;;     Update #: 7
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -75,10 +75,10 @@
 ;; Frequency of keys pressed during session
 ;;
 
-;; (require 'keyfreq)
+(require 'keyfreq)
 
-;; (keyfreq-mode 1)
-;; (keyfreq-autosave-mode 1)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
 
 ;;
 ;; Easy to use occur on buffers opened

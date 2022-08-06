@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс янв 31 22:42:07 2021 (+0300)
+;; Last-Updated: Сб авг  6 18:52:24 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 45
+;;     Update #: 47
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -270,6 +270,12 @@
       (message "Highlighting tabs")
     (message "Turning highlight mode off"))
   (hc-toggle-highlight-tabs))
+
+;; ASDF setup
+(add-to-list 'load-path "~/elisp/asdf.el")
+(require 'asdf)
+
+(asdf-enable)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-general.el ends here

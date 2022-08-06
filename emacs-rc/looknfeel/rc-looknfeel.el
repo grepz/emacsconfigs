@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Сб авг  6 17:01:59 2022 (+0300)
+;; Last-Updated: Сб авг  6 17:31:17 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 145
+;;     Update #: 146
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -176,6 +176,7 @@
   '(:computer     [#xF109]
     :tag          [#xF02C]
     :lines-lalign [#xF036]))
+
 (defmacro fa-sym (key)
   `(plist-get fa-syms-codes ,key))
 
