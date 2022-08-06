@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Сб авг  6 18:52:24 2022 (+0300)
+;; Last-Updated: Вс авг  7 00:57:05 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 47
+;;     Update #: 48
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -272,7 +272,7 @@
   (hc-toggle-highlight-tabs))
 
 ;; ASDF setup
-(add-to-list 'load-path "~/elisp/asdf.el")
+(add-to-list 'load-path "~/elisp/asdf")
 (require 'asdf)
 
 (asdf-enable)
