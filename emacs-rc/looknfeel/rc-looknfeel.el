@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Сб авг  6 17:31:17 2022 (+0300)
+;; Last-Updated: Ср авг 10 13:52:17 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 146
+;;     Update #: 151
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -221,13 +221,15 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 
+(require 'grep)
+
 (if (executable-find "rg")
-    (grep-apply-setting 'grep-highlight-matches 'always)
-  (progn
-    (grep-apply-setting 'grep-command "rg -n -H --no-heading -e ")
-    (grep-apply-setting
-     'grep-find-command
-     '("find . -type f -exec rg --null -n -H --no-heading --with-filename -e  \\{\\} +" . 70))))
+    (progn
+      (grep-apply-setting 'grep-highlight-matches 'always)
+      (grep-apply-setting 'grep-command "rg --null --color always -n -H --no-heading --with-filename -e ")
+      (grep-apply-setting
+       'grep-find-command
+       '("find . -type f -exec rg --null --color always -n -H --no-heading --with-filename -e  \\{\\} +" . 85))))
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here
