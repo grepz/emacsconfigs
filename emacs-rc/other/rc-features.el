@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:29 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс авг  7 00:41:40 2022 (+0300)
+;; Last-Updated: Вс авг 14 15:53:29 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 7
+;;     Update #: 10
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -66,10 +66,6 @@
 	     (concat "#%" (buffer-name) "#")))))
 
 (setq backup-directory-alist (list (cons "." backup-dir)))
-
-;; Elpa package system for Emacs
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 ;;
 ;; Frequency of keys pressed during session

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Ср авг 10 13:52:17 2022 (+0300)
+;; Last-Updated: Пн авг 15 14:09:10 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 151
+;;     Update #: 166
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -94,58 +94,55 @@
   (global-set-key [(control left)] 'beginning-of-line))
 
 ;; Minibufer completion
-(require 'icomplete)
-(icomplete-mode 1)
-
-(eval-after-load "icomplete"
-  '(progn
-     (setq icomplete-minibuffer-map (make-sparse-keymap))
-     (define-key icomplete-minibuffer-map (kbd "C-r")
-       'icomplete-backward-completions)
-     (define-key icomplete-minibuffer-map (kbd "C-s")
-       'icomplete-forward-completions)
-     (require 'icomplete+)
-     ;; C-r ; C-s to cycle ; C-j jump to completion.
-     (icompletep-cycling-mode)))
+(use-package icomplete
+  :ensure
+  :init
+  (icomplete-mode 1)
+  (setq icomplete-minibuffer-map (make-sparse-keymap))
+  (define-key icomplete-minibuffer-map (kbd "C-r")
+    'icomplete-backward-completions)
+  (define-key icomplete-minibuffer-map (kbd "C-s")
+    'icomplete-forward-completions)
+  (require 'icomplete+)
+  (icompletep-cycling-mode))
 
 ;; Convenient buffer menu
-(require 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(setq-default ibuffer-show-empty-filter-groups nil)
-
-;; Why it hasnt been defvar'ed in ibuffer ???
-(defvar ibuffer-saved-filter-groups
-  '(("Custom"
-	 ("Dired" (mode . dired-mode))
-	 ("Perl"  (mode . cperl-mode))
-	 ("Erc"   (mode . erc-mode))
-	 ("Elisp" (or (mode .emacs-lisp-mode) (name . "\\.el$")))
-	 ("Lisp"  (or (mode . sbcl-mode) (mode . lisp-mode)))
-	 ("Help"  (or (name . "\*Help\*") (mode . help-mode)
-				  (name . "\*Apropos\*") (name . "\*info\*")))
-	 ("w3m"   (mode . w3m-mode))
-	 ("c/cpp" (or (mode . c-mode) (mode . c++-mode)
-				  (name . "\\.\(c|cpp|cxx\)$")
-				  (name . "\\.(h|hpp)$")))
-	 ("Erlang"     (or (mode . erlang-mode) (name . "\\.erl$")))
-	 ("Additional" (or (name . "^\\*scratch\\*$")
-					   (name . "^\\*Messages\\*$")
-					   (name . "^\\*compilation")
-					   (name . "^\\*semantic")))
-	 ("Build" (or (mode . cmake-mode) (mode . makefile-mode)
-				  (mode . makefile-gmake-mode)
-				  (mode . ld-script-mode)))
-	 ("Assembler" (mode . asm-mode))
-	 ("Scheme"  (mode . scheme-mode))
-	 ("OrgMode" (mode . org-mode))
-	 ("Java"    (or (mode . java-mode) (name . "\\.java$")))
-	 ("Python"  (or (mode . python-mode) (name . "^\\*Python\\*$")))
-	 ("Verilog" (or (mode . verilog-mode) (name . "\\.v$"))))))
-
-(add-hook 'ibuffer-mode-hook
-	  (lambda ()
-	     (ibuffer-auto-mode 1)
-	     (ibuffer-switch-to-saved-filter-groups "Custom")))
+(use-package ibuffer
+  :ensure
+  :init
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+  (setq-default ibuffer-show-empty-filter-groups nil)
+  (defvar ibuffer-saved-filter-groups
+    '(("Custom"
+	   ("Dired" (mode . dired-mode))
+	   ("Perl"  (mode . cperl-mode))
+	   ("Erc"   (mode . erc-mode))
+	   ("Elisp" (or (mode .emacs-lisp-mode) (name . "\\.el$")))
+	   ("Lisp"  (or (mode . sbcl-mode) (mode . lisp-mode)))
+	   ("Help"  (or (name . "\*Help\*") (mode . help-mode)
+				    (name . "\*Apropos\*") (name . "\*info\*")))
+	   ("w3m"   (mode . w3m-mode))
+	   ("c/cpp" (or (mode . c-mode) (mode . c++-mode)
+				    (name . "\\.\(c|cpp|cxx\)$")
+				    (name . "\\.(h|hpp)$")))
+	   ("Erlang"     (or (mode . erlang-mode) (name . "\\.erl$")))
+	   ("Additional" (or (name . "^\\*scratch\\*$")
+					     (name . "^\\*Messages\\*$")
+					     (name . "^\\*compilation")
+					     (name . "^\\*semantic")))
+	   ("Build" (or (mode . cmake-mode) (mode . makefile-mode)
+				    (mode . makefile-gmake-mode)
+				    (mode . ld-script-mode)))
+	   ("Assembler" (mode . asm-mode))
+	   ("Scheme"  (mode . scheme-mode))
+	   ("OrgMode" (mode . org-mode))
+	   ("Java"    (or (mode . java-mode) (name . "\\.java$")))
+	   ("Python"  (or (mode . python-mode) (name . "^\\*Python\\*$")))
+	   ("Verilog" (or (mode . verilog-mode) (name . "\\.v$"))))))
+  (add-hook 'ibuffer-mode-hook
+	        (lambda ()
+	          (ibuffer-auto-mode 1)
+	          (ibuffer-switch-to-saved-filter-groups "Custom"))))
 
 ;; (set-frame-font "mono 12")
 ;; (set-frame-font "input 12")
@@ -213,9 +210,11 @@
 (setq uniquify-buffer-name-style 'post-forward uniquify-separator "@")
 
 ;; hl-line
-(require 'hl-line)
-(set-face-background hl-line-face "#2222535")
-(set-face-foreground font-lock-string-face "#40ff10")
+(use-package hl-line
+  :ensure
+  :init
+  (set-face-background hl-line-face "#2222535")
+  (set-face-foreground font-lock-string-face "#40ff10"))
 
 ;; Use regex search by default
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -230,6 +229,11 @@
       (grep-apply-setting
        'grep-find-command
        '("find . -type f -exec rg --null --color always -n -H --no-heading --with-filename -e  \\{\\} +" . 85))))
+
+(use-package which-key
+  :ensure
+  :init
+  (which-key-mode))
 
 (provide 'rc-looknfeel)
 ;;; rc-looknfeel.el ends here

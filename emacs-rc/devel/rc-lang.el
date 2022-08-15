@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Сб авг  6 19:01:22 2022 (+0300)
+;; Last-Updated: Пн авг 15 00:08:23 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 107
+;;     Update #: 168
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -168,7 +168,7 @@
 ;;(require 'slime-cl-pitfalls)
 
 ;;
-;; Scheme
+;; scheme
 ;;
 
 ;; (require 'geiser)
@@ -196,7 +196,7 @@
             (flymake-mode 1)))
 
 ;;
-;; Python
+;; python
 ;;
 
 (require 'python)
@@ -212,18 +212,81 @@
 ;; Rust
 ;;
 
-(require 'rust-mode)
+;; (require 'rust-mode)
+(use-package rust-playground :ensure)
+(use-package toml-mode :ensure)
+(use-package bind-key :ensure)
 
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+;; (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
-(defun my-rust-mode-hook ()
-  (setq indent-tabs-mode nil
-        rust-indent-offset 4)
-  (hl-line-mode 1)
-  (local-set-key [return] 'newline-and-indent)
-  (set (make-local-variable 'compile-command) "cargo build"))
+;; (defun my-rust-mode-hook ()
+;;   (setq indent-tabs-mode nil
+;;         rust-indent-offset 4)
+;;   (hl-line-mode 1)
+;;   (local-set-key [return] 'newline-and-indent)
+;;   (set (make-local-variable 'compile-command) "cargo build"))
 
-(add-hook 'rust-mode-hook 'my-rust-mode-hook)
+;; (add-hook 'rust-mode-hook 'my-rust-mode-hook)
+
+(use-package lsp-mode
+  :ensure
+  :commands lsp
+  :custom
+  ;; what to use when checking on-save. "check" is default, I prefer clippy
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-eldoc-render-all t)
+  (lsp-idle-delay 0.6)
+  ;; enable / disable the hints as you prefer:
+  (lsp-rust-analyzer-server-display-inlay-hints t)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
+  (lsp-rust-analyzer-display-chaining-hints t)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil)
+  (lsp-rust-analyzer-display-closure-return-type-hints t)
+  (lsp-rust-analyzer-display-parameter-hints t)
+  (lsp-rust-analyzer-display-reborrow-hints t)
+  :config
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package lsp-ui
+  :ensure
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-peek-always-show nil)
+  (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-doc-enable t))
+
+(use-package rustic
+  :ensure
+  :bind (:map rustic-mode-map
+              ("M-j" . lsp-ui-imenu)
+              ("M-?" . lsp-find-references)
+              ("C-c C-c l" . flycheck-list-errors)
+              ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status))
+  :config
+  ;; uncomment for less flashiness
+  (setq lsp-eldoc-hook nil)
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-signature-auto-activate nil)
+  (setq lsp-flycheck-live-reporting nil)
+
+  ;; comment to disable rustfmt on save
+  ;; (setq rustic-format-on-save t)
+  (remove-hook 'rustic-mode-hook 'flycheck-mode)
+  (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
+  (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
+
+(defun rk/rustic-mode-hook ()
+  ;; so that run C-c C-c C-r works without having to confirm, but don't try to
+  ;; save rust buffers that are not file visiting. Once
+  ;; https://github.com/brotzeit/rustic/issues/253 has been resolved this should
+  ;; no longer be necessary.
+  (when buffer-file-name
+    (setq-local buffer-save-without-query t)))
+
 
 ;;
 ;; Sh/Bash
@@ -241,7 +304,7 @@
           '(lambda ()
              (hl-line-mode 1)
              (setq-default compilation-error-regexp-alist
-                           (mapcar 'cdr verilog-error-regexp-emacs-alist))))
+                           (mapcar 'cdr verilog-ert1ror-regexp-emacs-alist))))
 
 ;;
 ;; Arduino
