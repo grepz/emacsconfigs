@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пн авг 15 14:09:10 2022 (+0300)
+;; Last-Updated: Пн авг 15 22:45:25 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 166
+;;     Update #: 173
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -96,7 +96,7 @@
 ;; Minibufer completion
 (use-package icomplete
   :ensure
-  :init
+  :config
   (icomplete-mode 1)
   (setq icomplete-minibuffer-map (make-sparse-keymap))
   (define-key icomplete-minibuffer-map (kbd "C-r")
@@ -109,7 +109,7 @@
 ;; Convenient buffer menu
 (use-package ibuffer
   :ensure
-  :init
+  :config
   (global-set-key (kbd "C-x C-b") 'ibuffer)
   (setq-default ibuffer-show-empty-filter-groups nil)
   (defvar ibuffer-saved-filter-groups
@@ -212,8 +212,8 @@
 ;; hl-line
 (use-package hl-line
   :ensure
-  :init
-  (set-face-background hl-line-face "#2222535")
+  :config
+  (set-face-background hl-line-face "#222345")
   (set-face-foreground font-lock-string-face "#40ff10"))
 
 ;; Use regex search by default
@@ -232,7 +232,7 @@
 
 (use-package which-key
   :ensure
-  :init
+  :config
   (which-key-mode))
 
 (provide 'rc-looknfeel)

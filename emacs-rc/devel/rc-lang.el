@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пн авг 15 00:08:23 2022 (+0300)
+;; Last-Updated: Пн авг 15 23:30:33 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 168
+;;     Update #: 203
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -235,7 +235,7 @@
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
   (lsp-eldoc-render-all t)
-  (lsp-idle-delay 0.6)
+  (lsp-idle-delay 3)
   ;; enable / disable the hints as you prefer:
   (lsp-rust-analyzer-server-display-inlay-hints t)
   (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
@@ -244,6 +244,9 @@
   (lsp-rust-analyzer-display-closure-return-type-hints t)
   (lsp-rust-analyzer-display-parameter-hints t)
   (lsp-rust-analyzer-display-reborrow-hints t)
+  (lsp-diagnostics-provider :auto)
+  (lsp-lens-enable nil)
+  (lsp-eldoc-enable-hover nil)
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
@@ -251,9 +254,23 @@
   :ensure
   :commands lsp-ui-mode
   :custom
+  (lsp-ui-sideline-enable nil)
   (lsp-ui-peek-always-show nil)
-  (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-sideline-delay 3) ;; delay hover hints
+  (lsp-ui-sideline-show-hover t) ;; hover hints on flycheck/flymake
   (lsp-ui-doc-enable t))
+
+(use-package company
+  :ensure
+  :custom
+  (company-idle-delay 3) ;; how long to wait until popup
+  ;; (company-begin-commands nil) ;; uncomment to disable popup
+  :bind
+  (:map company-active-map
+	      ("C-n". company-select-next)
+	      ("C-p". company-select-previous)
+	      ("M-<". company-select-first)
+	      ("M->". company-select-last)))
 
 (use-package rustic
   :ensure
@@ -268,15 +285,22 @@
               ("C-c C-c s" . lsp-rust-analyzer-status))
   :config
   ;; uncomment for less flashiness
-  (setq lsp-eldoc-hook nil)
-  (setq lsp-enable-symbol-highlighting nil)
-  (setq lsp-signature-auto-activate nil)
-  (setq lsp-flycheck-live-reporting nil)
+  (setf lsp-eldoc-hook nil
+        lsp-enable-snippet nil
+        lsp-enable-symbol-highlighting nil
+        lsp-signature-auto-activate nil
+        eglot-send-changes-idle-time (* 60 60)
+        rustic-lsp-client 'lsp-mode
+        rustic-format-on-save nil
+        lsp-flycheck-live-reporting nil
+        flycheck-idle-change-delay 3)
 
   ;; comment to disable rustfmt on save
   ;; (setq rustic-format-on-save t)
   (remove-hook 'rustic-mode-hook 'flycheck-mode)
-  (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
+  (add-hook 'eglot--managed-mode-hook
+            (lambda ()
+              (flymake-mode -1)))
   (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
 
 (defun rk/rustic-mode-hook ()
