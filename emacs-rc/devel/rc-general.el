@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс авг  7 00:57:05 2022 (+0300)
+;; Last-Updated: Пт авг 19 16:27:58 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 48
+;;     Update #: 50
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -125,8 +125,8 @@
 (make-my-face 'my-todo-face   "yellow" "black" t)
 
 (dolist (mode '(c-mode c++-mode cperl-mode sh-mode erlang-mode
-                       slime-mode emacs-lisp-mode lisp-mode
-                       tuareg-mode haskell-mode python-mode))
+                       slime-mode emacs-lisp-mode lisp-mode elixir-mode
+                       tuareg-mode haskell-mode python-mode rustic-mode))
   (add-fontlocked-keywords mode warn-keywords 'my-warn-face)
   (add-fontlocked-keywords mode notice-keywords 'my-notice-face)
   (add-fontlocked-keywords mode todo-keywords 'my-todo-face))

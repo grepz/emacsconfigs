@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 19 07:42:07 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Wed Mar  9 21:32:23 2016 (+0300)
+;; Last-Updated: Пт авг 19 16:25:49 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 3
+;;     Update #: 8
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -46,33 +46,33 @@
 ;;; Code:
 
 
-(require 'desktop)
-
-(desktop-save-mode 1)
-
-(mapc
- (lambda (symbol)
-   (add-to-list 'desktop-globals-to-save symbol))
- '((buffer-name-history      . 100)
-   (undo-limit               . 500000)
-   (dired-regexp-history     . 20)
-   (extended-command-history . 100)
-   (file-name-history        . 500)
-   (grep-history             . 50)
-   (minibuffer-history       . 100)
-   (query-replace-history    . 60)
-   (read-expression-history  . 60)
-   (regexp-history           . 60)
-   (regexp-search-ring       . 20)
-   (search-ring              . 20)
-   (shell-command-history    . 50)))
-
-(setq-default desktop-missing-file-warning nil
-              desktop-dirname "~/emacs/tmp/desktop"
-			  desktop-path '("~/emacs/tmp/desktop")
-			  desktop-save t
-			  desktop-save-mode t
-			  save-place t)
+(use-package desktop
+  :ensure
+  :config
+  (progn
+    (desktop-save-mode 1)
+    (mapc
+     (lambda (symbol)
+       (add-to-list 'desktop-globals-to-save symbol))
+     '((buffer-name-history      . 100)
+       (undo-limit               . 500000)
+       (dired-regexp-history     . 20)
+       (extended-command-history . 100)
+       (file-name-history        . 500)
+       (grep-history             . 50)
+       (minibuffer-history       . 100)
+       (query-replace-history    . 60)
+       (read-expression-history  . 60)
+       (regexp-history           . 60)
+       (regexp-search-ring       . 20)
+       (search-ring              . 20)
+       (shell-command-history    . 50)))
+    (setq-default desktop-missing-file-warning nil
+                  desktop-dirname "~/emacs/tmp/desktop"
+			      desktop-path '("~/emacs/tmp/desktop")
+			      desktop-save t
+			      desktop-save-mode t
+			      save-place t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-desktop.el ends here
