@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пн авг 15 23:30:33 2022 (+0300)
+;; Last-Updated: Вс сен 18 18:38:18 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 203
+;;     Update #: 204
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -65,8 +65,8 @@
 (defun my-c-mode-common-hook ()
   (setq indent-tabs-mode nil)
   (c-toggle-auto-hungry-state 1)
-  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-    (ggtags-mode 1))
+  ;; (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+  ;;   (ggtags-mode 1))
   (auto-fill-mode 1)
   (cwarn-mode 1)
   (local-set-key [delete] 'delete-char)

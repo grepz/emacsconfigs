@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Fri Jan  5 23:17:31 2018 (+0300)
+;; Last-Updated: Вс сен 18 18:42:31 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 12
+;;     Update #: 17
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -77,6 +77,20 @@
       ((tags-todo "@HOME")))
      ("w" "Work related tasks"
       ((tags-todo "@WORK"))))))
+
+(add-to-list 'load-path "~/elisp/org-wiki")
+(require 'org-wiki)
+
+(setq org-wiki-location-list
+      '("~/emacs/etc/org-mode/mnemonic/"))
+
+(setq org-wiki-location (car org-wiki-location-list))
+;; Close all wiki pages when switching root
+(setq org-wiki-close-root-switch t)
+
+(setq org-wiki-server-host "127.0.0.1")
+(setq org-wiki-server-port "22222")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-org.el ends here

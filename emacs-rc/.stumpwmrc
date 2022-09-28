@@ -29,7 +29,7 @@
 (define-key *root-map* (kbd "l")   "exec xtrlock")
 (define-key *root-map* (kbd "c")   "exec urxvt")
 (define-key *root-map* (kbd "c")   "exec urxvt")
-(define-key *root-map* (kbd "SunPrint_Screen")   "exec scrot -s -f ~/screenshots/%F_%H:%m:%S.png")
+(define-key *root-map* (kbd "SunPrint_Screen")   "exec scrot -s -f ~/screenshots/%F_%H_%m_%S.png")
 
 ;; Use xev to get keysym's
 (define-keysym #x1008ff13 "XF86AudioRaiseVolume")
