@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Чт сен 29 22:41:42 2022 (+0300)
+;; Last-Updated: Вс окт  2 19:34:10 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 20
+;;     Update #: 22
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -86,6 +86,25 @@
 
 (setq org-wiki-location-list
       '("~/emacs/etc/org-mode/mnemonic/"))
+
+(setq org-wiki-template
+      (string-trim
+"
+#+TITLE: %n
+#+DESCRIPTION:
+#+KEYWORDS:
+#+OPTIONS: ^:nil
+#+STARTUP:  content
+#+DATE: %d
+
+- [[wiki:index][Index]]
+
+- Parent:
+
+- Related:
+
+* %n
+"))
 
 (setq org-wiki-location (car org-wiki-location-list))
 ;; Close all wiki pages when switching root
