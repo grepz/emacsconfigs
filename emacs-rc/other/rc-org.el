@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс сен 18 18:42:31 2022 (+0300)
+;; Last-Updated: Чт сен 29 22:41:42 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 17
+;;     Update #: 20
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -79,6 +79,9 @@
       ((tags-todo "@WORK"))))))
 
 (add-to-list 'load-path "~/elisp/org-wiki")
+
+(use-package htmlize :ensure)
+
 (require 'org-wiki)
 
 (setq org-wiki-location-list

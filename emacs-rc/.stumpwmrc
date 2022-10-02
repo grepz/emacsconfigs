@@ -50,13 +50,10 @@
 (gnew "devel")
 (gnew "video")
 
-;;(ql:quickload "xembed")
-;;(ql:quickload "alexandria")
-
-;;(load-module "stumptray")
-;;(load-module "wifi")
-;;(load-module "battery-portable")
-;;(load-module "cpu")
+(load-module "stumptray")
+(load-module "wifi")
+(load-module "battery-portable")
+(load-module "cpu")
 
 (define-frame-preference "Default"
   (1 t t :class "Firefox"))
@@ -70,4 +67,4 @@
 (stumpwm:toggle-mode-line (stumpwm:current-screen)
                           (stumpwm:current-head))
 
-;;(stumptray::stumptray)
+(stumptray::stumptray)
