@@ -28,6 +28,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq use-package-compute-statistics t)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)

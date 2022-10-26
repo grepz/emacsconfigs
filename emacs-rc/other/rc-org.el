@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Ср окт 26 23:08:06 2022 (+0300)
+;; Last-Updated: Чт окт 27 00:07:08 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 34
+;;     Update #: 38
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -51,12 +51,12 @@
   :mode (("\\.org$" . org-mode))
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
-         ("C-c b" . org-iswitchb))
+         ("C-c b" . org-switchb))
   :custom
   (org-log-done '(done))
-  (org-directory "~/emacs/etc/orgmode/")
-  (org-agenda-files (list "~/emacs/etc/orgmode/work.org" "~/emacs/etc/orgmode/todo.org"))
-  (org-default-notes-file "~/emacs/etc/orgmode/bookmarks.org")
+  (org-directory "~/emacs/etc/org-mode/")
+  (org-agenda-files (list "~/emacs/etc/org-mode/work.org" "~/emacs/etc/org-mode/todo.org"))
+  (org-default-notes-file "~/emacs/etc/org-mode/bookmarks.org")
   (org-agenda-ndays 7)
   (org-deadline-warning-days 14)
   (org-agenda-show-all-dates t)
