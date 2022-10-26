@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс окт  2 19:34:10 2022 (+0300)
+;; Last-Updated: Ср окт 26 23:08:06 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 22
+;;     Update #: 34
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -46,37 +46,36 @@
 ;;; Code:
 
 
-(require 'org)
-
-(add-hook 'org-mode-hook
- #'(lambda ()
-	 (set-default 'truncate-lines t)
-	 (auto-fill-mode 1)))
-
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-
-(setq org-log-done '(done))
-
-(custom-set-variables
- '(org-directory "~/emacs/etc/orgmode/")
- '(org-agenda-files (list "~/emacs/etc/orgmode/work.org" "~/emacs/etc/orgmode/todo.org"))
- '(org-default-notes-file "~/emacs/etc/orgmode/bookmarks.org")
- '(org-agenda-ndays 7)
- '(org-deadline-warning-days 14)
- '(org-agenda-show-all-dates t)
- '(org-agenda-skip-deadline-if-done t)
- '(org-agenda-skip-scheduled-if-done t)
- '(org-agenda-start-on-weekday nil)
- '(org-reverse-note-order t)
- '(org-fast-tag-selection-single-key (quote expert))
- '(org-agenda-custom-commands
+(use-package org
+  :ensure org-contrib
+  :mode (("\\.org$" . org-mode))
+  :bind (("C-c l" . org-store-link)
+         ("C-c a" . org-agenda)
+         ("C-c b" . org-iswitchb))
+  :custom
+  (org-log-done '(done))
+  (org-directory "~/emacs/etc/orgmode/")
+  (org-agenda-files (list "~/emacs/etc/orgmode/work.org" "~/emacs/etc/orgmode/todo.org"))
+  (org-default-notes-file "~/emacs/etc/orgmode/bookmarks.org")
+  (org-agenda-ndays 7)
+  (org-deadline-warning-days 14)
+  (org-agenda-show-all-dates t)
+  (org-agenda-skip-deadline-if-done t)
+  (org-agenda-skip-scheduled-if-done t)
+  (org-agenda-start-on-weekday nil)
+  (org-reverse-note-order t)
+  (org-fast-tag-selection-single-key (quote expert))
+  (org-agenda-custom-commands
    '(("h" "Home related tasks"
       ((tags-todo "@HOME")))
      ("w" "Work related tasks"
-      ((tags-todo "@WORK"))))))
+      ((tags-todo "@WORK")))))
+  :config
+  (add-hook 'org-mode-hook
+            #'(lambda ()
+	            (set-default 'truncate-lines t)
+	            (auto-fill-mode 1))))
+
 
 (add-to-list 'load-path "~/elisp/org-wiki")
 
