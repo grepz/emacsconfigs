@@ -7,9 +7,9 @@
 ;; Created: Wed Nov 12 00:49:28 2014 (+0300)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс янв 31 22:49:44 2021 (+0300)
+;; Last-Updated: Вс ноя 13 14:06:43 2022 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 14
+;;     Update #: 28
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -50,27 +50,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; configuration.el ends here
 
-(setq erlang-root
-	  (case my-system
-		('osx   "~/erlang/erlang")
-		('linux "/usr/lib/erlang")))
+(setenv "PATH" (concat (getenv "PATH")
+                       ":/opt/local/bin"
+                       ":/opt/local/sbin"
+                       ":~/bin"
+                       ":/usr/sbin"))
 
 (when (eq my-system 'osx)
   (setenv "PATH" (concat (getenv "PATH")
-                         ":/opt/local/bin"
-                         ":~/arm-none-eabi/bin"
-                         ":/opt/local/bin"
-                         ":/opt/local/sbin"
-                         ":~/bin:/opt/local/lib/mysql55/bin"
-                         ":/opt/local/lib/postgresql95/bin/"
-                         ":/opt/local/libexec/gnubin/"
-                         ":/Applications/Emacs.app/Contents/MacOS/bin/"))
-  (setq exec-path (append exec-path '("/opt/local/bin"))))
+                         ":/Applications/Emacs.app/Contents/MacOS/bin/")))
 
-(setq-default erlang-root-dir erlang-root)
-(setq-default erlang-man-root-dir (concatenate 'string erlang-root "/man"))
-
-(add-to-list 'exec-path (concatenate 'string erlang-root "/bin"))
+(setq exec-path
+      (append exec-path '("/opt/local/bin" "/usr/sbin" "~/bin")))
 
 ;; Make gpg2 happy about entering password in minibuffer
 (setq epa-pinentry-mode 'loopback)

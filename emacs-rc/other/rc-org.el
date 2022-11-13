@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Чт окт 27 00:07:08 2022 (+0300)
+;; Last-Updated: Чт окт 27 00:15:08 2022 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 38
+;;     Update #: 39
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -55,7 +55,7 @@
   :custom
   (org-log-done '(done))
   (org-directory "~/emacs/etc/org-mode/")
-  (org-agenda-files (list "~/emacs/etc/org-mode/work.org" "~/emacs/etc/org-mode/todo.org"))
+  (org-agenda-files (list "~/emacs/etc/org-mode/work.org" "~/emacs/etc/org-mode/life.org" "~/emacs/etc/org-mode/todo.org"))
   (org-default-notes-file "~/emacs/etc/org-mode/bookmarks.org")
   (org-agenda-ndays 7)
   (org-deadline-warning-days 14)
