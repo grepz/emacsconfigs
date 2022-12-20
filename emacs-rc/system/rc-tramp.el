@@ -102,14 +102,14 @@
 
 ;; Tramp host autocompletion
 
-(defun* add-host-to-tramp
-	(host &key
-		  (alias nil)
-		  (user tramp-default-user)
-		  (port "22")
-		  (method tramp-default-method))
-  (setf (gethash (if (null alias) (intern host) (intern alias)) host-hash)
-		(concat "/" method ":" user "@" host "#" port ":~/")))
+;; (defun* add-host-to-tramp
+;; 	(host &key
+;; 		  (alias nil)
+;; 		  (user tramp-default-user)
+;; 		  (port "22")
+;; 		  (method tramp-default-method))
+;;   (setf (gethash (if (null alias) (intern host) (intern alias)) host-hash)
+;; 		(concat "/" method ":" user "@" host "#" port ":~/")))
 
 (defun hash-keys-to-list (hashtable)
   (let (key-list)

@@ -118,11 +118,6 @@ u  - underline"
   (set-face-italic-p face i)
   (set-face-underline-p face u))
 
-;;(defmacro add-fontlocked-keywords (mode keywords face)
-;;  "Make keyword regexp colorfull"
-;;  `(font-lock-add-keywords
-;;    ,mode '((,(eval keywords) 1 ,face prepend))))
-
 (defmacro add-fontlocked-keywords (mode keywords face)
   `(font-lock-add-keywords
     ,mode '((,(eval (concat (regexp-opt (eval keywords) t) ":"))
