@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс сен 18 18:38:18 2022 (+0300)
+;; Last-Updated: Вт фев  7 23:15:51 2023 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 204
+;;     Update #: 220
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -240,13 +240,13 @@
   (lsp-rust-analyzer-server-display-inlay-hints t)
   (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
   (lsp-rust-analyzer-display-chaining-hints t)
-  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil)
+  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t) ;; nil
   (lsp-rust-analyzer-display-closure-return-type-hints t)
   (lsp-rust-analyzer-display-parameter-hints t)
   (lsp-rust-analyzer-display-reborrow-hints t)
   (lsp-diagnostics-provider :auto)
-  (lsp-lens-enable nil)
-  (lsp-eldoc-enable-hover nil)
+  (lsp-lens-enable t) ;; nil
+  (lsp-eldoc-enable-hover t) ;; nil
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
@@ -255,10 +255,12 @@
   :commands lsp-ui-mode
   :custom
   (lsp-ui-sideline-enable nil)
+  (lsp-ui-sideline-show-code-actions nil)
   (lsp-ui-peek-always-show nil)
   (lsp-ui-sideline-delay 3) ;; delay hover hints
   (lsp-ui-sideline-show-hover t) ;; hover hints on flycheck/flymake
-  (lsp-ui-doc-enable t))
+  (lsp-ui-doc-enable t)
+  (lsp-headerline-breadcrumb-enable t))
 
 (use-package company
   :ensure
@@ -287,7 +289,7 @@
   ;; uncomment for less flashiness
   (setf lsp-eldoc-hook nil
         lsp-enable-snippet nil
-        lsp-enable-symbol-highlighting nil
+        lsp-enable-symbol-highlighting t ;; nil
         lsp-signature-auto-activate nil
         eglot-send-changes-idle-time (* 60 60)
         rustic-lsp-client 'lsp-mode
@@ -349,6 +351,17 @@
 (add-to-list 'elixir-mode-hook
              '(lambda ()
                 (hl-line-mode 1)))
+
+;;
+;; PlantUML
+;;
+
+(use-package plantuml-mode
+  :ensure
+  :custom
+  ;; Sample executable configuration
+  (plantuml-executable-path "/usr/bin/plantuml")
+  (plantuml-default-exec-mode 'executable))
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Чт окт 27 00:15:08 2022 (+0300)
+;; Last-Updated: Чт мар 30 01:18:07 2023 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 39
+;;     Update #: 54
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -112,6 +112,42 @@
 (setq org-wiki-server-host "127.0.0.1")
 (setq org-wiki-server-port "22222")
 
+(defun presentation/start ()
+  ;; Hide the mode line
+  (hide-mode-line-mode 1)
+  ;; Display images inline
+  (org-display-inline-images) ;; Can also use org-startup-with-inline-images
+  ;; Scale the text.  The next line is for basic scaling:
+  (setq text-scale-mode-amount 1)
+  (text-scale-mode 1))
+
+(defun presentation/end ()
+  ;; Show the mode line again
+  (hide-mode-line-mode 0)
+  ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
+  (text-scale-mode 0))
+  ;; If you use face-remapping-alist, this clears the scaling:
+  ;;(setq-local face-remapping-alist '((default variable-pitch default))))
+
+(defun presentation-start ()
+  (interactive)
+  (org-tree-slide-mode))
+
+(defun presentation-end ()
+  (interactive)
+  (org-tree-slide-mode -1))
+
+(use-package org-tree-slide
+  :ensure
+  :hook ((org-tree-slide-play . presentation/start)
+         (org-tree-slide-stop . presentation/end))
+  :custom
+  (org-tree-slide-slide-in-effect t)
+  (org-tree-slide-activate-message "Presentation started!")
+  (org-tree-slide-deactivate-message "Presentation finished!")
+  (org-tree-slide-header t)
+  (org-tree-slide-breadcrumbs " > ")
+  (org-image-actual-width nil))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-org.el ends here

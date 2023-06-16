@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:08:29 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс авг 14 15:53:29 2022 (+0300)
+;; Last-Updated: Ср мар 29 23:55:40 2023 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 10
+;;     Update #: 11
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -75,6 +75,8 @@
 
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
+
+(use-package hide-mode-line :ensure)
 
 ;;
 ;; Easy to use occur on buffers opened
