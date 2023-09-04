@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс сен 18 18:35:37 2022 (+0300)
+;; Last-Updated: Пн сен  4 20:08:48 2023 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 174
+;;     Update #: 199
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -195,14 +195,16 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
 ;; Powerline
-(add-to-list 'load-path "~/elisp/powerline")
 (require 'powerline)
 (custom-set-faces
  '(mode-line
-   ((t (:foreground "#f9f9f9" :background "#222222" :box nil))))
+   ((t (:foreground "#836fff" :background "#171717" :box t))))
  '(mode-line-inactive
-   ((t (:foreground "#c9c9c9" :background "#555555" :box nil)))))
-(powerline-vim-theme)
+   ((t (:foreground "#a9a9a9" :background "#333333" :box nil)))))
+
+(set-face-attribute 'mode-line-buffer-id nil :foreground "#836fff")
+
+(powerline-default-theme)
 
 ;; When 2 buffers(files) has the same names code below will mark both buffers
 ;; with directory specification
