@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пн сен  4 20:08:48 2023 (+0300)
+;; Last-Updated: Пн сен  4 20:32:53 2023 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 199
+;;     Update #: 203
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -194,15 +194,17 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+;; Use list-colors-display for some inspiration on colors
+
 ;; Powerline
 (require 'powerline)
 (custom-set-faces
  '(mode-line
-   ((t (:foreground "#836fff" :background "#171717" :box t))))
+   ((t (:foreground "#32cd32" :background "#171717" :box t))))
  '(mode-line-inactive
    ((t (:foreground "#a9a9a9" :background "#333333" :box nil)))))
 
-(set-face-attribute 'mode-line-buffer-id nil :foreground "#836fff")
+(set-face-attribute 'mode-line-buffer-id nil :foreground "#32cd32")
 
 (powerline-default-theme)
 
