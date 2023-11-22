@@ -2,7 +2,7 @@
 
 (add-to-list 'load-path "~/elisp")
 
-(require 'cl)
+(require 'cl-lib)
 
 (setq my-system 'linux)
 (load "~/emacs/emacs-rc/configuration")
@@ -55,9 +55,9 @@
 (server-start)
 
 (message "Emacs loaded in %ds"
-         (destructuring-bind (hi lo ms ps) (current-time)
-           (- (+ hi lo) (+ (first *emacs-load-start*)
-                           (second *emacs-load-start*)))))
+         (cl-destructuring-bind (hi lo ms ps) (current-time)
+           (- (+ hi lo) (+ (cl-first *emacs-load-start*)
+                           (cl-second *emacs-load-start*)))))
 
 (defalias 'string-to-int 'string-to-number)
 

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:34 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс авг 14 17:18:38 2022 (+0300)
+;; Last-Updated: Ср ноя 22 23:02:07 2023 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 7
+;;     Update #: 10
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -46,7 +46,8 @@
 ;;; Code:
 
 (eval-when-compile
-  (require 'cl))
+  (require 'cl-lib)
+  (require 'font-lock))
 
 (defun filter (func lst)
   (cond ((null lst)  '())
@@ -114,14 +115,14 @@ u  - underline"
   (make-face face)
   (set-face-background face bg)
   (set-face-foreground face fg)
-  (set-face-bold-p face b)
-  (set-face-italic-p face i)
-  (set-face-underline-p face u))
+  (set-face-bold face b)
+  (set-face-italic face i)
+  (set-face-underline face u))
 
 (defmacro add-fontlocked-keywords (mode keywords face)
   `(font-lock-add-keywords
     ,mode '((,(eval (concat (regexp-opt (eval keywords) t) ":"))
-	     1 ,face prepend))))
+	         1 ,face prepend))))
 
 ;; Found this method on the net
 (defun safe-load (library)
@@ -136,7 +137,7 @@ u  - underline"
   (let ((encstr (base64-encode-string (encode-coding-string string coding))))
     (substring encstr 0 (- (length encstr) 1))))
 
-(defmacro* save-r/e/md (&rest body)
+(cl-defmacro save-r/e/md (&rest body)
   `(save-excursion
      (save-restriction
        (save-match-data
@@ -169,7 +170,7 @@ u  - underline"
   (dolist (file (filter #'(lambda (x)
 			    (unless (member x rc-filter) x))
 			(directory-files rc-dir t "^rc-[^/]+?\.el$")))
-    (safe-load (subseq file 0 (position ?. file :from-end)))))
+    (safe-load (cl-subseq file 0 (cl-position ?. file :from-end)))))
 
 (defun my-substr (str sublen)
   (if (>= sublen (length str))

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:55 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вс янв 31 22:58:52 2021 (+0300)
+;; Last-Updated: Ср ноя 22 23:16:22 2023 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 5
+;;     Update #: 8
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -58,11 +58,11 @@
 	 (filter #'(lambda (x)
 		     (file-directory-p x))
 		 (directory-files "~/emacs/emacs-rc/" t "^[^#.]"))))
-    (loop for category in categories
+    (cl-loop for category in categories
 	  collect (directory-files category t "^rc-[^/]+?\.el$"))))
 
 (setq compile-list
-      (reduce '(lambda (x y) (concatenate 'list x y))
+      (cl-reduce '(lambda (x y) (cl-concatenate 'list x y))
 	      (compile-rc-files ".")))
 
 (dolist (file compile-list)
