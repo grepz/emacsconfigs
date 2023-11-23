@@ -35,7 +35,7 @@
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+       "https://raw.githubusercontent.com/dimitri/el-get/5.1/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
