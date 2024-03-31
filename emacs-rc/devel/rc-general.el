@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Ср сен 28 21:27:45 2022 (+0300)
+;; Last-Updated: Пт дек  8 16:35:38 2023 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 51
+;;     Update #: 69
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -276,6 +276,20 @@
 (require 'asdf)
 
 (asdf-enable)
+
+(use-package origami
+  :ensure
+  :config
+  (progn
+    (add-hook 'json-mode-hook
+              (lambda () (origami-mode 1)))
+    (define-key origami-mode-map (kbd "C-o c") 'origami-close-node)
+    (define-key origami-mode-map (kbd "C-o o") 'origami-open-node)
+    (define-key origami-mode-map (kbd "C-o C") 'origami-close-all-nodes)
+    (define-key origami-mode-map (kbd "C-o O") 'origami-open-all-nodes)))
+
+(use-package json-navigator
+  :ensure)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rc-general.el ends here

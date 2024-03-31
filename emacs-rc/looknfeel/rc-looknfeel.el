@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Ср ноя 22 23:02:02 2023 (+0200)
+;; Last-Updated: Чт мар 14 22:03:15 2024 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 204
+;;     Update #: 209
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -126,6 +126,12 @@
 				    (name . "\\.\(c|cpp|cxx\)$")
 				    (name . "\\.(h|hpp)$")))
 	   ("Erlang"     (or (mode . erlang-mode) (name . "\\.erl$")))
+       ("Elixir"     (or (mode . elixir-mode)
+                         (name . "\\.ex$")
+                         (name . "\\.exs$")))
+       ("Rust" (or (mode . rust-mode)
+                   (mode . rustic-mode)
+                   (name . "\\.rs$")))
 	   ("Additional" (or (name . "^\\*scratch\\*$")
 					     (name . "^\\*Messages\\*$")
 					     (name . "^\\*compilation")

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вт фев  7 23:15:51 2023 (+0200)
+;; Last-Updated: Чт мар 21 19:05:33 2024 (+0200)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 220
+;;     Update #: 247
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -56,6 +56,7 @@
 ;;
 
 (require 'cwarn)
+(require 'ggtags)
 
 (setq auto-mode-alist (cons '("\\.h\\'" . c++-mode) auto-mode-alist))
 
@@ -69,6 +70,8 @@
   ;;   (ggtags-mode 1))
   (auto-fill-mode 1)
   (cwarn-mode 1)
+  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+    (ggtags-mode 1))
   (local-set-key [delete] 'delete-char)
   (local-set-key [return] 'newline-and-indent)
   (local-set-key (kbd "s-g") 'gdb-restore-windows)
@@ -233,20 +236,20 @@
   :commands lsp
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
-  (lsp-rust-analyzer-cargo-watch-command "clippy")
-  (lsp-eldoc-render-all t)
-  (lsp-idle-delay 3)
-  ;; enable / disable the hints as you prefer:
-  (lsp-rust-analyzer-server-display-inlay-hints t)
-  (lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial")
-  (lsp-rust-analyzer-display-chaining-hints t)
-  (lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names t) ;; nil
-  (lsp-rust-analyzer-display-closure-return-type-hints t)
-  (lsp-rust-analyzer-display-parameter-hints t)
-  (lsp-rust-analyzer-display-reborrow-hints t)
-  (lsp-diagnostics-provider :auto)
-  (lsp-lens-enable t) ;; nil
-  (lsp-eldoc-enable-hover t) ;; nil
+  (setf lsp-rust-analyzer-cargo-watch-command "clippy"
+        lsp-eldoc-render-all t
+        lsp-idle-delay 3
+        ;; enable / disable the hints as you prefer:
+        lsp-rust-analyzer-server-display-inlay-hints nil
+        lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial"
+        lsp-rust-analyzer-display-chaining-hints t
+        lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil
+        lsp-rust-analyzer-display-closure-return-type-hints t
+        lsp-rust-analyzer-display-parameter-hints t
+        lsp-rust-analyzer-display-reborrow-hints "always"
+        lsp-diagnostics-provider :auto
+        lsp-lens-enable nil
+        lsp-eldoc-enable-hover t) ;; nil
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
@@ -287,8 +290,9 @@
               ("C-c C-c s" . lsp-rust-analyzer-status))
   :config
   ;; uncomment for less flashiness
-  (setf lsp-eldoc-hook nil
-        lsp-enable-snippet nil
+  (setf eldoc-documentation-functions nil
+        lsp-enable-snippet t ;; nil
+        lsp-inlay-hint-enable nil
         lsp-enable-symbol-highlighting t ;; nil
         lsp-signature-auto-activate nil
         eglot-send-changes-idle-time (* 60 60)
@@ -312,7 +316,6 @@
   ;; no longer be necessary.
   (when buffer-file-name
     (setq-local buffer-save-without-query t)))
-
 
 ;;
 ;; Sh/Bash
