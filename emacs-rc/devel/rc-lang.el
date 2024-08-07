@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:06:35 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Чт мар 21 19:05:33 2024 (+0200)
+;; Last-Updated: Ср авг  7 12:22:30 2024 (+0300)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 247
+;;     Update #: 260
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -329,31 +329,39 @@
 ;; Verilog
 ;;
 
-(add-hook 'verilog-mode-hook
-          '(lambda ()
-             (hl-line-mode 1)
-             (setq-default compilation-error-regexp-alist
-                           (mapcar 'cdr verilog-ert1ror-regexp-emacs-alist))))
 
+(use-package verilog-mode
+  :mode "\\.\\(v|verilog|vig\\)$"
+  :config
+  (add-hook 'verilog-mode-hook
+            '(lambda ()
+               (hl-line-mode 1)
+               (setq-default compilation-error-regexp-alist
+                             (mapcar 'cdr verilog-ert1ror-regexp-emacs-alist)))))
 ;;
 ;; Arduino
 ;;
 
-(setq auto-mode-alist
-      (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
-(autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
-
+(use-package arduino-mode
+  :ensure
+  :mode "\\.\\(pde\\|ino\\)$")
 ;;
 ;; Elixir
 ;;
 
 (require 'elixir-mode)
 
-(add-to-list 'auto-mode-alist '("\\.\\(ex\\|exs\\)$'" . elixir-mode))
+(use-package elixir-mode
+  :ensure
+  :mode "\\.\\(ex\\|exs\\)$"
+  :config
+  (add-hook 'elixir-mode-hook '(lambda () (hl-line-mode 1))))
 
-(add-to-list 'elixir-mode-hook
-             '(lambda ()
-                (hl-line-mode 1)))
+;; (add-to-list 'auto-mode-alist '("\\.\\(ex\\|exs\\)$'" . elixir-mode))
+
+;; (add-to-list 'elixir-mode-hook
+;;              '(lambda ()
+;;                 (hl-line-mode 1)))
 
 ;;
 ;; PlantUML
@@ -361,10 +369,19 @@
 
 (use-package plantuml-mode
   :ensure
+  :mode "\\.puml$"
   :custom
   ;; Sample executable configuration
   (plantuml-executable-path "/usr/bin/plantuml")
   (plantuml-default-exec-mode 'executable))
+
+;;
+;; Zig
+;;
+
+(use-package zig-mode
+  :ensure
+  :mode "\\.zig$")
 
 (provide 'rc-lang)
 ;;; rc-lang.el ends here
