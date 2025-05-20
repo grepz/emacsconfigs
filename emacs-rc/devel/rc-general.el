@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:01:36 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Пт дек  8 16:35:38 2023 (+0200)
+;; Last-Updated: Sat Jan 18 12:15:45 2025 (+0100)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 69
+;;     Update #: 71
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -183,8 +183,11 @@
 ;; Magit
 ;;
 
-(require 'magit)
-(autoload 'magit-status "magit" nil t)
+(use-package magit
+  :ensure
+  :config
+  (progn
+    (autoload 'magit-status "magit" nil t)))
 
 ;; Turn on ANSI colors in make buffer
 (require 'ansi-color)
@@ -198,9 +201,10 @@
 ;; Neotree
 ;;
 
-(add-to-list 'load-path "~/elisp/neotree")
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
+(use-package neotree
+  :ensure
+  :config
+  (global-set-key [f8] 'neotree-toggle))
 
 
 ;;
@@ -225,21 +229,22 @@
 ;;
 
 (add-to-list 'load-path "/usr/share/emacs/site-lisp")
-(require 'xcscope)
-;;(require 'xcscope+)
 
-(define-key global-map [(control f3)]  'cscope-set-initial-directory)
-(define-key global-map [(control f4)]  'cscope-unset-initial-directory)
-(define-key global-map [(control f5)]  'cscope-find-this-symbol)
-(define-key global-map [(control f6)]  'cscope-find-global-definition)
-(define-key global-map [(control f7)]  'cscope-find-global-definition-no-prompting)
-(define-key global-map [(control f8)]  'cscope-pop-mark)
-(define-key global-map [(control f9)]  'cscope-next-symbol)
-(define-key global-map [(control f10)] 'cscope-next-file)
-(define-key global-map [(control f11)] 'cscope-prev-symbol)
-(define-key global-map [(control f12)] 'cscope-prev-file)
-(define-key global-map [(meta f9)]  'cscope-display-buffer)
-(define-key global-map [(meta f10)] 'cscope-display-buffer-toggle)
+(use-package xcscope
+  :ensure
+  :config
+  (define-key global-map [(control f3)]  'cscope-set-initial-directory)
+  (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
+  (define-key global-map [(control f5)]  'cscope-find-this-symbol)
+  (define-key global-map [(control f6)]  'cscope-find-global-definition)
+  (define-key global-map [(control f7)]  'cscope-find-global-definition-no-prompting)
+  (define-key global-map [(control f8)]  'cscope-pop-mark)
+  (define-key global-map [(control f9)]  'cscope-next-symbol)
+  (define-key global-map [(control f10)] 'cscope-next-file)
+  (define-key global-map [(control f11)] 'cscope-prev-symbol)
+  (define-key global-map [(control f12)] 'cscope-prev-file)
+  (define-key global-map [(meta f9)]  'cscope-display-buffer)
+  (define-key global-map [(meta f10)] 'cscope-display-buffer-toggle))
 
 ;;
 ;; Header2
@@ -248,7 +253,6 @@
 ;; make-header to make one interactevly
 
 (require 'header2)
-
 (add-hook 'before-save-hook 'update-file-header)
 
 (provide 'rc-general)
@@ -261,7 +265,6 @@
 
 ;; Highlight indentation symbols
 (require 'highlight-chars)
-
 (set-face-background 'hc-tab "#BB0000")
 
 (defun highlight-indent-chars ()
@@ -274,7 +277,6 @@
 ;; ASDF setup
 (add-to-list 'load-path "~/elisp/asdf")
 (require 'asdf)
-
 (asdf-enable)
 
 (use-package origami

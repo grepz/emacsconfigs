@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:09:14 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Вт ноя 28 11:51:17 2023 (+0200)
+;; Last-Updated: Sat Jan 18 15:57:57 2025 (+0100)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 58
+;;     Update #: 59
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -80,6 +80,7 @@
 (add-to-list 'load-path "~/elisp/org-wiki")
 
 (use-package htmlize :ensure)
+(use-package helm :ensure)
 
 (require 'org-wiki)
 

@@ -7,9 +7,9 @@
 ;; Created: Sat Nov  8 02:10:12 2014 (+0800)
 ;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: Чт мар 14 22:03:15 2024 (+0200)
+;; Last-Updated: Sat Jan 18 15:58:16 2025 (+0100)
 ;;           By: Stanislav M. Ivankin
-;;     Update #: 209
+;;     Update #: 212
 ;; URL:
 ;; Doc URL:
 ;; Keywords:
@@ -102,9 +102,10 @@
   (define-key icomplete-minibuffer-map (kbd "C-r")
     'icomplete-backward-completions)
   (define-key icomplete-minibuffer-map (kbd "C-s")
-    'icomplete-forward-completions)
-  (require 'icomplete+)
-  (icompletep-cycling-mode))
+    'icomplete-forward-completions))
+
+(require 'icomplete+)
+(icompletep-cycling-mode)
 
 ;; Convenient buffer menu
 (use-package ibuffer
@@ -183,6 +184,8 @@
 (defmacro fa-sym (key)
   `(plist-get fa-syms-codes ,key))
 
+(use-package diminish :ensure)
+
 ;; auto-fill
 (eval-after-load 'diminish-autoloads
   '(eval-after-load 'simple
@@ -203,16 +206,16 @@
 ;; Use list-colors-display for some inspiration on colors
 
 ;; Powerline
-(require 'powerline)
-(custom-set-faces
- '(mode-line
-   ((t (:foreground "#32cd32" :background "#171717" :box t))))
- '(mode-line-inactive
-   ((t (:foreground "#a9a9a9" :background "#333333" :box nil)))))
-
-(set-face-attribute 'mode-line-buffer-id nil :foreground "#32cd32")
-
-(powerline-default-theme)
+(use-package powerline
+  :ensure
+  :config
+  (custom-set-faces
+   '(mode-line
+     ((t (:foreground "#32cd32" :background "#171717" :box t))))
+   '(mode-line-inactive
+     ((t (:foreground "#a9a9a9" :background "#333333" :box nil)))))
+  (set-face-attribute 'mode-line-buffer-id nil :foreground "#32cd32")
+  (powerline-default-theme))
 
 ;; When 2 buffers(files) has the same names code below will mark both buffers
 ;; with directory specification

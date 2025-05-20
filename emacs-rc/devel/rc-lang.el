@@ -55,8 +55,11 @@
 ;; CC-Mode
 ;;
 
-(require 'cwarn)
-(require 'ggtags)
+(use-package cwarn
+  :ensure)
+
+(use-package ggtags
+  :ensure)
 
 (setq auto-mode-alist (cons '("\\.h\\'" . c++-mode) auto-mode-alist))
 
@@ -84,10 +87,6 @@
 ;; Erlang
 ;;
 
-(require 'erlang)
-
-(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
-(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
 (defun my-erlang-mode-hook ()
   (hl-line-mode 1)
@@ -98,7 +97,13 @@
   ;; customize keys
   (local-set-key (kbd "C-h f") 'erlang-man-function))
 
-(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
+
+(use-package erlang
+  :ensure
+  :config
+  (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
+  (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
+  (add-hook 'erlang-mode-hook 'my-erlang-mode-hook))
 
 ;;
 ;; Lisp
@@ -348,8 +353,6 @@
 ;;
 ;; Elixir
 ;;
-
-(require 'elixir-mode)
 
 (use-package elixir-mode
   :ensure

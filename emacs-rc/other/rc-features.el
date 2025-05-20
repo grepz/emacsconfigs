@@ -71,10 +71,11 @@
 ;; Frequency of keys pressed during session
 ;;
 
-(require 'keyfreq)
-
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
+(use-package keyfreq
+  :ensure
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
 
 (use-package hide-mode-line :ensure)
 
